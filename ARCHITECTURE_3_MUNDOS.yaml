@@ -1,0 +1,598 @@
+# 🌊 MadBoat v2.0 - Arquitetura dos 3 Mundos
+name: "MadBoat v2.0 - Universo dos 3 Mundos"
+version: "2.0.0"
+description: "Arquitetura completa do sistema MadBoat com 3 mundos distintos e sistemas transversais"
+created_at: "2025-01-09"
+updated_at: "2025-01-09"
+
+# 🎯 VISÃO GERAL DO UNIVERSO MADBOAT
+universo_madboat:
+  conceito: "Plataforma de desenvolvimento pessoal e profissional com metodologias específicas"
+  mundos:
+    - mundo_alma
+    - mundo_vortex  
+    - mundo_odisseia
+  sistemas_transversais:
+    - diario_bordo
+    - sistema_upgrade
+    - chat_genie
+    - network_system
+  personas_suportadas:
+    - analitico
+    - criativo
+    - emotivo
+    - pragmatico
+    - inseguro
+
+# 🧭 MUNDO 1: MÉTODO A.L.M.A.
+mundo_alma:
+  name: "Método A.L.M.A."
+  description: "Autenticidade e Estratégia de Negócios"
+  icon: "🧭"
+  access_level: "gratuito"
+  prerequisitos: []
+  
+  fases:
+    autenticidade:
+      name: "Autenticidade"
+      description: "Descoberta da Essência"
+      ordem: 1
+      icon: "✨"
+      componentes:
+        - valores
+        - habilidades
+        - historias
+        - proposito
+      outputs:
+        - dna_criativo
+        - mapa_valores
+        - portfolio_habilidades
+        - narrativa_pessoal
+    
+    legado:
+      name: "Legado"
+      description: "Construção Estratégica"
+      ordem: 2
+      icon: "🏗️"
+      prerequisitos: ["autenticidade"]
+      trilhas:
+        estruturar:
+          name: "Estruturar Negócio Existente"
+          target: "negocio_fisico_existente"
+          modulos:
+            - diagnostico
+            - organizacao
+            - otimizacao
+        digitalizar:
+          name: "Digitalizar Negócio"
+          target: "transformacao_digital"
+          modulos:
+            - auditoria
+            - estrategia
+            - implementacao
+        criar:
+          name: "Criar Negócio Digital"
+          target: "startup_digital"
+          modulos:
+            - validacao
+            - mvp
+            - lancamento
+      componentes:
+        - arquitetura_negocio
+        - neurociencia_vendas
+        - psicologia_persuasao
+    
+    mapeamento:
+      name: "Mapeamento"
+      description: "Estratégia Detalhada"
+      ordem: 3
+      icon: "🗺️"
+      prerequisitos: ["legado"]
+      componentes:
+        - analise_mercado
+        - definicao_publico
+        - estrategias_marketing
+        - planejamento_financeiro
+    
+    aplicacao:
+      name: "Aplicação"
+      description: "Execução e Resultados"
+      ordem: 4
+      icon: "🚀"
+      prerequisitos: ["mapeamento"]
+      componentes:
+        - implementacao_pratica
+        - monitoramento_resultados
+        - otimizacao_continua
+        - certificacao_alma
+
+  outputs_finais:
+    - certificado_alma
+    - plano_negocio_completo
+    - estrategia_marketing
+    - liberacao_mundo_vortex
+
+# 🌀 MUNDO 2: MÉTODO VÓRTICE
+mundo_vortex:
+  name: "Método Vórtice"
+  description: "Construção de Audiência Autêntica"
+  icon: "🌀"
+  access_level: "premium"
+  prerequisitos: ["mundo_alma.certificado_alma"]
+  
+  fases:
+    audiencia_autentica:
+      name: "Identificação da Audiência"
+      description: "Usando resultados do A.L.M.A."
+      ordem: 1
+      icon: "🎯"
+      componentes:
+        - dna_alma_integration
+        - mapeamento_audiencia_ideal
+        - validacao_audiencia
+    
+    conteudo_magnetico:
+      name: "Criação de Conteúdo"
+      description: "Storytelling autêntico"
+      ordem: 2
+      icon: "📝"
+      prerequisitos: ["audiencia_autentica"]
+      componentes:
+        - storytelling_autentico
+        - formatos_conteudo
+        - calendario_editorial
+    
+    engajamento:
+      name: "Estratégias de Engajamento"
+      description: "Construção de relacionamento"
+      ordem: 3
+      icon: "🤝"
+      prerequisitos: ["conteudo_magnetico"]
+      componentes:
+        - tecnicas_interacao
+        - construcao_comunidade
+        - fidelizacao_fas
+    
+    canais_distribuicao:
+      name: "Canais de Distribuição"
+      description: "Otimização por plataforma"
+      ordem: 4
+      icon: "📡"
+      prerequisitos: ["engajamento"]
+      componentes:
+        - selecao_plataformas
+        - otimizacao_canais
+        - automacao_distribuicao
+    
+    monetizacao:
+      name: "Monetização da Audiência"
+      description: "Transformação em receita"
+      ordem: 5
+      icon: "💰"
+      prerequisitos: ["canais_distribuicao"]
+      componentes:
+        - produtos_audiencia
+        - servicos_personalizados
+        - parcerias_estrategicas
+
+  outputs_finais:
+    - estrategia_audiencia_completa
+    - calendario_conteudo_anual
+    - sistema_monetizacao
+    - certificado_vortex
+
+# 🚀 MUNDO 3: ODISSEIA DEV
+mundo_odisseia:
+  name: "Odisseia DEV"
+  description: "Progressão em IA para Desenvolvedores"
+  icon: "🚀"
+  access_level: "produtos_pagos"
+  business_model: "5_produtos_separados"
+  
+  niveis:
+    aspirante:
+      name: "Aspirante"
+      description: "Fundamentos de IA"
+      ordem: 1
+      icon: "🌱"
+      preco: 197
+      moeda: "USD"
+      acesso: "vitalicio"
+      componentes:
+        - fundamentos_ia
+        - primeiros_projetos
+        - momento_contemplativo
+        - avaliacao_nivel
+      outputs:
+        - certificado_aspirante
+        - portfolio_inicial
+        - liberacao_navegador
+    
+    navegador:
+      name: "Navegador"
+      description: "IA mais avançada"
+      ordem: 2
+      icon: "🧭"
+      preco: 297
+      moeda: "USD"
+      prerequisitos: ["aspirante.certificado"]
+      componentes:
+        - ia_avancada
+        - automacao_processos
+        - projetos_complexos
+        - momento_contemplativo
+        - avaliacao_nivel
+      outputs:
+        - certificado_navegador
+        - portfolio_avancado
+        - liberacao_timoneiro
+    
+    timoneiro:
+      name: "Timoneiro"
+      description: "Liderança com IA"
+      ordem: 3
+      icon: "⚓"
+      preco: 397
+      moeda: "USD"
+      prerequisitos: ["navegador.certificado"]
+      componentes:
+        - lideranca_ia
+        - sistemas_complexos
+        - mentoria_outros
+        - momento_contemplativo
+        - avaliacao_nivel
+      outputs:
+        - certificado_timoneiro
+        - projeto_lideranca
+        - liberacao_capitao
+    
+    capitao:
+      name: "Capitão"
+      description: "Visão estratégica"
+      ordem: 4
+      icon: "👨‍✈️"
+      preco: 597
+      moeda: "USD"
+      prerequisitos: ["timoneiro.certificado"]
+      componentes:
+        - visao_estrategica
+        - inovacao_ia
+        - lideranca_equipe
+        - momento_contemplativo
+        - avaliacao_nivel
+      outputs:
+        - certificado_capitao
+        - estrategia_inovacao
+        - liberacao_almirante
+    
+    almirante:
+      name: "Almirante"
+      description: "Mestria total"
+      ordem: 5
+      icon: "👑"
+      preco: 897
+      moeda: "USD"
+      prerequisitos: ["capitao.certificado"]
+      componentes:
+        - mestria_total
+        - transformacao_digital
+        - construcao_legado
+        - momento_contemplativo
+        - certificacao_final
+      outputs:
+        - certificado_almirante_master
+        - legado_digital
+        - status_mentor
+
+  caracteristicas_especiais:
+    paralelismo: true
+    description_paralelismo: "Pode ser feito em paralelo com A.L.M.A."
+    momentos_contemplativos: true
+    progressao_estruturada: true
+
+# 🛠️ SISTEMAS TRANSVERSAIS
+sistemas_transversais:
+  
+  diario_bordo:
+    name: "Diário de Bordo"
+    description: "Sistema de escrita e reflexão pessoal"
+    icon: "📓"
+    disponibilidade: "desbloqueado_pos_onboarding"
+    
+    funcionalidades:
+      escrita:
+        editor: "rich_text"
+        templates_persona: true
+        saves_automaticos: true
+      
+      historias:
+        arquivo_completo: true
+        categorizacao: true
+        busca_avancada: true
+        
+      analytics:
+        progresso_escrita: true
+        insights_desenvolvimento: true
+        estatisticas_pessoais: true
+        
+      compartilhamento:
+        comunidade: true
+        visibilidade_controlada: true
+    
+    personalizacao_por_persona:
+      analitico:
+        templates: ["reflexao_estruturada", "analise_objetiva"]
+        prompts: ["dados_e_metricas", "logica_sequencial"]
+      criativo:
+        templates: ["fluxo_consciencia", "brainstorming"]
+        prompts: ["ideias_abstratas", "conexoes_criativas"]
+      emotivo:
+        templates: ["jornada_emocional", "gratidao"]
+        prompts: ["sentimentos", "relacionamentos"]
+      pragmatico:
+        templates: ["planos_acao", "resultados"]
+        prompts: ["proximos_passos", "execucao"]
+      inseguro:
+        templates: ["autoafirmacao", "pequenas_vitorias"]
+        prompts: ["apoio_encorajamento", "construcao_confianca"]
+
+  sistema_upgrade:
+    name: "Sistema de Upgrade"
+    description: "Gamificação com 3 núcleos principais"
+    icon: "🎯"
+    disponibilidade: "sempre_ativo"
+    
+    nucleos:
+      desafios:
+        name: "Desafios"
+        description: "Tarefas específicas por mundo/sistema"
+        icon: "🎮"
+        tipos:
+          alma_challenges: "Desafios específicos método A.L.M.A."
+          vortex_challenges: "Desafios específicos método Vórtice"
+          odisseia_challenges: "Desafios por nível da Odisseia"
+          transversais_challenges: "Desafios dos sistemas transversais"
+        
+      missoes:
+        name: "Missões"
+        description: "Objetivos colaborativos e estratégicos"
+        icon: "🎯"
+        tipos:
+          individuais: "Missões solo"
+          grupos: "Missões em grupo"
+          clas: "Missões de clã"
+          elaboracao_estrategica: "Missões complexas de longo prazo"
+          
+      conquistas:
+        name: "Conquistas"
+        description: "Sistema de badges e certificados"
+        icon: "🏆"
+        categorias:
+          progresso: "Barras de progresso por mundo/sistema"
+          producao: "Conquistas de produtividade"
+          sociais: "Conquistas de networking"
+          especiais: "Conquistas sazonais/especiais"
+
+  chat_genie:
+    name: "Gênio da Âncora"
+    description: "IA conversacional contextualizada"
+    icon: "💬"
+    disponibilidade: "pos_onboarding"
+    tecnologia: "hume_ai"
+    
+    caracteristicas:
+      chat_efemero: true
+      description_efemero: "Conversas não armazenadas para privacidade"
+      analytics_persistente: true
+      description_analytics: "Insights extraídos armazenados em JSONl"
+      
+    contextualizacao:
+      alma: "Especializado em metodologia A.L.M.A."
+      vortex: "Focado em construção de audiência"
+      odisseia: "Orientado para IA e desenvolvimento"
+      transversais: "Suporte geral aos sistemas"
+      
+    modalidades:
+      text: true
+      voice: true
+      voice_tech: "hume_ai_emotional_analysis"
+      
+    personalizacao_persona:
+      analitico: "Respostas estruturadas, dados, lógica"
+      criativo: "Respostas inspiradoras, metáforas, possibilidades"
+      emotivo: "Respostas empáticas, relacionais, emocionais"
+      pragmatico: "Respostas diretas, acionáveis, práticas"
+      inseguro: "Respostas encorajadoras, suportivas, graduais"
+
+  network_system:
+    name: "Sistema de Network"
+    description: "Comunidade e conexões entre tripulantes"
+    icon: "🌐"
+    disponibilidade: "pos_onboarding"
+    
+    componentes:
+      tripulantes:
+        descobrir_novos: true
+        conexoes_atuais: true
+        perfis_detalhados: true
+        
+      grupos:
+        interesse_comum: true
+        projetos_colaborativos: true
+        estudos_grupo: true
+        
+      clas:
+        sistema_clas: true
+        missoes_coletivas: true
+        ranking_clas: true
+        
+      eventos:
+        encontros_virtuais: true
+        workshops: true
+        mentorias_grupo: true
+        
+      colaboracoes:
+        projetos_conjuntos: true
+        troca_habilidades: true
+        partnerships: true
+
+# 📊 SISTEMA DE ANALYTICS
+analytics_system:
+  conceito: "Chat Efêmero + Analytics Persistente"
+  formato_dados: "JSONl (JSON Lines)"
+  
+  categorias_insights:
+    comportamentais:
+      padroes_uso: "horários, frequência, duração"
+      persona_insights: "comportamento por tipo de persona"
+      
+    metodologia_alma:
+      efetividade_fases: "performance por fase A.L.M.A."
+      trilhas_performance: "sucesso das 3 trilhas"
+      
+    conversacao:
+      analise_dialogo: "efetividade de perguntas"
+      jornada_emocional: "evolução emocional nas sessões"
+      
+    business:
+      retencao_usuarios: "métricas de engajamento"
+      completion_rates: "taxas de conclusão"
+      monetizacao: "performance dos produtos pagos"
+
+  dashboards_admin:
+    principal: "métricas tempo real + tendências"
+    conversacoes: "analytics profundo de chat"
+    usuarios: "comportamento e segmentação"
+    mundos: "performance dos 3 mundos"
+    sistemas_transversais: "analytics dos sistemas transversais"
+
+# 👤 SISTEMA DE PERSONAS
+personas_system:
+  assessment_obrigatorio: true
+  
+  tipos:
+    analitico:
+      caracteristicas: "Lógico, estruturado, baseado em dados"
+      preferencias: "Frameworks, métricas, análises profundas"
+      
+    criativo:
+      caracteristicas: "Inovador, inspirado, não-linear"
+      preferencias: "Brainstorming, possibilidades, experimentação"
+      
+    emotivo:
+      caracteristicas: "Relacional, empático, orientado por valores"
+      preferencias: "Conexões humanas, impacto social, narrativas pessoais"
+      
+    pragmatico:
+      caracteristicas: "Prático, orientado a resultados, eficiente"
+      preferencias: "Ações diretas, resultados tangíveis, otimização"
+      
+    inseguro:
+      caracteristicas: "Cauteloso, precisa de validação, gradual"
+      preferencias: "Suporte, encorajamento, passos pequenos"
+
+  personalizacao_sistema:
+    conteudo: "Adaptado por persona em todos os mundos"
+    comunicacao: "Tom e estilo por tipo"
+    progressao: "Ritmo e abordagem personalizada"
+    gamificacao: "Tipos de conquistas por perfil"
+
+# 💰 MODELO DE MONETIZAÇÃO
+monetizacao:
+  mundo_alma:
+    base: "gratuito"
+    upsells: 
+      - "templates_premium"
+      - "mentorias_individuais"
+      - "certificacao_acelerada"
+      
+  mundo_vortex:
+    modelo: "premium"
+    preco: 497
+    moeda: "USD"
+    prerequisito: "alma_completo"
+    
+  mundo_odisseia:
+    modelo: "produtos_separados"
+    total_produtos: 5
+    preco_total: 2385  # USD
+    estrategia: "progressão_investimento_crescente"
+
+# 🚀 FLUXO DE ONBOARDING
+onboarding_flow:
+  etapas:
+    - landing_page
+    - registro_login
+    - welcome_experience
+    - persona_assessment
+    - resultado_persona
+    - selecao_primeiro_mundo
+    - liberacao_sistemas_transversais
+    - jornada_personalizada
+
+  direcionamento_inicial:
+    alma_gratuito: "Maioria dos usuários"
+    odisseia_aspirante: "Desenvolvedores interessados em IA"
+    combinacao: "Podem fazer ambos em paralelo"
+
+# 📁 ESTRUTURA TÉCNICA
+tech_stack:
+  frontend: "Next.js 15 + React 19 + TypeScript"
+  backend: "Supabase (PostgreSQL + Auth + Storage)"
+  ai: "Hume AI para chat emocional"
+  analytics: "Sistema proprietário JSONl"
+  state: "Zustand + React Query"
+  styling: "Tailwind CSS"
+  animations: "Framer Motion + GSAP"
+
+folder_structure:
+  route_groups: true
+  organization:
+    - "(auth)"
+    - "(onboarding)"  
+    - "(dashboard)"
+    - "(mundo-alma)"
+    - "(mundo-vortex)"
+    - "(mundo-odisseia)"
+    - "(sistemas-transversais)"
+    - "(admin)"
+    
+deployment:
+  vercel: true
+  database: "supabase"
+  analytics_storage: "local_jsonl + cloud_backup"
+
+# 🎯 MÉTRICAS DE SUCESSO
+kpis:
+  alma:
+    completion_rate: "> 60% completam pelo menos 2 fases"
+    time_to_value: "< 2 semanas para primeiro insight"
+    
+  vortex:
+    conversion_rate: "> 15% de A.L.M.A. graduados"
+    audience_growth: "Métricas de crescimento de audiência"
+    
+  odisseia:
+    progression_rate: "> 40% progridem para próximo nível"
+    project_completion: "> 80% finalizam projetos práticos"
+    
+  transversais:
+    diario_engagement: "> 50% escrevem semanalmente"
+    network_connections: "Média 5+ conexões por usuário"
+    chat_satisfaction: "> 4.5/5 sentiment analysis"
+
+# 🔒 PRIVACIDADE E COMPLIANCE
+privacy:
+  chat_efemero: "Zero armazenamento de conversas"
+  analytics_anonimizados: "Apenas padrões agregados"
+  controle_usuario: "Opt-out disponível a qualquer momento"
+  transparencia: "Dashboard mostra dados coletados"
+
+# 📋 ROADMAP DE IMPLEMENTAÇÃO
+implementacao_fases:
+  fase_1: "Onboarding + Personas + A.L.M.A. Básico"
+  fase_2: "Chat Gênio + Analytics + Diário"
+  fase_3: "Sistema Upgrade + Network"
+  fase_4: "Mundo Vórtice"
+  fase_5: "Mundo Odisseia (5 produtos)"
+  fase_6: "Admin Analytics Avançado"

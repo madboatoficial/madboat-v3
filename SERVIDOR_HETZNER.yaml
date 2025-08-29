@@ -1,0 +1,174 @@
+# 🌊 MadBoat v2.0 - Configurações Servidor Hetzner
+servidor_info:
+  name: "MadBoat Production Server"
+  provider: "Hetzner"
+  project: "madboat"
+  environment: "production"
+  created_at: "2025-08-29"
+  updated_at: "2025-08-29"
+
+# 🖥️ ESPECIFICAÇÕES DO SERVIDOR
+servidor_specs:
+  instance_name: "CX22"
+  server_id: "#107628356"
+  status: "ON"
+  
+  hardware:
+    vcpu: 2
+    ram: "4 GB"
+    disk_local: "40 GB"
+    
+  network:
+    ipv4_public: "157.180.117.190"
+    ipv6: "2a01:4f9:c013:ae79::/64"
+    traffic_limit: "20 TB"
+    traffic_used: "0/20 TB"
+    
+  pricing:
+    monthly_cost: "$3.99"
+    currency: "USD"
+    billing_cycle: "monthly"
+
+# 📍 LOCALIZAÇÃO
+location:
+  datacenter: "hel1-dc2"
+  city: "Helsinki"
+  country: "Finland"
+  country_flag: "🇫🇮"
+  network_zone: "eu-central"
+  timezone: "Europe/Helsinki"
+
+# ⚙️ CONFIGURAÇÕES ATIVAS
+server_options:
+  backups:
+    enabled: true
+    status: "Enable"
+    description: "Backup automático diário"
+    
+  placement_group:
+    enabled: false
+    status: "Select group"
+    description: "Agrupamento para alta disponibilidade"
+    
+  public_network:
+    enabled: false
+    status: "Disable"
+    description: "Rede pública desabilitada por segurança"
+
+# 📊 MONITORAMENTO
+monitoring:
+  last_updated: "8 days ago"
+  status_messages:
+    outage: 1
+    warning: 1
+    other: 2
+  
+  recent_activities:
+    - action: "Server console requested"
+      timestamp: "7 hours ago"
+    - action: "Server console requested" 
+      timestamp: "17 hours ago"
+    - action: "Server console requested"
+      timestamp: "23 hours ago"
+
+# 🛠️ SETUP PLANEJADO MADBOAT
+madboat_deployment:
+  architecture: "Docker + Nginx"
+  
+  services_planejados:
+    - name: "Next.js App"
+      port: 3000
+      description: "Frontend web application"
+      
+    - name: "Nginx Proxy"
+      port: 80/443
+      description: "Reverse proxy + SSL"
+      
+    - name: "Docker Registry"
+      port: 5000
+      description: "Container management"
+      
+  domain_setup:
+    primary: "madboat.com"
+    staging: "staging.madboat.com"
+    ssl: "Let's Encrypt"
+    
+  database_strategy:
+    primary: "Supabase Cloud"
+    backup: "Hetzner local backup"
+    sync: "Real-time"
+
+# 🔒 SEGURANÇA
+security_config:
+  firewall: "Hetzner Cloud Firewall"
+  ssh_access: "Key-based only"
+  ssl_certificates: "Let's Encrypt"
+  backup_encryption: "AES-256"
+  
+  planned_hardening:
+    - "Fail2ban para SSH"
+    - "UFW Firewall rules"
+    - "Docker security scanning"
+    - "Regular security updates"
+
+# 📋 NEXT STEPS
+deployment_roadmap:
+  phase_1:
+    - "SSH key setup"
+    - "Docker + Docker Compose installation"
+    - "Nginx configuration"
+    - "SSL certificate setup"
+    
+  phase_2:
+    - "Deploy Next.js container"
+    - "Configure domain madboat.com"
+    - "Setup CI/CD pipeline"
+    - "Monitoring stack"
+    
+  phase_3:
+    - "Performance optimization"
+    - "Backup automation"
+    - "Security hardening"
+    - "Load balancing (if needed)"
+
+# 📞 ACESSO E CREDENCIAIS
+access_info:
+  console_url: "https://console.hetzner.cloud/projects/madboat"
+  ssh_access: "root@157.180.117.190"
+  ssh_key_required: true
+  
+  important_notes:
+    - "Sempre usar SSH keys (nunca senhas)"
+    - "Backup automático habilitado"
+    - "Rede pública desabilitada por segurança"
+    - "Monitorar traffic usage (limite 20TB)"
+
+# 🚨 ALERTAS E LIMITES
+alerts_config:
+  traffic_alert: "15 TB (75% do limite)"
+  cpu_alert: "80% usage"
+  ram_alert: "3.5 GB (87.5% usage)"
+  disk_alert: "35 GB (87.5% usage)"
+  
+  action_plans:
+    traffic_overflow: "Upgrade to CX32 ou CDN"
+    performance_issues: "Scale vertical ou horizontal"
+    storage_full: "Add volume ou cleanup"
+
+# 💡 OTIMIZAÇÕES FUTURAS
+future_optimizations:
+  cdn: "Cloudflare para static assets"
+  monitoring: "Grafana + Prometheus"
+  backup_strategy: "3-2-1 backup rule"
+  scaling: "Horizontal scaling com Load Balancer"
+  
+# 📈 CAPACIDADE ESTIMADA
+capacity_planning:
+  estimated_users: "5,000-10,000 simultaneous"
+  growth_trigger: "70% resource usage"
+  upgrade_path: "CX32 (4vCPU, 8GB RAM) → CX42"
+  
+  cost_projection:
+    current: "$3.99/month"
+    cx32_upgrade: "$7.99/month"
+    cx42_upgrade: "$15.99/month"

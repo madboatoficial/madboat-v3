@@ -1,0 +1,397 @@
+# 🤖 MadBoat v2.0 - Regras de Implementação Claude
+claude_implementation_guide:
+  name: "MadBoat v2.0 - Claude Implementation Strategy"
+  version: "1.0.0" 
+  created_at: "2025-08-29"
+  updated_at: "2025-08-29"
+  purpose: "Guia estratégico para uso otimizado dos modelos Claude"
+
+# 🧠 PERFIS DOS MODELOS CLAUDE
+claude_models:
+  
+  sonnet_4:
+    name: "Claude Sonnet 4"
+    profile: "Executor Eficiente"
+    strengths:
+      - "Código limpo e moderno"
+      - "Frameworks atualizados (Next.js 15)"
+      - "TypeScript expert"
+      - "Performance otimizada"
+      - "Respostas rápidas e diretas"
+      - "Context memory superior"
+      - "Mobile-first thinking"
+      - "Deploy e DevOps moderno"
+    
+    weaknesses:
+      - "Menos criativo em soluções complexas"
+      - "Pode ser muito direto para arquiteturas elaboradas"
+    
+    best_for:
+      technical:
+        - "Setup inicial projetos"
+        - "Componentes React/Next.js"
+        - "APIs e integrações"
+        - "Docker e deploy"
+        - "Performance optimization"
+        - "UI/UX implementation"
+        
+      madboat_specific:
+        - "Tela de login"
+        - "Sistema autenticação"
+        - "Onboarding flow"
+        - "Supabase integration"
+        - "Responsive design"
+        - "Deployment pipeline"
+
+  opus_35:
+    name: "Claude Opus 3.5"
+    profile: "Arquiteto Visionário"
+    strengths:
+      - "Criatividade excepcional"
+      - "Arquitetura de sistemas complexos"
+      - "Edge cases e cenários difíceis"
+      - "Business logic intrincada"
+      - "Debugging complexo"
+      - "Soluções 'fora da caixa'"
+      - "Prompt engineering avançado"
+      
+    weaknesses:
+      - "Pode ser verboso demais"
+      - "Às vezes over-engineer"
+      - "Menos conhecimento de frameworks novos"
+      
+    best_for:
+      technical:
+        - "Arquitetura de sistemas"
+        - "Algoritmos complexos"
+        - "State management elaborado"
+        - "AI/ML integrations"
+        - "Complex business rules"
+        - "Advanced debugging"
+        
+      madboat_specific:
+        - "Arquitetura dos 3 mundos"
+        - "Sistema de personas"
+        - "Gamificação (upgrade system)"
+        - "Analytics engine"
+        - "Chat Gênio (AI prompts)"
+        - "Metodologias A.L.M.A./Vórtice"
+        - "Network system complex logic"
+
+# 🎯 ESTRATÉGIA DE USO POR FASE
+implementation_strategy:
+  
+  fase_1_foundation:
+    duration: "Semana 1-2"
+    recommended_model: "sonnet_4"
+    reason: "Setup rápido, código limpo, deploy eficiente"
+    tasks:
+      - "Next.js 15 setup"
+      - "Supabase configuration" 
+      - "Docker setup"
+      - "Basic authentication"
+      - "Login/register pages"
+      - "Onboarding flow"
+      - "Route groups structure"
+      - "Initial deploy"
+    
+  fase_2_core_systems:
+    duration: "Semana 3-4"
+    recommended_model: "mixed_approach"
+    strategy: "Sonnet 4 para UI, Opus 3.5 para lógica"
+    sonnet_4_tasks:
+      - "Dashboard UI"
+      - "Persona assessment UI"
+      - "A.L.M.A. phase interfaces"
+      - "Responsive components"
+    opus_35_tasks:
+      - "Persona algorithm"
+      - "A.L.M.A. methodology logic"
+      - "Progress tracking system"
+      - "Business rules engine"
+      
+  fase_3_advanced_features:
+    duration: "Semana 5-8"
+    recommended_model: "opus_35_dominant"
+    reason: "Funcionalidades complexas precisam de arquitetura sofisticada"
+    opus_35_tasks:
+      - "Sistema gamificação completo"
+      - "Chat Gênio AI integration"
+      - "Analytics engine"
+      - "Network system"
+      - "Trilhas A.L.M.A. logic"
+    sonnet_4_tasks:
+      - "Performance optimization"
+      - "Mobile responsive fixes"
+      - "Deploy automation"
+      
+  fase_4_scaling:
+    duration: "Semana 9-12"
+    recommended_model: "mixed_specialized"
+    strategy: "Use each model for their strengths"
+    distribution:
+      sonnet_4: "Infrastructure, performance, deployment"
+      opus_35: "Complex features, AI, advanced algorithms"
+
+# 📋 SWITCHING GUIDELINES
+switching_rules:
+  
+  when_to_use_sonnet_4:
+    immediate_tasks:
+      - "Precisa de código funcionando rápido"
+      - "Setup de ferramentas/frameworks"
+      - "UI/UX implementation"
+      - "Deploy e DevOps"
+      - "Performance issues"
+      - "Bug fixes simples"
+      
+    context_clues:
+      - "Sandro diz: 'preciso hoje'"
+      - "Foco em execução vs planejamento"
+      - "Tarefas técnicas diretas"
+      - "Frontend components"
+      
+  when_to_switch_to_opus_35:
+    complex_tasks:
+      - "Arquitetura de sistema nova"
+      - "Algoritmos complexos"
+      - "Business logic intrincada"
+      - "AI/Prompt engineering"
+      - "Debugging difícil"
+      - "Creative problem solving"
+      
+    context_clues:
+      - "Sandro diz: 'como arquitetar...'"
+      - "Perguntas sobre metodologias"
+      - "Problemas sem solução óbvia"
+      - "Gamificação e analytics"
+
+# 🔄 HANDOFF PROTOCOLS
+model_handoff:
+  
+  sonnet_to_opus:
+    when: "Quando chegar em lógica complexa"
+    handoff_info:
+      - "Context completo do que foi feito"
+      - "Arquivos/estruturas criadas"
+      - "Próximos desafios identificados"
+      - "Technical debt acumulado"
+    
+    example_message:
+      "Sonnet 4 completou setup básico. Opus precisa implementar:
+      - Lógica de personas (5 tipos)  
+      - Sistema gamificação (3 núcleos)
+      - Arquitetura dos 3 mundos
+      Files: /components, /lib, database schema"
+  
+  opus_to_sonnet:
+    when: "Quando arquitetura estiver definida"
+    handoff_info:
+      - "Decisões arquiteturais tomadas"
+      - "Interfaces/contracts definidos"
+      - "Business rules documentadas"
+      - "Implementation tasks claras"
+    
+    example_message:
+      "Opus definiu arquitetura gamificação:
+      - 3 núcleos: desafios/missões/conquistas
+      - State management: Zustand stores
+      - Database: 8 tabelas definidas
+      Sonnet: implementar UI + integração"
+
+# 🎮 MADBOAT-SPECIFIC ASSIGNMENTS
+madboat_specialization:
+  
+  sonnet_4_ownership:
+    infrastructure:
+      - "Next.js configuration"
+      - "Supabase setup"
+      - "Docker configuration"
+      - "Nginx setup"
+      - "SSL certificates"
+      - "Domain configuration"
+      
+    ui_ux:
+      - "Login/Register forms"
+      - "Onboarding screens"
+      - "Dashboard layout"
+      - "Mobile responsive"
+      - "Loading states"
+      - "Error handling"
+      
+    integrations:
+      - "Supabase Auth"
+      - "API connections"
+      - "File uploads"
+      - "Email systems"
+      - "Payment integration"
+  
+  opus_35_ownership:
+    core_logic:
+      - "Persona assessment algorithm"
+      - "A.L.M.A. methodology rules"
+      - "Vórtice progression logic"
+      - "Odisseia level system"
+      - "Certification criteria"
+      
+    advanced_systems:
+      - "Sistema Upgrade (gamificação)"
+      - "Chat Gênio AI prompts"
+      - "Analytics JSONl engine"
+      - "Network algorithms"
+      - "Recommendation engine"
+      
+    business_intelligence:
+      - "Progress tracking"
+      - "User segmentation"  
+      - "Retention algorithms"
+      - "Conversion optimization"
+      - "A/B testing logic"
+
+# 📊 QUALITY METRICS
+quality_standards:
+  
+  sonnet_4_deliverables:
+    code_quality:
+      - "TypeScript strict mode"
+      - "ESLint compliant"
+      - "Responsive design"
+      - "Performance optimized"
+      - "Accessible (WCAG)"
+      
+    delivery_speed:
+      - "MVP features: same day"
+      - "Complex UI: 1-2 days"
+      - "Integration: 2-3 days"
+      
+  opus_35_deliverables:
+    architecture_quality:
+      - "Scalable design"
+      - "Edge cases covered"
+      - "Documentation complete"
+      - "Test scenarios defined"
+      - "Future-proof"
+      
+    complexity_handling:
+      - "Multi-step algorithms: 2-3 days"
+      - "System architecture: 1 week"
+      - "AI integration: 3-5 days"
+
+# 🚨 EMERGENCY PROTOCOLS
+emergency_switching:
+  
+  deadline_pressure:
+    rule: "Always switch to Sonnet 4"
+    reason: "Faster execution, less deliberation"
+    exception: "Unless problem is architecturally complex"
+    
+  technical_debt:
+    rule: "Switch to Opus 3.5 for refactoring"
+    reason: "Better at seeing big picture improvements"
+    
+  user_feedback:
+    ui_issues: "Sonnet 4 - faster iteration"
+    logic_issues: "Opus 3.5 - deeper analysis"
+
+# 📝 DOCUMENTATION STANDARDS
+documentation_by_model:
+  
+  sonnet_4_docs:
+    focus: "Implementation details"
+    includes:
+      - "Setup instructions"
+      - "API documentation"
+      - "Component usage"
+      - "Deployment guides"
+      
+  opus_35_docs:
+    focus: "Architecture decisions"
+    includes:
+      - "System design rationale"
+      - "Business logic explanation"
+      - "Algorithm documentation"
+      - "Future considerations"
+
+# 🎯 SUCCESS METRICS
+success_tracking:
+  
+  model_effectiveness:
+    sonnet_4_kpis:
+      - "Time to first working version"
+      - "Bug rate in UI components"
+      - "Deploy success rate"
+      - "User experience scores"
+      
+    opus_35_kpis:
+      - "Architecture decisions quality"
+      - "Complex feature completion"
+      - "Edge case coverage"
+      - "Long-term maintainability"
+      
+  project_milestones:
+    week_1: "Sonnet 4 should deliver working login"
+    week_2: "Opus 3.5 should define persona system"
+    week_4: "Combined: working A.L.M.A. phase 1"
+    week_8: "Combined: full system architecture"
+
+# 📞 COMMUNICATION PROTOCOLS
+sandro_communication:
+  
+  progress_updates:
+    sonnet_4_style: "Direct, actionable, show working code"
+    opus_35_style: "Comprehensive, strategic, explain decisions"
+    
+  decision_requests:
+    technical_choices: "Ask Sonnet 4"
+    business_logic: "Ask Opus 3.5"
+    urgent_fixes: "Ask Sonnet 4"
+    architecture_review: "Ask Opus 3.5"
+
+# 🔧 TOOL USAGE BY MODEL
+preferred_tools:
+  
+  sonnet_4_tools:
+    primary: ["Write", "Edit", "Bash", "Read"]
+    reason: "Direct implementation focus"
+    
+  opus_35_tools:
+    primary: ["Write", "Read", "Task", "TodoWrite"]
+    reason: "Planning and architecture focus"
+
+# 🎪 SPECIAL CONSIDERATIONS
+madboat_context:
+  
+  persona_sensitivity:
+    rule: "Opus 3.5 better understands user psychology"
+    application: "Persona assessment, UX personalization"
+    
+  business_methodology:
+    rule: "Opus 3.5 better grasps A.L.M.A./Vórtice concepts"
+    application: "Content creation, progression logic"
+    
+  technical_execution:
+    rule: "Sonnet 4 better at modern web standards"
+    application: "React components, API integration"
+
+# 📈 EVOLUTION STRATEGY
+long_term_planning:
+  
+  model_specialization:
+    months_1_2: "Sonnet 4 dominant (70/30)"
+    months_3_4: "Balanced usage (50/50)"
+    months_5_6: "Opus 3.5 dominant (30/70)"
+    
+  handoff_maturity:
+    beginner: "Clear task separation"
+    intermediate: "Collaborative sessions"
+    advanced: "Seamless switching mid-conversation"
+
+# 🎯 FINAL RECOMMENDATIONS
+key_takeaways:
+  - "Start with Sonnet 4 for immediate results"
+  - "Switch to Opus 3.5 when hitting complexity walls"
+  - "Document decisions for model continuity"
+  - "Measure effectiveness of each approach"
+  - "Adjust strategy based on project needs"
+  
+  golden_rule: "Use the right tool for the right job, not the most advanced tool for every job"

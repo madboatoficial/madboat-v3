@@ -1,0 +1,109 @@
+# MadBoat v2.0 - Authentication Context
+# Domínio responsável por autenticação, perfis e gestão de usuários
+
+version: 1
+bounded_context: Authentication
+ubiquitous_language:
+  - Tripulante: "Usuário do sistema MadBoat em sua jornada de autodescoberta"
+  - Profile: "Dados pessoais e preferências do tripulante"
+  - Session: "Sessão ativa de uso do sistema"
+  - AuthProvider: "Método de autenticação (email, google, etc)"
+
+aggregates:
+  - name: User
+    table: users
+    invariants:
+      - "Email deve ser único no sistema"
+      - "Senha deve ter pelo menos 8 caracteres"
+      - "Status deve ser válido (ACTIVE, INACTIVE, SUSPENDED)"
+      - "Profile deve estar completo antes de acessar funcionalidades principais"
+    fields:
+      - { name: user_id, type: uuid, pk: true, default: gen_random_uuid() }
+      - { name: email, type: text, not_null: true, unique: true }
+      - { name: full_name, type: text, not_null: true }
+      - { name: status, type: text, not_null: true, check_in: [ACTIVE, INACTIVE, SUSPENDED] }
+      - { name: auth_provider, type: text, not_null: true, default: 'email' }
+      - { name: last_login_at, type: timestamptz }
+      - { name: email_verified_at, type: timestamptz }
+      - { name: created_at, type: timestamptz, default: now(), not_null: true }
+      - { name: updated_at, type: timestamptz, default: now(), not_null: true }
+    
+    children:
+      - name: UserProfile
+        table: user_profiles
+        pk: [user_id]
+        fields:
+          - { name: user_id, type: uuid, fk: "authentication.users(user_id)", on_delete: cascade }
+          - { name: avatar_url, type: text }
+          - { name: bio, type: text }
+          - { name: birth_date, type: date }
+          - { name: timezone, type: text, default: 'America/Sao_Paulo' }
+          - { name: language, type: text, default: 'pt-BR' }
+          - { name: onboarding_completed, type: boolean, default: false }
+          - { name: persona_identified, type: boolean, default: false }
+          - { name: alma_phase_current, type: text, default: 'autenticidade' }
+          - { name: privacy_analytics, type: boolean, default: true }
+          - { name: created_at, type: timestamptz, default: now(), not_null: true }
+          - { name: updated_at, type: timestamptz, default: now(), not_null: true }
+
+indexes:
+  - { table: users, columns: [email] }
+  - { table: users, columns: [status] }
+  - { table: users, columns: [auth_provider] }
+  - { table: user_profiles, columns: [alma_phase_current] }
+  - { table: user_profiles, columns: [onboarding_completed] }
+
+events:
+  - name: UserRegistered
+    producer: User
+    payload: [user_id, email, full_name, auth_provider]
+    description: "Novo tripulante se registrou no sistema"
+  
+  - name: UserProfileCompleted
+    producer: UserProfile  
+    payload: [user_id, persona_identified]
+    description: "Tripulante completou seu perfil inicial"
+  
+  - name: UserLoggedIn
+    producer: User
+    payload: [user_id, login_method, last_login_at]
+    description: "Tripulante realizou login no sistema"
+  
+  - name: EmailVerified
+    producer: User
+    payload: [user_id, verified_at]
+    description: "Email do tripulante foi verificado"
+
+policies:
+  - name: CompleteProfileAfterRegistration
+    when:
+      - UserRegistered
+    then:
+      - "Redirecionar para completar perfil"
+      - "Bloquear acesso às funcionalidades principais até profile completo"
+  
+  - name: UnlockPersonasAfterProfile
+    when:
+      - UserProfileCompleted
+    then:
+      - "Liberar acesso ao sistema de identificação de personas"
+
+security_rls:
+  - table: users
+    enable_rls: true
+    policies:
+      - { name: "select_own", action: select, using: "user_id = auth.uid()" }
+      - { name: "update_own", action: update, using: "user_id = auth.uid()", with_check: "user_id = auth.uid()" }
+  
+  - table: user_profiles  
+    enable_rls: true
+    policies:
+      - { name: "select_own_profile", action: select, using: "user_id = auth.uid()" }
+      - { name: "insert_own_profile", action: insert, with_check: "user_id = auth.uid()" }
+      - { name: "update_own_profile", action: update, using: "user_id = auth.uid()", with_check: "user_id = auth.uid()" }
+
+supabase_conventions:
+  id_column: user_id
+  timestamps: [created_at, updated_at]
+  default_uuid: gen_random_uuid
+  trigger_update_timestamp: true

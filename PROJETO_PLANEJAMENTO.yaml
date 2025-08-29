@@ -1,0 +1,422 @@
+# 📋 MadBoat v2.0 - Projeto e Planejamento
+project_info:
+  name: "MadBoat v2.0 - Universo dos 3 Mundos"
+  version: "2.0.0"
+  description: "Plataforma completa de desenvolvimento pessoal e profissional"
+  start_date: "2025-01-09"
+  estimated_completion: "2025-06-30"
+  project_lead: "Sandro Fidélis"
+  ai_assistant: "Claude (Sonnet 4)"
+  
+  repositorio:
+    main_branch: "main"
+    development_branch: "develop"
+    feature_branches: "feature/*"
+    
+# 🎯 OBJETIVOS DO PROJETO
+objetivos:
+  principal: "Criar ecossistema completo de metodologias de desenvolvimento"
+  
+  especificos:
+    - "Implementar Método A.L.M.A. gratuito com alta qualidade"
+    - "Desenvolver Método Vórtice premium para construção de audiência"
+    - "Criar Odisseia DEV como 5 produtos progressivos de IA"
+    - "Integrar sistemas transversais (Diário, Chat, Network, Upgrade)"
+    - "Estabelecer analytics avançado mantendo privacidade"
+    - "Construir comunidade engajada de tripulantes"
+    
+  metricas_sucesso:
+    usuarios_ativos: 10000
+    conversao_vortex: "15%"
+    progressao_odisseia: "40%"
+    engagement_diario: "50%"
+    nps_score: "> 70"
+
+# 🏗️ ARQUITETURA TÉCNICA
+tech_architecture:
+  frontend:
+    framework: "Next.js 15.5.2"
+    react_version: "19"
+    typescript: true
+    routing: "App Router com Route Groups"
+    styling: "Tailwind CSS"
+    animations: "Framer Motion + GSAP"
+    state_management: "Zustand"
+    data_fetching: "React Query"
+    validation: "Zod"
+    
+  backend:
+    database: "Supabase (PostgreSQL)"
+    auth: "Supabase Auth"
+    storage: "Supabase Storage"
+    api: "Next.js API Routes"
+    security: "Row Level Security (RLS)"
+    
+  ai_integrations:
+    chat_ai: "Hume AI (emotional voice chat)"
+    analytics_processing: "Custom analytics engine"
+    
+  analytics:
+    format: "JSONl (JSON Lines)"
+    storage: "Local JSONl + cloud backup"
+    privacy: "Chat efêmero + insights persistentes"
+    
+  deployment:
+    hosting: "Vercel"
+    domain: "madboat.com"
+    ssl: "Automatic"
+    cdn: "Vercel Edge Network"
+
+# 📁 ESTRUTURA DE PASTAS
+folder_structure:
+  principio: "Route Groups semânticos do Next.js 15"
+  
+  route_groups:
+    auth: "(auth) - Login, registro, recuperação"
+    onboarding: "(onboarding) - Boas-vindas, persona assessment"
+    dashboard: "(dashboard) - Hub central"
+    mundo_alma: "(mundo-alma) - Método A.L.M.A."
+    mundo_vortex: "(mundo-vortex) - Método Vórtice"
+    mundo_odisseia: "(mundo-odisseia) - Odisseia DEV"
+    sistemas_transversais: "(sistemas-transversais) - Diário, Chat, Network"
+    admin: "(admin) - Painel administrativo"
+    
+  organizational_folders:
+    components: "Componentes reutilizáveis organizados por contexto"
+    lib: "Utilities e business logic"
+    hooks: "Custom hooks"
+    stores: "Zustand stores"
+    types: "TypeScript definitions"
+    domain: "YAML contexts (business rules)"
+    prompts: "AI contracts e macro commands"
+    analytics_data: "JSONl storage local"
+    docs: "Documentação técnica"
+
+# 🎮 SISTEMA DE GAMIFICAÇÃO
+gamification_system:
+  conceito: "Sistema Upgrade com 3 núcleos"
+  
+  nucleos:
+    desafios:
+      description: "Tarefas específicas por contexto"
+      tipos: ["alma", "vortex", "odisseia", "transversais"]
+      mecanicas: ["daily", "weekly", "achievements"]
+      
+    missoes:
+      description: "Objetivos colaborativos"
+      tipos: ["individuais", "grupos", "clas", "estrategicas"]
+      complexidade: ["simples", "moderada", "elaboracao_estrategica"]
+      
+    conquistas:
+      description: "Badges e certificados"
+      categorias: ["progresso", "producao", "sociais", "especiais"]
+      visualizacao: ["badges", "certificados", "progress_bars"]
+
+# 👤 PERSONAS E PERSONALIZAÇÃO
+personas_system:
+  assessment_inicial: "Obrigatório no onboarding"
+  
+  tipos_persona:
+    analitico:
+      caracteristicas: "Estruturado, lógico, orientado por dados"
+      personalizacao:
+        ui: "Layouts organizados, métricas visíveis"
+        content: "Frameworks, análises, dados"
+        progression: "Step-by-step estruturado"
+        
+    criativo:
+      caracteristicas: "Inovador, inspiracional, não-linear"
+      personalizacao:
+        ui: "Layouts fluidos, elementos visuais"
+        content: "Brainstorming, possibilidades, inspiração"
+        progression: "Exploração livre com marcos"
+        
+    emotivo:
+      caracteristicas: "Relacional, empático, orientado por valores"
+      personalizacao:
+        ui: "Elementos calorosos, comunidade"
+        content: "Histórias pessoais, impacto humano"
+        progression: "Jornada emocional guiada"
+        
+    pragmatico:
+      caracteristicas: "Prático, focado em resultados"
+      personalizacao:
+        ui: "Interface direta, CTAs claros"
+        content: "Ações práticas, resultados tangíveis"
+        progression: "Passos diretos ao objetivo"
+        
+    inseguro:
+      caracteristicas: "Cauteloso, necessita encorajamento"
+      personalizacao:
+        ui: "Interface acolhedora, feedbacks positivos"
+        content: "Passos pequenos, validação constante"
+        progression: "Construção gradual de confiança"
+
+# 💰 MODELO DE NEGÓCIO
+business_model:
+  receita_streams:
+    alma_base: "Gratuito (lead magnet)"
+    alma_upsells:
+      - "Templates premium - $97"
+      - "Mentoria individual - $497"
+      - "Certificação acelerada - $297"
+      
+    vortex_premium:
+      price: "$497"
+      prerequisito: "A.L.M.A. completo"
+      target: "Construção de audiência"
+      
+    odisseia_produtos:
+      aspirante: "$197 - Fundamentos IA"
+      navegador: "$297 - IA Avançada"
+      timoneiro: "$397 - Liderança IA"
+      capitao: "$597 - Visão Estratégica"
+      almirante: "$897 - Mestria Completa"
+      total_potencial: "$2,385"
+      
+  projecao_receita_anual:
+    alma_upsells: "$250,000"
+    vortex: "$500,000"
+    odisseia: "$1,200,000"
+    total_projetado: "$1,950,000"
+
+# 📊 ANALYTICS E MÉTRICAS
+analytics_strategy:
+  principio: "Privacidade + Insights"
+  
+  dados_coletados:
+    comportamentais:
+      - "Padrões de uso (horários, duração, frequência)"
+      - "Progressão nas metodologias"
+      - "Engajamento com sistemas transversais"
+      
+    conversacionais:
+      - "Sentiment analysis (sem conteúdo textual)"
+      - "Efetividade de perguntas do Gênio"
+      - "Momentos de breakthrough"
+      
+    business_intelligence:
+      - "Funis de conversão"
+      - "Retenção por cohort"
+      - "LTV por persona"
+      
+  dados_nao_coletados:
+    - "Conteúdo textual das conversas"
+    - "Informações pessoais específicas"
+    - "Dados que permitam identificação individual"
+    - "Áudio das conversas de voz"
+
+# 🚀 ROADMAP DE IMPLEMENTAÇÃO
+roadmap:
+  fase_1_foundation:
+    duration: "4-6 semanas"
+    deliverables:
+      - "Setup Next.js 15 + Supabase"
+      - "Sistema de autenticação"
+      - "Onboarding flow completo"
+      - "Persona assessment"
+      - "Dashboard base"
+      
+  fase_2_alma_core:
+    duration: "6-8 semanas"
+    deliverables:
+      - "Método A.L.M.A. - Fase Autenticidade"
+      - "Método A.L.M.A. - Fase Legado (3 trilhas)"
+      - "Sistema básico de progressão"
+      - "Chat Gênio básico"
+      
+  fase_3_sistemas_transversais:
+    duration: "4-6 semanas"  
+    deliverables:
+      - "Diário de Bordo completo"
+      - "Sistema Upgrade (Desafios/Missões/Conquistas)"
+      - "Chat Gênio com Hume AI"
+      - "Analytics JSONl básico"
+      
+  fase_4_alma_completo:
+    duration: "4-5 semanas"
+    deliverables:
+      - "A.L.M.A. Fase Mapeamento"
+      - "A.L.M.A. Fase Aplicação" 
+      - "Certificação A.L.M.A."
+      - "Sistema Network básico"
+      
+  fase_5_vortex:
+    duration: "6-8 semanas"
+    deliverables:
+      - "Mundo Vórtice completo (5 fases)"
+      - "Integração com resultados A.L.M.A."
+      - "Sistema de pagamento Vórtice"
+      - "Analytics avançado"
+      
+  fase_6_odisseia:
+    duration: "10-12 semanas"
+    deliverables:
+      - "5 produtos Odisseia DEV"
+      - "Sistema progressão Odisseia"
+      - "Integração pagamentos múltiplos"
+      - "Momentos contemplativos"
+      
+  fase_7_optimization:
+    duration: "4-6 semanas"
+    deliverables:
+      - "Admin dashboard completo"
+      - "Analytics business intelligence"
+      - "Otimizações performance"
+      - "Testes A/B sistema"
+
+# 🧪 ESTRATÉGIA DE TESTES
+testing_strategy:
+  user_testing:
+    personas_representatives: "5 usuários de cada persona"
+    scenarios: "Fluxos completos de cada mundo"
+    feedback_loops: "Iterações semanais"
+    
+  a_b_testing:
+    onboarding_variations: "3 versões de persona assessment"
+    conversion_optimization: "CTAs, preços, fluxos"
+    engagement_features: "Gamificação, rewards"
+    
+  technical_testing:
+    unit_tests: "Componentes críticos"
+    integration_tests: "Fluxos de pagamento"
+    load_testing: "Simulação 1000+ usuários simultâneos"
+
+# 🔒 PRIVACY E COMPLIANCE
+privacy_strategy:
+  gdpr_compliance: true
+  ccpa_compliance: true
+  
+  data_principles:
+    minimization: "Coletamos apenas dados essenciais"
+    transparency: "Dashboard mostra dados coletados"
+    control: "Usuário pode pausar/deletar coleta"
+    anonymization: "Dados pessoais nunca identificáveis"
+    
+  chat_privacy:
+    ephemeral_conversations: "Zero armazenamento de conteúdo"
+    insights_only: "Apenas padrões comportamentais"
+    opt_out: "Usuário pode desabilitar analytics"
+
+# 🎯 MÉTRICAS DE SUCESSO POR FASE
+success_metrics:
+  fase_1_foundation:
+    conversion_rate_onboarding: "> 80%"
+    persona_assessment_completion: "> 90%"
+    
+  fase_2_alma_core:
+    autenticidade_completion: "> 70%"
+    trilha_selection_distribution: "Balanceada ~33% cada"
+    
+  fase_3_sistemas_transversais:
+    diario_weekly_usage: "> 40%"
+    chat_satisfaction: "> 4.5/5"
+    
+  fase_4_alma_completo:
+    alma_certification_rate: "> 60%"
+    vortex_unlock_rate: "> 15%"
+    
+  fase_5_vortex:
+    vortex_conversion: "> 15%"
+    vortex_completion: "> 80%"
+    
+  fase_6_odisseia:
+    aspirante_conversion: "> 10%"
+    nivel_progression: "> 40%"
+    
+# 📈 ESTRATÉGIA DE CRESCIMENTO
+growth_strategy:
+  organic_growth:
+    content_marketing: "Blog técnico + storytelling"
+    seo_optimization: "Long-tail keywords IA + desenvolvimento"
+    social_proof: "Cases de sucesso dos tripulantes"
+    
+  paid_acquisition:
+    facebook_ads: "Lookalike audiences"
+    google_ads: "Intent keywords"
+    youtube_ads: "Educational content"
+    
+  retention_strategy:
+    gamification: "Sistema Upgrade mantém engajamento"
+    community: "Network system cria vínculos"
+    progression: "Clear path através dos mundos"
+    
+  viral_mechanics:
+    referral_program: "Bonificações por indicações"
+    shared_achievements: "Conquistas compartilháveis"
+    collaborative_missions: "Missões em grupo"
+
+# 🛠️ FERRAMENTAS DE DESENVOLVIMENTO
+dev_tools:
+  ide: "Cursor + Claude integration"
+  version_control: "Git + GitHub"
+  project_management: "Linear ou Notion"
+  design: "Figma"
+  monitoring: "Vercel Analytics + Sentry"
+  
+# 📋 CHECKLIST PRÉ-LANÇAMENTO
+pre_launch_checklist:
+  technical:
+    - "Performance optimization"
+    - "Security audit"
+    - "Mobile responsiveness"
+    - "Browser compatibility"
+    - "Analytics implementation"
+    
+  content:
+    - "All personas content reviewed"
+    - "A.L.M.A. methodology validated"
+    - "Chat Gênio prompts optimized"
+    - "Achievement system balanced"
+    
+  business:
+    - "Payment systems tested"
+    - "Pricing strategy validated"
+    - "Legal compliance confirmed"
+    - "Privacy policy updated"
+    - "Terms of service reviewed"
+    
+  marketing:
+    - "Landing pages optimized"
+    - "Onboarding funnel tested"
+    - "Email sequences prepared"
+    - "Social media strategy ready"
+
+# 🎉 PÓS-LANÇAMENTO
+post_launch:
+  monitoring_intensive:
+    duration: "30 dias"
+    frequency: "Daily reviews"
+    focus: "User feedback + technical issues"
+    
+  iteration_cycle:
+    weekly_updates: "Bug fixes + small improvements"
+    monthly_features: "New functionality based on data"
+    quarterly_reviews: "Strategy adjustments"
+    
+  scaling_preparation:
+    infrastructure: "Auto-scaling setup"
+    team_expansion: "Additional developers/designers"
+    market_expansion: "International localization"
+
+# 💡 INOVAÇÕES DIFERENCIADORAS
+key_innovations:
+  persona_driven: "Personalização completa baseada em assessment"
+  ephemeral_chat: "Privacidade + insights únicos no mercado"
+  three_worlds: "Ecosystem completo vs competitors isolados"
+  emotional_ai: "Hume AI para conexão emocional autêntica"
+  transversal_systems: "Integração entre mundos via sistemas"
+  progressive_monetization: "Odisseia como 5 produtos crescentes"
+
+# 📞 PONTOS DE CONTATO
+stakeholder_communication:
+  daily_standups: "Progress updates"
+  weekly_reviews: "Milestone assessment"
+  monthly_business_reviews: "KPI analysis + strategy"
+  quarterly_planning: "Roadmap adjustments"
+  
+documentation_updates:
+  architecture_changes: "Update YAML files"
+  feature_additions: "Document in prompts/"
+  business_logic: "Update domain/ YAMLs"
+  api_changes: "Update API documentation"

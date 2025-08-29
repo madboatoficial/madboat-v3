@@ -1,0 +1,940 @@
+# 🌊 MadBoat v2.0 - User Flow Completo
+userflow_info:
+  name: "MadBoat v2.0 - Jornadas do Tripulante"
+  version: "2.0.0"
+  description: "Fluxos completos de usuário através dos 3 mundos e sistemas transversais"
+  created_at: "2025-01-09"
+  updated_at: "2025-01-09"
+  personas_supported: ["analitico", "criativo", "emotivo", "pragmatico", "inseguro"]
+
+# 🚀 FLUXO DE ENTRADA (ONBOARDING)
+onboarding_flow:
+  
+  etapa_1_descoberta:
+    nome: "Descoberta da Plataforma"
+    url: "/"
+    componentes:
+      - landing_page
+      - hero_section
+      - value_proposition
+      - social_proof
+    ctas_principais:
+      - "Começar Jornada Gratuita"
+      - "Descobrir Minha Persona" 
+      - "Explorar Métodos"
+    tempo_medio: "2-5 minutos"
+    taxa_conversao_esperada: "15-25%"
+    
+  etapa_2_registro:
+    nome: "Criação de Conta"
+    url: "/register"
+    campos_obrigatorios:
+      - nome_completo
+      - email
+      - senha
+    campos_opcionais:
+      - timezone
+      - profissao
+      - experiencia_nivel
+    integracao:
+      - google_oauth
+      - linkedin_oauth
+    tempo_medio: "1-2 minutos"
+    taxa_conversao_esperada: "80-90%"
+    
+  etapa_3_welcome:
+    nome: "Boas-vindas ao Universo"
+    url: "/onboarding/welcome"
+    elementos:
+      - video_introducao_sandro
+      - explicacao_3_mundos
+      - overview_jornada
+      - primeiros_passos
+    personalizacao: "Mensagem adapta com nome do usuário"
+    tempo_medio: "3-4 minutos"
+    skip_option: false
+    
+  etapa_4_persona_assessment:
+    nome: "Descoberta da Persona"
+    url: "/onboarding/persona-assessment"
+    estrutura:
+      total_perguntas: 25
+      formato: "múltipla escolha + escalas"
+      categorias:
+        - "Preferências de trabalho"
+        - "Estilo de comunicação" 
+        - "Tomada de decisão"
+        - "Motivações principais"
+        - "Reações a desafios"
+      tempo_medio: "8-12 minutos"
+      progress_bar: true
+      save_progress: true
+      
+  etapa_5_resultado_persona:
+    nome: "Revelação da Persona"
+    url: "/onboarding/persona-assessment/results"
+    elementos:
+      - animacao_revelacao
+      - descricao_detalhada_persona
+      - fortalezas_identificadas
+      - areas_desenvolvimento
+      - recomendacoes_personalizadas
+    personalizacao_conteudo:
+      analitico: "Dados, frameworks, análises profundas"
+      criativo: "Inspiração, possibilidades, experimentação"
+      emotivo: "Conexão humana, impacto, valores"
+      pragmatico: "Resultados diretos, eficiência, ação"
+      inseguro: "Encorajamento, pequenos passos, suporte"
+    tempo_medio: "5-7 minutos"
+    
+  etapa_6_selecao_mundo:
+    nome: "Escolha do Primeiro Mundo"
+    url: "/onboarding/world-selection"
+    opcoes_disponiveis:
+      mundo_alma:
+        titulo: "🧭 Método A.L.M.A."
+        descricao: "Descubra sua autenticidade e construa estratégia de negócio"
+        acesso: "gratuito"
+        tempo_estimado: "4-8 semanas"
+        recomendado_para: ["todos os perfis"]
+        
+      mundo_odisseia:
+        titulo: "🚀 Odisseia DEV - Aspirante"
+        descricao: "Fundamentos de IA para desenvolvedores"
+        acesso: "pago - $197"
+        tempo_estimado: "2-4 semanas"
+        recomendado_para: ["analitico", "pragmatico"]
+        
+      ambos_paralelo:
+        titulo: "🌊 Jornada Completa"
+        descricao: "A.L.M.A. + Odisseia em paralelo"
+        acesso: "parcialmente_pago"
+        tempo_estimado: "6-10 semanas"
+        recomendado_para: ["criativo", "emotivo"]
+    
+    personalizacao_recomendacao:
+      analitico: "Sugere A.L.M.A. + dados sobre ROI"
+      criativo: "Sugere jornada completa + possibilidades"
+      emotivo: "Sugere A.L.M.A. + impacto pessoal"
+      pragmatico: "Sugere Odisseia + resultados práticos"
+      inseguro: "Sugere A.L.M.A. + encorajamento"
+      
+  etapa_7_configuracao_inicial:
+    nome: "Setup da Jornada"
+    url: "/onboarding/setup"
+    configuracoes:
+      - definicao_objetivos_pessoais
+      - preferencias_notificacao
+      - horarios_ideais_estudo
+      - nivel_comprometimento
+    sistemas_desbloqueados:
+      - diario_bordo
+      - chat_genie_basico
+      - sistema_upgrade
+      - profile_basico
+    tempo_medio: "3-5 minutos"
+
+# 🧭 FLUXO MUNDO A.L.M.A.
+mundo_alma_flow:
+  
+  prerequisitos:
+    - onboarding_completo
+    - persona_identificada
+    
+  fase_1_autenticidade:
+    nome: "Descoberta da Essência"
+    url_base: "/alma/autenticidade"
+    duracao_estimada: "1-2 semanas"
+    
+    modulos:
+      valores:
+        url: "/alma/autenticidade/valores"
+        atividades:
+          - "Identificação valores core"
+          - "Exercício hierarquia valores"
+          - "Validação através de histórias"
+        outputs: "Mapa de valores pessoais"
+        tempo_estimado: "2-3 sessões"
+        
+      habilidades:
+        url: "/alma/autenticidade/habilidades"
+        atividades:
+          - "Inventário completo skills"
+          - "Categorização por expertise"
+          - "Identificação skills únicas"
+        outputs: "Portfolio de habilidades"
+        tempo_estimado: "1-2 sessões"
+        
+      historias:
+        url: "/alma/autenticidade/historias"
+        atividades:
+          - "Extração histórias pessoais"
+          - "Identificação padrões narrativos"
+          - "Refinamento storytelling"
+        outputs: "Banco histórias autênticas"
+        tempo_estimado: "3-4 sessões"
+        integracao: "diario_bordo"
+        
+      proposito:
+        url: "/alma/autenticidade/proposito"  
+        atividades:
+          - "Síntese valores + habilidades + histórias"
+          - "Definição propósito claro"
+          - "Validação propósito"
+        outputs: "Declaração propósito pessoal"
+        tempo_estimado: "1-2 sessões"
+        
+    outputs_fase:
+      - dna_criativo_completo
+      - base_autenticidade_estabelecida
+      - liberacao_fase_legado
+      
+  fase_2_legado:
+    nome: "Construção Estratégica" 
+    url_base: "/alma/legado"
+    duracao_estimada: "2-4 semanas"
+    prerequisitos: ["fase_1_completa"]
+    
+    selecao_trilha:
+      url: "/alma/legado/trilhas"
+      decision_point: true
+      opcoes:
+        estruturar:
+          nome: "Estruturar Negócio Existente"
+          target_user: "Já tem negócio físico/tradicional"
+          url: "/alma/legado/trilhas/estruturar"
+          
+        digitalizar:
+          nome: "Digitalizar Negócio"  
+          target_user: "Quer transformação digital"
+          url: "/alma/legado/trilhas/digitalizar"
+          
+        criar:
+          nome: "Criar Negócio Digital"
+          target_user: "Quer começar do zero digital"
+          url: "/alma/legado/trilhas/criar"
+    
+    trilha_estruturar:
+      modulos:
+        diagnostico:
+          atividades: ["Auditoria atual", "Identificação gaps", "Mapeamento processos"]
+          outputs: "Relatório diagnóstico"
+          
+        organizacao:
+          atividades: ["Reestruturação processos", "Otimização fluxos", "Definição papéis"]
+          outputs: "Plano organização"
+          
+        otimizacao:
+          atividades: ["Implementação melhorias", "Monitoramento KPIs", "Ajustes finos"]
+          outputs: "Sistema otimizado"
+          
+    trilha_digitalizar:
+      modulos:
+        auditoria:
+          atividades: ["Avaliação digital atual", "Análise concorrência", "Identificação oportunidades"]
+          outputs: "Auditoria digital"
+          
+        estrategia:
+          atividades: ["Plano transformação", "Seleção tecnologias", "Roadmap implementação"]
+          outputs: "Estratégia digitalização"
+          
+        implementacao:
+          atividades: ["Execução fases", "Testes validação", "Lançamento digital"]
+          outputs: "Negócio digitalizado"
+          
+    trilha_criar:
+      modulos:
+        validacao:
+          atividades: ["Pesquisa mercado", "Validação ideia", "Teste hipóteses"]
+          outputs: "Ideia validada"
+          
+        mvp:
+          atividades: ["Desenvolvimento MVP", "Testes usuários", "Iterações"]
+          outputs: "MVP funcional"
+          
+        lancamento:
+          atividades: ["Estratégia lançamento", "Marketing inicial", "Primeiras vendas"]
+          outputs: "Negócio lançado"
+    
+    componentes_transversais:
+      arquitetura_negocio:
+        url: "/alma/legado/arquitetura"
+        conteudo: "Modelos negócio, estruturas organizacionais"
+        
+      neurociencia_vendas:
+        url: "/alma/legado/neurociencia"
+        conteudo: "Técnicas psicologia, persuasão ética"
+        
+    outputs_fase:
+      - plano_negocio_estruturado
+      - trilha_especifica_completa
+      - liberacao_fase_mapeamento
+      
+  fase_3_mapeamento:
+    nome: "Estratégia Detalhada"
+    url_base: "/alma/mapeamento"
+    duracao_estimada: "2-3 semanas"
+    prerequisitos: ["fase_2_completa"]
+    
+    modulos:
+      mercado:
+        url: "/alma/mapeamento/mercado"
+        atividades:
+          - "Pesquisa mercado profunda"
+          - "Análise competitiva"
+          - "Identificação oportunidades"
+        outputs: "Análise mercado completa"
+        
+      publico:
+        url: "/alma/mapeamento/publico"
+        atividades:
+          - "Definição personas cliente"
+          - "Segmentação audiência"
+          - "Mapeamento jornada cliente"
+        outputs: "Estratégia público-alvo"
+        
+      marketing:
+        url: "/alma/mapeamento/marketing"
+        atividades:
+          - "Posicionamento marca"
+          - "Estratégias canais"
+          - "Calendário marketing"
+        outputs: "Plano marketing"
+        
+      financeiro:
+        url: "/alma/mapeamento/financeiro"
+        atividades:
+          - "Projeções financeiras"
+          - "Planejamento investimento"
+          - "Análise viabilidade"
+        outputs: "Plano financeiro"
+        
+    outputs_fase:
+      - estrategia_completa_mercado
+      - plano_marketing_detalhado
+      - liberacao_fase_aplicacao
+      
+  fase_4_aplicacao:
+    nome: "Execução e Resultados"
+    url_base: "/alma/aplicacao"
+    duracao_estimada: "3-4 semanas"
+    prerequisitos: ["fase_3_completa"]
+    
+    modulos:
+      implementacao:
+        url: "/alma/aplicacao/implementacao"
+        atividades:
+          - "Execução planos estratégicos"
+          - "Implementação sistemas"
+          - "Ativação processos"
+        outputs: "Negócio em execução"
+        
+      resultados:
+        url: "/alma/aplicacao/resultados"
+        atividades:
+          - "Monitoramento métricas"
+          - "Análise performance"
+          - "Relatórios progresso"
+        outputs: "Dashboard resultados"
+        
+      conclusao:
+        url: "/alma/aplicacao/conclusao"
+        atividades:
+          - "Avaliação jornada completa"
+          - "Consolidação aprendizados"
+          - "Planejamento futuro"
+        outputs: "Certificação A.L.M.A."
+        
+    outputs_finais:
+      - certificado_alma_completo
+      - negocio_funcionando
+      - liberacao_mundo_vortex
+      - access_premium_features
+
+# 🌀 FLUXO MUNDO VÓRTICE  
+mundo_vortex_flow:
+  
+  prerequisitos:
+    - certificado_alma_completo
+    - pagamento_vortex_confirmado
+    
+  overview:
+    nome: "Método Vórtice - Construção Audiência Autêntica"
+    url_base: "/vortex"
+    duracao_estimada: "6-8 semanas"
+    preco: "$497"
+    
+  fase_1_audiencia_autentica:
+    nome: "Identificação da Audiência"
+    url: "/vortex/audiencia-autentica"
+    integracao_alma: true
+    
+    modulos:
+      dna_alma:
+        atividades: ["Importação resultados A.L.M.A.", "Análise DNA criativo", "Adaptação audiência"]
+        outputs: "Base autêntica audiência"
+        
+      mapeamento:
+        atividades: ["Identificação audiência ideal", "Pesquisa comportamentos", "Validação hipóteses"]
+        outputs: "Mapa audiência detalhado"
+        
+      validacao:
+        atividades: ["Testes audiência", "Feedback direto", "Refinamento perfil"]
+        outputs: "Audiência validada"
+        
+  fase_2_conteudo_magnetico:
+    nome: "Criação de Conteúdo"
+    url: "/vortex/conteudo-magnetico"
+    
+    modulos:
+      storytelling:
+        atividades: ["Narrativas autênticas", "Estruturas storytelling", "Adaptação formatos"]
+        outputs: "Sistema storytelling"
+        
+      formatos:
+        atividades: ["Posts texto", "Vídeos", "Podcasts", "Lives", "Newsletters"]
+        outputs: "Biblioteca formatos"
+        
+      calendario:
+        atividades: ["Planejamento editorial", "Cronograma posts", "Automação distribuição"]
+        outputs: "Calendário completo"
+        
+  fase_3_engajamento:
+    nome: "Estratégias de Engajamento"
+    url: "/vortex/engajamento"
+    
+    modulos:
+      interacao:
+        atividades: ["Técnicas engajamento", "Conversas autênticas", "Community management"]
+        outputs: "Playbook engajamento"
+        
+      comunidade:
+        atividades: ["Construção comunidade", "Moderação efetiva", "Eventos community"]
+        outputs: "Comunidade ativa"
+        
+      fidelizacao:
+        atividades: ["Programas fidelidade", "Experiências exclusivas", "Relacionamento VIP"]
+        outputs: "Sistema fidelização"
+        
+  fase_4_distribuicao:
+    nome: "Canais de Distribuição"
+    url: "/vortex/canais-distribuicao"
+    
+    modulos:
+      plataformas:
+        atividades: ["Seleção canais", "Otimização perfis", "Cross-platform strategy"]
+        outputs: "Presença multi-canal"
+        
+      otimizacao:
+        atividades: ["A/B testing", "Analytics profundo", "Otimização contínua"]
+        outputs: "Performance otimizada"
+        
+      automacao:
+        atividades: ["Ferramentas automação", "Workflows eficientes", "Scale systems"]
+        outputs: "Sistema automatizado"
+        
+  fase_5_monetizacao:
+    nome: "Monetização da Audiência"
+    url: "/vortex/monetizacao"
+    
+    modulos:
+      produtos:
+        atividades: ["Criação produtos", "Pricing strategy", "Launch sequences"]
+        outputs: "Produtos para audiência"
+        
+      servicos:
+        atividades: ["Serviços personalizados", "Consultoria premium", "Done-for-you"]
+        outputs: "Oferta serviços"
+        
+      parcerias:
+        atividades: ["Parcerias estratégicas", "Afiliações", "Colaborações"]
+        outputs: "Network monetização"
+        
+  outputs_finais:
+    - audiencia_engajada_construida
+    - sistema_monetizacao_ativo
+    - certificado_vortex
+    - receita_recorrente_established
+
+# 🚀 FLUXO MUNDO ODISSEIA
+mundo_odisseia_flow:
+  
+  conceito: "5 produtos progressivos de IA para desenvolvedores"
+  estrutura: "Cada nível é produto separado"
+  paralelismo: "Pode ser feito junto com A.L.M.A."
+  
+  nivel_1_aspirante:
+    nome: "Aspirante - Fundamentos IA"
+    preco: "$197"
+    url_base: "/odisseia/aspirante"
+    duracao: "2-4 semanas"
+    prerequisitos: ["onboarding_completo"]
+    
+    modulos:
+      fundamentos:
+        conteudo: ["Conceitos básicos IA", "Ferramentas essenciais", "Primeiros algoritmos"]
+        pratica: ["Projetos guiados", "Exercises interativos", "Mini-challenges"]
+        
+      projetos:
+        conteudo: ["3 projetos práticos", "Portfolio inicial", "Best practices"]
+        outputs: "Portfolio básico IA"
+        
+      contemplacao:
+        conteudo: ["Reflexões sobre IA", "Impacto sociedade", "Ética desenvolvimento"]
+        formato: "Journaling + discussões"
+        
+      avaliacao:
+        formato: "Projeto final + peer review"
+        outputs: "Certificado Aspirante"
+        unlock: "Acesso Navegador"
+        
+  nivel_2_navegador:
+    nome: "Navegador - IA Avançada"
+    preco: "$297"
+    url_base: "/odisseia/navegador"
+    duracao: "3-5 semanas"
+    prerequisitos: ["certificado_aspirante"]
+    
+    modulos:
+      ia_avancada:
+        conteudo: ["Machine Learning profundo", "Neural networks", "Frameworks avançados"]
+        
+      automacao:
+        conteudo: ["Automação processos", "Workflows IA", "Integração sistemas"]
+        
+      projetos_complexos:
+        conteudo: ["3 projetos avançados", "Arquitetura sistemas", "Performance optimization"]
+        
+      contemplacao:
+        conteudo: ["Liderança técnica", "Mentoria iniciantes", "Responsabilidade social"]
+        
+      avaliacao:
+        outputs: "Certificado Navegador"
+        unlock: "Acesso Timoneiro"
+        
+  nivel_3_timoneiro:
+    nome: "Timoneiro - Liderança IA"
+    preco: "$397"
+    url_base: "/odisseia/timoneiro"
+    duracao: "4-6 semanas"
+    prerequisitos: ["certificado_navegador"]
+    
+    modulos:
+      lideranca_ia:
+        conteudo: ["Gestão equipes IA", "Estratégia técnica", "Comunicação stakeholders"]
+        
+      sistemas_complexos:
+        conteudo: ["Arquitetura enterprise", "Escalabilidade", "Manutenibilidade"]
+        
+      mentoria:
+        conteudo: ["Mentoria outros devs", "Knowledge sharing", "Team building"]
+        pratica: "Mentoria real de Aspirantes/Navegadores"
+        
+      contemplacao:
+        conteudo: ["Visão estratégica", "Impacto organizacional", "Legacy building"]
+        
+      avaliacao:
+        outputs: "Certificado Timoneiro"
+        unlock: "Acesso Capitão"
+        
+  nivel_4_capitao:
+    nome: "Capitão - Visão Estratégica"
+    preco: "$597"
+    url_base: "/odisseia/capitao"
+    duracao: "5-7 semanas"
+    prerequisitos: ["certificado_timoneiro"]
+    
+    modulos:
+      visao_estrategica:
+        conteudo: ["Estratégia empresarial IA", "Innovation management", "Future forecasting"]
+        
+      inovacao:
+        conteudo: ["R&D em IA", "Breakthrough technologies", "Patent strategies"]
+        
+      lideranca_equipe:
+        conteudo: ["Liderança múltiplas equipes", "Cross-functional management", "Organizational change"]
+        
+      contemplacao:
+        conteudo: ["Legacy empresarial", "Impacto indústria", "Responsabilidade social"]
+        
+      avaliacao:
+        outputs: "Certificado Capitão"
+        unlock: "Acesso Almirante"
+        
+  nivel_5_almirante:
+    nome: "Almirante - Mestria Completa"
+    preco: "$897"
+    url_base: "/odisseia/almirante"
+    duracao: "6-8 semanas"
+    prerequisitos: ["certificado_capitao"]
+    
+    modulos:
+      mestria:
+        conteudo: ["Domínio completo IA", "Cutting-edge research", "Industry leadership"]
+        
+      transformacao_digital:
+        conteudo: ["Transformação organizacional", "Cultural change", "Digital strategy"]
+        
+      legado:
+        conteudo: ["Construção legacy", "Mentoria ecosystem", "Industry influence"]
+        pratica: "Mentoria de toda cadeia (Aspirante → Capitão)"
+        
+      contemplacao:
+        conteudo: ["Filosofia tecnologia", "Impacto humanidade", "Futuro IA"]
+        
+      certificacao_final:
+        formato: "Tese/Projeto transformador"
+        outputs: "Certificado Almirante Master"
+        status: "Mentor oficial ecosystem"
+
+# 🛠️ SISTEMAS TRANSVERSAIS - FLUXOS
+sistemas_transversais_flows:
+  
+  diario_bordo_flow:
+    disponibilidade: "Pós onboarding"
+    url_base: "/diario-bordo"
+    
+    fluxo_diario:
+      entrada: "/diario-bordo/escrita"
+      templates_persona:
+        analitico: "Estrutura análise diária"
+        criativo: "Fluxo consciência livre" 
+        emotivo: "Jornada emocional + gratidão"
+        pragmatico: "Objetivos + ações + resultados"
+        inseguro: "Pequenas vitórias + encorajamento"
+        
+      funcionalidades:
+        - editor_rich_text
+        - save_automatico
+        - templates_adaptativos
+        - mood_tracking
+        - insights_ai
+        
+    historias_arquivo:
+      url: "/diario-bordo/historias"
+      funcionalidades:
+        - categorizacao_automatica
+        - busca_avancada
+        - timeline_visual
+        - compartilhamento_seletivo
+        
+    analytics_pessoal:
+      url: "/diario-bordo/analytics"
+      metricas:
+        - frequencia_escrita
+        - evolucao_mood
+        - padroes_crescimento
+        - insights_desenvolvimento
+        
+  sistema_upgrade_flow:
+    disponibilidade: "Sempre ativo pós onboarding"
+    url_base: "/upgrade"
+    
+    desafios_flow:
+      daily_challenges:
+        frequencia: "Diário"
+        tipos: ["skill_building", "habit_formation", "knowledge_expansion"]
+        rewards: "XP + badges"
+        
+      weekly_challenges:
+        frequencia: "Semanal"
+        tipos: ["project_completion", "community_engagement", "learning_goals"]
+        rewards: "Certificados + unlock features"
+        
+      mundo_specific_challenges:
+        alma: "Challenges específicos metodologia A.L.M.A."
+        vortex: "Challenges construção audiência"
+        odisseia: "Challenges técnicos IA por nível"
+        
+    missoes_flow:
+      individuais:
+        url: "/upgrade/missoes/individuais"
+        tipos: ["30_day_goals", "skill_mastery", "project_completion"]
+        
+      grupos:
+        url: "/upgrade/missoes/grupos"
+        mecanism: "Formar grupos 3-5 pessoas"
+        tipos: ["collaborative_projects", "study_groups", "accountability_partners"]
+        
+      clas:
+        url: "/upgrade/missoes/clas"
+        estrutura: "Grupos grandes 20-50 pessoas"
+        competicoes: "Ranking mensal entre clãs"
+        
+    conquistas_flow:
+      progressao:
+        mundos: "Progresso % em cada mundo"
+        sistemas: "Uso sistemas transversais"
+        overall: "Progresso geral plataforma"
+        
+      producao:
+        diario: "Dias consecutivos escrita"
+        learning: "Cursos/módulos completados"
+        projects: "Projetos finalizados"
+        
+      sociais:
+        network: "Conexões estabelecidas"
+        mentoria: "Pessoas mentorizadas"
+        community: "Contribuições comunidade"
+        
+  chat_genie_flow:
+    disponibilidade: "Pós onboarding"
+    url_base: "/chat-genie"
+    
+    contextualizacao_automatica:
+      alma_context: "Especialista metodologia A.L.M.A."
+      vortex_context: "Expert construção audiência"
+      odisseia_context: "Mentor IA por nível usuário"
+      diario_context: "Coach desenvolvimento pessoal"
+      
+    modalidades:
+      text_chat:
+        funcionalidades: ["conversation_history", "context_aware", "persona_adapted"]
+        
+      voice_chat:
+        tecnologia: "Hume AI"
+        features: ["emotional_analysis", "tone_adaptation", "real_time_response"]
+        
+    personalizacao_persona:
+      analitico: "Respostas estruturadas, dados, frameworks"
+      criativo: "Inspiração, metáforas, brainstorming"
+      emotivo: "Empatia, relacionamento, valores"
+      pragmatico: "Ações diretas, passos práticos, resultados"
+      inseguro: "Encorajamento, validação, passos pequenos"
+      
+  network_system_flow:
+    disponibilidade: "Pós onboarding"
+    url_base: "/network"
+    
+    descoberta_tripulantes:
+      url: "/network/tripulantes/descobrir"
+      algoritmo: "Baseado em persona + interesses + mundo atual"
+      filtros: ["mundo_atual", "nivel_experiencia", "interesses_comuns", "localização"]
+      
+    conexoes_flow:
+      pedido_conexao: "Sistema padrão social network"
+      conversas_privadas: "Direct messaging"
+      grupos_interesse: "Auto-organização por tópicos"
+      
+    clas_flow:
+      formacao: "20-50 pessoas por clã"
+      criterios: ["nivel_engajamento", "complementariedade_skills", "objetivos_similares"]
+      atividades: ["missoes_coletivas", "competicoes", "eventos_exclusivos"]
+      
+    eventos_flow:
+      workshops: "Sessões especializadas por mundo"
+      mentorias_grupo: "Sessões mentoria coletiva"
+      networking_events: "Encontros casuais networking"
+
+# 📊 PONTOS DE CONVERSÃO E MÉTRICAS
+conversion_points:
+  
+  onboarding_conversion:
+    landing_to_register: "25%"
+    register_to_persona: "90%"
+    persona_to_world_selection: "85%"
+    world_selection_to_start: "95%"
+    
+  alma_progression:
+    autenticidade_completion: "70%"
+    legado_completion: "60%"
+    mapeamento_completion: "50%"
+    aplicacao_completion: "40%"
+    full_alma_completion: "35%"
+    
+  vortex_conversion:
+    alma_graduates_to_vortex: "15%"
+    vortex_completion: "80%"
+    
+  odisseia_progression:
+    aspirante_conversion: "10%"
+    aspirante_to_navegador: "40%"
+    navegador_to_timoneiro: "35%"
+    timoneiro_to_capitao: "30%"
+    capitao_to_almirante: "25%"
+    
+  engagement_metrics:
+    daily_platform_usage: "60%"
+    weekly_diario_usage: "50%"
+    monthly_chat_genie: "80%"
+    network_connections_avg: "5.2 per user"
+
+# 🎯 PERSONALIZAÇÃO POR PERSONA
+personalization_flows:
+  
+  analitico_optimizations:
+    onboarding: "Enfatiza dados, ROI, frameworks estruturados"
+    alma_approach: "Ferramentas análise, metrics tracking, logical progression"
+    vortex_approach: "Data-driven audience building, analytics focus"
+    odisseia_approach: "Technical depth, algorithm mastery, systematic learning"
+    gamification: "Progress bars, detailed metrics, achievement statistics"
+    
+  criativo_optimizations:
+    onboarding: "Visual inspirador, possibilidades infinitas, experimentação"
+    alma_approach: "Brainstorming tools, creative exercises, non-linear exploration"
+    vortex_approach: "Creative content formats, artistic expression, innovation"
+    odisseia_approach: "Creative applications IA, artistic projects, experimental approach"
+    gamification: "Visual badges, creative challenges, inspiration rewards"
+    
+  emotivo_optimizations:
+    onboarding: "Conexão humana, impacto pessoal, valores alinhados"
+    alma_approach: "Stories focus, values alignment, human impact emphasis"
+    vortex_approach: "Authentic connection, community building, relationship focus"
+    odisseia_approach: "Human-centered IA, ethical considerations, social impact"
+    gamification: "Community achievements, social recognition, impact metrics"
+    
+  pragmatico_optimizations:
+    onboarding: "Resultados diretos, eficiência, time-to-value claro"
+    alma_approach: "Action-oriented modules, quick wins, practical tools"
+    vortex_approach: "Direct monetization, efficiency tools, result-focused strategies"
+    odisseia_approach: "Practical applications, immediate utility, efficient learning"
+    gamification: "Goal completion, efficiency badges, result-oriented challenges"
+    
+  inseguro_optimizations:
+    onboarding: "Encorajamento constante, passos pequenos, suporte abundante"
+    alma_approach: "Gentle guidance, small victories, constant encouragement"
+    vortex_approach: "Safe community building, supportive environment, gradual exposure"
+    odisseia_approach: "Beginner-friendly, mentorship focus, confidence building"
+    gamification: "Encouragement badges, small step achievements, support recognition"
+
+# 🔄 LOOPS DE RETENÇÃO
+retention_loops:
+  
+  daily_loops:
+    diario_check_in: "Morning reflection prompt"
+    challenge_notification: "Daily challenge available"
+    progress_update: "Progress celebration"
+    genie_interaction: "Contextual AI assistance"
+    
+  weekly_loops:
+    progress_review: "Weekly progress summary"
+    new_content_unlock: "New modules/features available"
+    community_highlight: "Community achievements showcase"
+    goal_adjustment: "Weekly goal setting/review"
+    
+  monthly_loops:
+    milestone_celebration: "Major achievement recognition"
+    progress_analysis: "Deep progress analysis + insights"
+    goal_realignment: "Monthly objective reset"
+    community_events: "Special events participation"
+    
+  long_term_loops:
+    world_completion: "Major milestone celebration + unlock next"
+    certification_achievement: "Official recognition + status upgrade"
+    mentor_status_unlock: "Ability to mentor others in community"
+    alumni_network_access: "Exclusive alumni features + network"
+
+# 🎪 MOMENTOS ESPECIAIS E CELEBRAÇÕES
+special_moments:
+  
+  persona_revelation:
+    timing: "Fim persona assessment"
+    elements: ["animação especial", "music/sound", "personalized message", "celebration confetti"]
+    
+  primeira_historia_diario:
+    timing: "Primeira entrada diário"
+    elements: ["achievement badge", "encouragement message", "writing streak start"]
+    
+  primeiro_breakthrough_chat:
+    timing: "IA detecta insight significativo"
+    elements: ["special notification", "insight capture", "celebration animation"]
+    
+  trilha_completion:
+    timing: "Conclusão trilha A.L.M.A."
+    elements: ["certificate generation", "progress visualization", "next phase unlock"]
+    
+  alma_graduation:
+    timing: "Conclusão completa A.L.M.A."
+    elements: ["full ceremony", "certificate download", "vortex access unlock", "alumni status"]
+    
+  vortex_graduation:
+    timing: "Conclusão Vórtice"
+    elements: ["master certificate", "case study creation", "mentorship unlock"]
+    
+  odisseia_level_ups:
+    timing: "Cada progressão nível"
+    elements: ["rank visualization", "new permissions unlock", "mentorship chain progression"]
+    
+  network_milestones:
+    timing: "Conexões significativas"
+    elements: ["social achievement badges", "network visualization", "collaboration opportunities"]
+
+# 🎮 EASTER EGGS E SURPRESAS
+easter_eggs:
+  
+  sequential_daily_writing:
+    trigger: "30 dias consecutivos escrita diário"
+    surprise: "Hidden achievement: 'Navegador das Palavras'"
+    
+  chat_genie_marathon:
+    trigger: "5+ horas conversação single day"
+    surprise: "Special Gênio response + rare achievement"
+    
+  cross_world_mastery:
+    trigger: "Progresso simultâneo A.L.M.A. + Odisseia"
+    surprise: "Exclusive badge: 'Explorador Multidimensional'"
+    
+  community_contributor:
+    trigger: "Ajuda significativa outros tripulantes"
+    surprise: "Unlock special mentor status + privileges"
+    
+  late_night_warrior:
+    trigger: "Atividade consistente após midnight"
+    surprise: "Night Owl badge + exclusive content"
+
+# 📱 ADAPTAÇÕES MOBILE
+mobile_optimizations:
+  
+  onboarding_mobile:
+    - "Swipe-friendly persona assessment"
+    - "Thumb-optimized navigation"
+    - "Voice-first world selection"
+    
+  alma_mobile:
+    - "Bite-sized modules para commute"
+    - "Audio-first content options"
+    - "Quick reflection prompts"
+    
+  diario_mobile:
+    - "Voice-to-text writing"
+    - "Photo integration histórias"
+    - "Quick mood logging"
+    
+  chat_mobile:
+    - "Voice-first interaction"
+    - "Quick action suggestions"
+    - "Context-aware shortcuts"
+    
+  network_mobile:
+    - "Swipe connections discovery"
+    - "Quick message templates"
+    - "Location-based networking"
+
+# 🎯 METRICAS DE SUCESSO POR FLUXO
+success_metrics_by_flow:
+  
+  onboarding_success:
+    completion_rate: "> 85%"
+    time_to_value: "< 10 minutes first insight"
+    persona_accuracy: "> 90% user satisfaction with result"
+    
+  alma_success:
+    phase_progression: "> 70% → 60% → 50% → 40%"
+    trilha_distribution: "Balanced ~33% each trilha"
+    completion_satisfaction: "> 4.5/5"
+    
+  vortex_success:
+    conversion_from_alma: "> 15%"
+    completion_rate: "> 80%"
+    audience_growth_avg: "+500% participants"
+    
+  odisseia_success:
+    level_progression: "> 40% each level"
+    skill_acquisition: "Measurable improvement assessments"
+    portfolio_quality: "Peer review scores > 4.0/5"
+    
+  transversal_success:
+    diario_retention: "> 50% weekly usage"
+    chat_satisfaction: "> 4.5/5 emotional connection"
+    network_connections: "Average 5+ meaningful connections"
+    gamification_engagement: "> 70% active participation"
