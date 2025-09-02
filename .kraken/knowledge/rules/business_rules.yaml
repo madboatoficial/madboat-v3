@@ -1,0 +1,245 @@
+# 🎯 MADBOAT BUSINESS RULES
+# Regras de negócio que definem o comportamento do sistema
+# SEMPRE consulte antes de implementar features
+
+version: "1.0.0"
+last_update: "2025-08-31"
+
+# ==========================================
+# CORE BUSINESS RULES
+# ==========================================
+
+authentication:
+  rules:
+    - id: "AUTH-001"
+      rule: "Todo usuário DEVE ter email verificado"
+      priority: "CRITICAL"
+      implementation: "Supabase email verification"
+      exceptions: "Admin pode criar usuários pré-verificados"
+    
+    - id: "AUTH-002"
+      rule: "Senha mínimo 8 caracteres, 1 maiúscula, 1 número"
+      priority: "HIGH"
+      implementation: "Frontend + Backend validation"
+      exceptions: "None"
+    
+    - id: "AUTH-003"
+      rule: "Sessão expira em 7 dias de inatividade"
+      priority: "MEDIUM"
+      implementation: "JWT refresh token strategy"
+      exceptions: "Remember me = 30 dias"
+
+user_management:
+  rules:
+    - id: "USER-001"
+      rule: "Um email = Uma conta apenas"
+      priority: "CRITICAL"
+      implementation: "Unique constraint on email"
+      exceptions: "None"
+    
+    - id: "USER-002"
+      rule: "Usuário escolhe persona na primeira entrada"
+      priority: "HIGH"
+      implementation: "Onboarding flow obrigatório"
+      exceptions: "Admin pode pré-definir"
+    
+    - id: "USER-003"
+      rule: "Pode trocar persona 1x por mês"
+      priority: "MEDIUM"
+      implementation: "Track last_persona_change timestamp"
+      exceptions: "Premium users: unlimited"
+
+personas_system:
+  rules:
+    - id: "PERSONA-001"
+      rule: "Três personas base: A.L.M.A, Vórtice, Odisseia"
+      priority: "CRITICAL"
+      implementation: "Enum type in database"
+      exceptions: "Special events podem ter personas temporárias"
+    
+    - id: "PERSONA-002"
+      rule: "Persona afeta TODO o sistema, não só visual"
+      priority: "CRITICAL"
+      details:
+        alma:
+          - "Foco em crescimento pessoal"
+          - "Meditações e reflexões"
+          - "Gamificação zen"
+        vortice:
+          - "Foco em produtividade"
+          - "Ferramentas e automação"
+          - "Gamificação competitiva"
+        odisseia:
+          - "Foco em exploração"
+          - "Descoberta e aventura"
+          - "Gamificação narrativa"
+
+gamification:
+  rules:
+    - id: "GAME-001"
+      rule: "Toda ação significativa gera XP"
+      priority: "HIGH"
+      implementation: "Event-based XP system"
+      xp_table:
+        login_daily: 10
+        complete_profile: 50
+        first_achievement: 100
+        invite_friend: 25
+    
+    - id: "GAME-002"
+      rule: "Níveis de 1-100, exponencial curve"
+      priority: "MEDIUM"
+      formula: "next_level_xp = level * 100 * 1.5"
+      exceptions: "Levels 1-10 são lineares para engagement"
+    
+    - id: "GAME-003"
+      rule: "Achievements desbloqueiam features"
+      priority: "HIGH"
+      implementation: "Feature flags based on achievements"
+      examples:
+        - "Night Owl: Unlock dark themes"
+        - "Power User: Unlock advanced settings"
+        - "Social Butterfly: Unlock team features"
+
+data_privacy:
+  rules:
+    - id: "PRIVACY-001"
+      rule: "LGPD compliance obrigatório"
+      priority: "CRITICAL"
+      implementation: "Consent management system"
+      requirements:
+        - "Explicit consent for data collection"
+        - "Data export on request"
+        - "Right to deletion"
+        - "Data minimization"
+    
+    - id: "PRIVACY-002"
+      rule: "Dados pessoais encrypted at rest"
+      priority: "CRITICAL"
+      implementation: "Supabase encryption + app-level encryption for PII"
+      fields: ["cpf", "phone", "address", "birth_date"]
+
+subscription_model:
+  rules:
+    - id: "SUB-001"
+      rule: "Freemium model com 3 tiers"
+      priority: "HIGH"
+      tiers:
+        free:
+          users: 1
+          projects: 3
+          storage: "100MB"
+          support: "Community"
+        pro:
+          users: 5
+          projects: "Unlimited"
+          storage: "10GB"
+          support: "Email"
+          price: "R$ 29/mês"
+        enterprise:
+          users: "Unlimited"
+          projects: "Unlimited"
+          storage: "Unlimited"
+          support: "Priority"
+          price: "Custom"
+    
+    - id: "SUB-002"
+      rule: "Trial de 14 dias para Pro"
+      priority: "MEDIUM"
+      implementation: "No credit card required"
+      restrictions: "One trial per email"
+
+content_moderation:
+  rules:
+    - id: "MOD-001"
+      rule: "No hate speech, violence, or adult content"
+      priority: "CRITICAL"
+      implementation: "AI moderation + manual review"
+      actions: ["warning", "suspension", "ban"]
+    
+    - id: "MOD-002"
+      rule: "User-generated content requires approval"
+      priority: "HIGH"
+      implementation: "Queue system for review"
+      exceptions: "Verified users auto-approved"
+
+# ==========================================
+# BUSINESS LOGIC FLOWS
+# ==========================================
+
+user_journey:
+  onboarding:
+    steps:
+      1: "Email verification"
+      2: "Profile completion"
+      3: "Persona selection"
+      4: "Tutorial interactive"
+      5: "First achievement"
+    completion_reward: "100 XP + Special badge"
+  
+  daily_engagement:
+    morning: "Daily mission notification"
+    afternoon: "Progress reminder"
+    evening: "Reflection prompt (A.L.M.A only)"
+  
+  retention_hooks:
+    day_1: "Welcome email + tutorial"
+    day_3: "Check-in + tip"
+    day_7: "Weekly report + achievement"
+    day_14: "Special offer or challenge"
+    day_30: "Monthly review + reward"
+
+# ==========================================
+# AUTOMATED RULES ENGINE
+# ==========================================
+
+automation_rules:
+  - trigger: "user_inactive_7_days"
+    action: "send_reengagement_email"
+    priority: "MEDIUM"
+  
+  - trigger: "user_completed_onboarding"
+    action: "assign_first_quest"
+    priority: "HIGH"
+  
+  - trigger: "subscription_expiring_3_days"
+    action: "send_renewal_reminder"
+    priority: "HIGH"
+  
+  - trigger: "achievement_unlocked"
+    action: "notify_user + update_profile"
+    priority: "LOW"
+
+# ==========================================
+# METRICS & KPIS
+# ==========================================
+
+success_metrics:
+  user_acquisition:
+    target: "1000 users/month"
+    current: "0"
+  
+  user_retention:
+    day_1: "80%"
+    day_7: "40%"
+    day_30: "25%"
+  
+  monetization:
+    conversion_rate: "5%"
+    arpu: "R$ 15"
+    ltv: "R$ 180"
+
+# ==========================================
+# NOTES & DECISIONS LOG
+# ==========================================
+
+decisions_log:
+  - date: "2025-08-31"
+    decision: "Personas are architectural, not just themes"
+    reasoning: "Deeper engagement through personalized experiences"
+    impact: "HIGH"
+  
+  - date: "2025-08-31"
+    decision: "Gamification is core, not add-on"
+    reasoning: "Differentiator in market"
+    impact: "HIGH"

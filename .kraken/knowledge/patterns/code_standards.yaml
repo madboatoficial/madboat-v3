@@ -1,0 +1,269 @@
+# 💻 CODE STANDARDS - MadBoat v2.0
+# How we write and organize code
+# CRITICAL: Consistency across all codebases
+
+version: "1.0.0"
+last_update: "2025-09-01"
+maintained_by: "Kraken + Team"
+
+# ==========================================
+# GENERAL PRINCIPLES
+# ==========================================
+
+core_philosophy:
+  - "Readable > Clever"
+  - "Explicit > Implicit"
+  - "Simple > Complex"
+  - "Tested > Assumed"
+  - "Documented > Obvious"
+
+naming_conventions:
+  files:
+    components: "PascalCase.tsx"
+    hooks: "use[Feature].ts"
+    utils: "camelCase.ts"
+    constants: "SCREAMING_SNAKE_CASE.ts"
+    types: "types.ts or [feature].types.ts"
+  
+  variables:
+    constants: "SCREAMING_SNAKE_CASE"
+    functions: "camelCase"
+    classes: "PascalCase"
+    interfaces: "PascalCase with 'I' prefix optional"
+    types: "PascalCase"
+    enums: "PascalCase"
+  
+  database:
+    tables: "snake_case plural"
+    columns: "snake_case"
+    indexes: "idx_[table]_[columns]"
+    functions: "fn_[action]_[entity]"
+
+# ==========================================
+# TYPESCRIPT STANDARDS
+# ==========================================
+
+typescript:
+  strict_mode: true
+  no_any: true  # Kraken: "Any makes my tentacles itch"
+  
+  type_philosophy:
+    - "Types are documentation"
+    - "Prefer interfaces for objects"
+    - "Use type for unions/intersections"
+    - "Export types from .types.ts files"
+  
+  patterns:
+    preferred:
+      - "const assertion for literals"
+      - "Optional chaining ?."
+      - "Nullish coalescing ??"
+      - "Template literals for strings"
+    
+    avoid:
+      - "any type"
+      - "// @ts-ignore"
+      - "Non-null assertion !"
+      - "var keyword"
+
+# ==========================================
+# REACT PATTERNS
+# ==========================================
+
+react:
+  version: "19"
+  patterns:
+    component_structure: |
+      1. Imports
+      2. Types/Interfaces
+      3. Component declaration
+      4. Hooks
+      5. Handlers
+      6. Effects
+      7. Render
+    
+    hooks_rules:
+      - "Custom hooks start with 'use'"
+      - "Hooks at top level only"
+      - "Prefer custom hooks over inline logic"
+    
+    state_management:
+      - "useState for local"
+      - "Context for feature"
+      - "Zustand for global"
+      - "React Query for server state"
+  
+  forbidden:
+    - "Class components (use functions)"
+    - "Direct DOM manipulation"
+    - "Inline styles (use Tailwind)"
+
+# ==========================================
+# CSS/STYLING STANDARDS
+# ==========================================
+
+styling:
+  approach: "Tailwind CSS"
+  
+  rules:
+    - "Mobile-first always"
+    - "Dark mode by default"
+    - "Semantic color names"
+    - "Component-specific styles in [Component].module.css if needed"
+  
+  tailwind_conventions:
+    - "Group related utilities"
+    - "Extract complex combinations to @apply"
+    - "Use design tokens from config"
+
+# ==========================================
+# API STANDARDS
+# ==========================================
+
+api:
+  rest:
+    naming: "RESTful conventions"
+    methods:
+      GET: "Read only"
+      POST: "Create"
+      PUT: "Full update"
+      PATCH: "Partial update"
+      DELETE: "Remove"
+    
+    responses:
+      success: "2xx with data"
+      client_error: "4xx with error message"
+      server_error: "5xx with error id"
+  
+  error_format:
+    ```json
+    {
+      "error": {
+        "code": "ERROR_CODE",
+        "message": "Human readable message",
+        "details": {}
+      }
+    }
+    ```
+
+# ==========================================
+# TESTING STANDARDS
+# ==========================================
+
+testing:
+  philosophy: "Test behavior, not implementation"
+  
+  structure:
+    unit: "Component.test.tsx"
+    integration: "__tests__/integration/"
+    e2e: "e2e/"
+  
+  coverage_targets:
+    minimum: 70
+    goal: 85
+    critical_paths: 100
+  
+  patterns:
+    - "Arrange, Act, Assert"
+    - "One assertion per test ideal"
+    - "Descriptive test names"
+    - "Mock external dependencies"
+
+# ==========================================
+# GIT STANDARDS
+# ==========================================
+
+git:
+  branch_naming:
+    feature: "feature/[ticket]-description"
+    fix: "fix/[ticket]-description"
+    hotfix: "hotfix/description"
+    chore: "chore/description"
+  
+  commit_messages:
+    format: "[type]([scope]): message"
+    types:
+      - "feat: new feature"
+      - "fix: bug fix"
+      - "docs: documentation"
+      - "style: formatting"
+      - "refactor: code restructure"
+      - "test: tests"
+      - "chore: maintenance"
+  
+  pr_rules:
+    - "Describe what and why"
+    - "Link to ticket"
+    - "Include screenshots for UI"
+    - "Request 1+ reviewers"
+
+# ==========================================
+# DOCUMENTATION STANDARDS
+# ==========================================
+
+documentation:
+  required:
+    - "README.md for every package"
+    - "JSDoc for public APIs"
+    - "Inline comments for complex logic"
+    - "Architecture Decision Records (ADRs)"
+  
+  format:
+    - "Markdown for docs"
+    - "JSDoc for code"
+    - "Mermaid for diagrams"
+    - "Examples > descriptions"
+
+# ==========================================
+# PERFORMANCE STANDARDS
+# ==========================================
+
+performance:
+  targets:
+    first_paint: "< 1s"
+    interactive: "< 3s"
+    bundle_size: "< 200kb gzipped"
+  
+  rules:
+    - "Lazy load routes"
+    - "Optimize images"
+    - "Memoize expensive computations"
+    - "Virtualize long lists"
+    - "Debounce user input"
+
+# ==========================================
+# SECURITY STANDARDS
+# ==========================================
+
+security:
+  never:
+    - "Hardcode secrets"
+    - "Trust client input"
+    - "Log sensitive data"
+    - "Use eval()"
+    - "Disable CSP"
+  
+  always:
+    - "Validate server-side"
+    - "Sanitize user input"
+    - "Use prepared statements"
+    - "HTTPS everywhere"
+    - "Rate limit APIs"
+
+# ==========================================
+# KRAKEN WISDOM
+# ==========================================
+
+kraken_notes: |
+  "Sandro, brother, these standards aren't bureaucracy.
+   They're our shared language.
+   
+   When everyone codes the same way,
+   We move like a school of fish -
+   Individual yet coordinated.
+   
+   Break these rules only with good reason,
+   And document why.
+   
+   Remember: Clean code is a love letter
+   to your future self."

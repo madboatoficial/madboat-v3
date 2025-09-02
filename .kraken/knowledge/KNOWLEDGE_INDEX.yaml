@@ -1,0 +1,207 @@
+# 🧠 MADBOAT KNOWLEDGE BASE INDEX
+# Sistema de Conhecimento Vivo - Atualizado Continuamente
+# Este é o índice mestre que referencia todos os conhecimentos
+
+version: "1.0.0"
+last_update: "2025-08-31"
+knowledge_domains:
+  - business_rules
+  - technical_patterns
+  - database_schemas
+  - security_policies
+  - performance_metrics
+  - user_experience
+  - api_contracts
+  - deployment_configs
+
+# ==========================================
+# 1. BUSINESS RULES (Regras de Negócio)
+# ==========================================
+business_rules:
+  description: "Regras que definem COMO o sistema deve se comportar"
+  critical_level: "MAXIMUM"
+  files:
+    - "rules/business_rules.yaml"
+    - "rules/personas_logic.yaml"
+    - "rules/gamification_rules.yaml"
+  
+  core_principles:
+    - "Três mundos: A.L.M.A, Vórtice, Odisseia"
+    - "Personas definem experiência, não apenas visual"
+    - "Gamificação é core, não feature"
+    - "Todo usuário tem jornada única"
+
+# ==========================================
+# 2. TECHNICAL PATTERNS (Padrões Técnicos)
+# ==========================================
+technical_patterns:
+  description: "Como escrevemos e organizamos código"
+  critical_level: "HIGH"
+  files:
+    - "patterns/code_standards.yaml"
+    - "patterns/component_patterns.yaml"
+    - "patterns/api_patterns.yaml"
+  
+  golden_rules:
+    - pattern: "Component Structure"
+      rule: "Sempre: Component → Hook → Service → Repository"
+      why: "Separação clara de responsabilidades"
+    
+    - pattern: "Error Handling"
+      rule: "Nunca silent fail, sempre log + user feedback"
+      why: "Debugging em produção impossível sem logs"
+    
+    - pattern: "State Management"
+      rule: "Local state > Context > Global state"
+      why: "Simplicidade primeiro, complexidade quando necessário"
+
+# ==========================================
+# 3. DATABASE SCHEMAS (Estruturas de Dados)
+# ==========================================
+database_schemas:
+  description: "Como dados são estruturados e relacionados"
+  critical_level: "MAXIMUM"
+  files:
+    - "schemas/tables.sql"
+    - "schemas/functions.sql"
+    - "schemas/rls_policies.sql"
+    - "schemas/migrations_log.yaml"
+  
+  design_principles:
+    - "UUID para todas primary keys"
+    - "Soft delete sempre (deleted_at)"
+    - "Audit trails obrigatórios"
+    - "RLS (Row Level Security) desde o início"
+    - "Indexes baseados em queries reais"
+
+# ==========================================
+# 4. SECURITY POLICIES (Políticas de Segurança)
+# ==========================================
+security_policies:
+  description: "Regras inegociáveis de segurança"
+  critical_level: "MAXIMUM"
+  files:
+    - "security/auth_rules.yaml"
+    - "security/data_protection.yaml"
+    - "security/api_security.yaml"
+  
+  non_negotiables:
+    - "Nunca trust client data"
+    - "Always validate server-side"
+    - "Rate limiting em todos endpoints"
+    - "Encrypt PII at rest"
+    - "2FA para admins obrigatório"
+    - "Logs de acesso por 90 dias"
+
+# ==========================================
+# 5. PERFORMANCE METRICS (Métricas de Performance)
+# ==========================================
+performance_metrics:
+  description: "Targets de performance que DEVEMOS atingir"
+  critical_level: "HIGH"
+  files:
+    - "metrics/performance_targets.yaml"
+    - "metrics/scalability_plan.yaml"
+  
+  sla_targets:
+    - metric: "Page Load Time"
+      target: "< 3s no 3G"
+      current: "TBD"
+    
+    - metric: "API Response Time"
+      target: "< 200ms p95"
+      current: "TBD"
+    
+    - metric: "Concurrent Users"
+      target: "10,000 simultâneos"
+      current: "TBD"
+
+# ==========================================
+# 6. USER EXPERIENCE (Experiência do Usuário)
+# ==========================================
+user_experience:
+  description: "Princípios de UX/UI inegociáveis"
+  critical_level: "HIGH"
+  files:
+    - "ux/design_system.yaml"
+    - "ux/accessibility_standards.yaml"
+    - "ux/mobile_first_rules.yaml"
+  
+  core_values:
+    - "Mobile-first sempre"
+    - "Dark mode nativo"
+    - "Accessibility AA minimum"
+    - "Feedback instantâneo"
+    - "Progressive disclosure"
+    - "Skeleton screens > spinners"
+
+# ==========================================
+# 7. API CONTRACTS (Contratos de API)
+# ==========================================
+api_contracts:
+  description: "Contratos entre frontend/backend/mobile"
+  critical_level: "HIGH"
+  files:
+    - "api/rest_standards.yaml"
+    - "api/graphql_schema.yaml"
+    - "api/websocket_events.yaml"
+  
+  standards:
+    - "RESTful naming always"
+    - "Versioning via headers"
+    - "ISO 8601 for dates"
+    - "UTF-8 everywhere"
+    - "Pagination mandatory for lists"
+
+# ==========================================
+# 8. DEPLOYMENT CONFIGS (Configurações de Deploy)
+# ==========================================
+deployment_configs:
+  description: "Como e onde deployamos"
+  critical_level: "MEDIUM"
+  files:
+    - "deploy/environments.yaml"
+    - "deploy/ci_cd_pipeline.yaml"
+    - "deploy/rollback_procedures.yaml"
+  
+  environments:
+    - name: "development"
+      url: "localhost:3000"
+      database: "supabase-dev"
+    
+    - name: "staging"
+      url: "staging.madboat.com"
+      database: "supabase-staging"
+    
+    - name: "production"
+      url: "madboat.com"
+      database: "supabase-prod"
+
+# ==========================================
+# KNOWLEDGE EVOLUTION TRACKING
+# ==========================================
+evolution:
+  total_rules: 0
+  last_major_update: "2025-08-31"
+  knowledge_growth_rate: "0 rules/day"
+  
+  milestones:
+    - date: "2025-08-31"
+      event: "Knowledge Base System Created"
+      impact: "Foundation for scalable knowledge"
+
+# ==========================================
+# KRAKEN LEARNING MATRIX
+# ==========================================
+kraken_intelligence:
+  learned_patterns: []
+  avoided_mistakes: []
+  optimization_suggestions: []
+  architectural_insights: []
+
+# META
+meta:
+  purpose: "Single source of truth for all MadBoat knowledge"
+  usage: "Every decision must reference this knowledge base"
+  update_frequency: "Real-time as we build"
+  accessibility: "All team members + Kraken AI"

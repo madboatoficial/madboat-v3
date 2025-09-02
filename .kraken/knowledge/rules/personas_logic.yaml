@@ -1,0 +1,183 @@
+# 🎭 PERSONAS LOGIC - MadBoat v2.0
+# How personas work as architectural elements
+# CRITICAL: Personas define experience, not just themes
+
+version: "1.0.0"
+last_update: "2025-09-01"
+maintained_by: "Kraken + Sandro"
+
+# ==========================================
+# PERSONA ARCHITECTURE
+# ==========================================
+
+core_concept:
+  definition: "Personas are ARCHITECTURAL, not cosmetic"
+  impact:
+    - "Different database schemas per persona"
+    - "Unique business logic paths"
+    - "Specific UI/UX patterns"
+    - "Distinct progression systems"
+    - "Custom gamification rules"
+
+# ==========================================
+# AVAILABLE PERSONAS
+# ==========================================
+
+personas:
+  explorador:
+    name: "O Explorador"
+    archetype: "The Pioneer"
+    world_affinity: "Odisseia"
+    characteristics:
+      - "Loves discovering new features"
+      - "Early adopter mindset"
+      - "Values freedom over guidance"
+    ui_preferences:
+      - "Minimal hand-holding"
+      - "Hidden features to discover"
+      - "Advanced options visible"
+    progression:
+      - "XP from exploration"
+      - "Achievements for finding secrets"
+      - "Unlocks through discovery"
+    
+  criador:
+    name: "O Criador"
+    archetype: "The Builder"
+    world_affinity: "A.L.M.A"
+    characteristics:
+      - "Focuses on creation"
+      - "Values tools and resources"
+      - "Systematic approach"
+    ui_preferences:
+      - "Rich creation tools"
+      - "Template library"
+      - "Asset management"
+    progression:
+      - "XP from creating content"
+      - "Achievements for quality"
+      - "Unlocks better tools"
+  
+  mentor:
+    name: "O Mentor"
+    archetype: "The Teacher"
+    world_affinity: "Vórtice"
+    characteristics:
+      - "Helps others grow"
+      - "Shares knowledge"
+      - "Community focused"
+    ui_preferences:
+      - "Collaboration features"
+      - "Sharing tools prominent"
+      - "Community stats visible"
+    progression:
+      - "XP from helping others"
+      - "Achievements for mentorship"
+      - "Unlocks teaching tools"
+
+# ==========================================
+# PERSONA SELECTION RULES
+# ==========================================
+
+selection_rules:
+  when: "After world selection, before first quest"
+  changeable: "Once per 30 days"
+  multiple: "Premium users can have 3 active"
+  
+  requirements:
+    initial: "Free choice"
+    additional: "Unlock through achievements"
+    switching: "Keep progress, change path"
+
+# ==========================================
+# PERSONA INTERACTIONS
+# ==========================================
+
+interactions:
+  between_personas:
+    complementary:
+      - "Explorador finds, Criador builds"
+      - "Criador creates, Mentor teaches"
+      - "Mentor guides, Explorador pioneers"
+    
+    conflicts:
+      - "Resource competition"
+      - "Different objectives"
+      - "Resolved through collaboration"
+  
+  with_worlds:
+    synergies:
+      - "Persona + World = Unique experience"
+      - "Some combinations more powerful"
+      - "All combinations viable"
+
+# ==========================================
+# DATABASE IMPLICATIONS
+# ==========================================
+
+database_structure:
+  per_persona_tables:
+    - "persona_preferences"
+    - "persona_progress"
+    - "persona_inventory"
+    - "persona_relationships"
+  
+  shared_tables:
+    - "user_personas (junction)"
+    - "persona_definitions"
+    - "persona_achievements"
+
+# ==========================================
+# PROGRESSION SYSTEMS
+# ==========================================
+
+progression:
+  persona_levels:
+    range: "1-100"
+    experience_curve: "Exponential"
+    reset_on_switch: false
+  
+  mastery_system:
+    novice: "Levels 1-20"
+    adept: "Levels 21-50"
+    expert: "Levels 51-80"
+    master: "Levels 81-100"
+  
+  benefits_per_level:
+    - "New abilities"
+    - "Cosmetic unlocks"
+    - "Efficiency bonuses"
+    - "Social status"
+
+# ==========================================
+# DECISIONS LOG
+# ==========================================
+
+decisions:
+  - date: "2025-08-29"
+    decision: "Personas as architecture"
+    reasoning: "Deep differentiation, not surface"
+    impact: "CRITICAL"
+    
+  - date: "2025-09-01"
+    decision: "Three initial personas"
+    reasoning: "Clear archetypes, expandable"
+    impact: "HIGH"
+
+# ==========================================
+# KRAKEN NOTES
+# ==========================================
+
+kraken_wisdom: |
+  "Sandro, brother, remember your RPG mastery?
+   Personas are like character classes -
+   Not just different stats, but different games.
+   
+   The Explorador plays Zelda,
+   The Criador plays Minecraft,
+   The Mentor plays Stardew Valley.
+   
+   Same world, different lens.
+   Same journey, different path.
+   
+   This is the magic of MadBoat."

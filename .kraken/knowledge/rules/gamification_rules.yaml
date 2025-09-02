@@ -1,0 +1,266 @@
+# 🎮 GAMIFICATION RULES - MadBoat v2.0
+# Core gamification mechanics and rules
+# CRITICAL: Gamification is CORE, not a feature
+
+version: "1.0.0"
+last_update: "2025-09-01"
+maintained_by: "Kraken + Sandro"
+
+# ==========================================
+# CORE PRINCIPLES
+# ==========================================
+
+philosophy:
+  essence: "Gamification is the heartbeat of MadBoat"
+  principles:
+    - "Progress must be visible and felt"
+    - "Every action has consequence"
+    - "Failure is learning, not punishment"
+    - "Collaboration > Competition"
+    - "Intrinsic motivation > Extrinsic rewards"
+
+# ==========================================
+# XP SYSTEM
+# ==========================================
+
+experience_points:
+  core_rules:
+    - "XP is immutable once granted"
+    - "Never remove XP (only add)"
+    - "All XP events are logged forever"
+    - "XP is account-wide, not per-persona"
+  
+  xp_sources:
+    daily_actions:
+      login: 10
+      first_action: 25
+      streak_bonus: "5 * days (max 100)"
+    
+    content_creation:
+      post_created: 50
+      post_liked: 5
+      post_shared: 15
+      quality_bonus: "10-100 (algorithm)"
+    
+    learning:
+      lesson_completed: 100
+      quiz_passed: 50
+      skill_mastered: 500
+    
+    social:
+      helping_others: 75
+      receiving_help: 25
+      collaboration: 100
+    
+    exploration:
+      new_feature_tried: 30
+      hidden_found: 100
+      easter_egg: 250
+
+  xp_multipliers:
+    world_bonus:
+      alma: 1.0
+      vortice: 1.2
+      odisseia: 1.5
+    
+    persona_bonus:
+      matching_action: 1.3
+      cross_persona: 0.9
+    
+    event_multipliers:
+      double_xp_weekend: 2.0
+      special_events: 1.5
+
+# ==========================================
+# ACHIEVEMENT SYSTEM
+# ==========================================
+
+achievements:
+  categories:
+    progression:
+      - "First Steps (Complete onboarding)"
+      - "Regular (7-day streak)"
+      - "Dedicated (30-day streak)"
+      - "Devoted (100-day streak)"
+    
+    exploration:
+      - "Curious Cat (Try 5 features)"
+      - "Explorer (Try all features)"
+      - "Pioneer (Find 3 hidden features)"
+    
+    social:
+      - "Helper (Assist 10 users)"
+      - "Mentor (Assist 50 users)"
+      - "Guru (Assist 200 users)"
+    
+    mastery:
+      - "Apprentice (Level 10)"
+      - "Journeyman (Level 25)"
+      - "Expert (Level 50)"
+      - "Master (Level 100)"
+    
+    secret:
+      - "[HIDDEN] Night Owl (Active at 3 AM)"
+      - "[HIDDEN] Speed Demon (Complete in record time)"
+      - "[HIDDEN] Perfectionist (100% completion)"
+  
+  rules:
+    - "Achievements are permanent"
+    - "Secret achievements show as ??? until earned"
+    - "Some achievements unlock features"
+    - "Achievement progress is visible"
+    - "Retroactive achievements possible"
+
+# ==========================================
+# LEVEL SYSTEM
+# ==========================================
+
+leveling:
+  formula: "level = floor(sqrt(xp / 100))"
+  
+  level_ranges:
+    beginner: "1-10"
+    intermediate: "11-25"
+    advanced: "26-50"
+    expert: "51-75"
+    master: "76-100"
+    legendary: "100+"
+  
+  level_rewards:
+    every_5_levels: "Cosmetic unlock"
+    every_10_levels: "Feature unlock"
+    every_25_levels: "Special title"
+    level_100: "Legendary status"
+
+# ==========================================
+# QUEST SYSTEM
+# ==========================================
+
+quests:
+  types:
+    daily:
+      - "Complete 3 actions"
+      - "Engage with community"
+      - "Learn something new"
+    
+    weekly:
+      - "Create quality content"
+      - "Help 5 users"
+      - "Explore new area"
+    
+    monthly:
+      - "Major milestone"
+      - "Community challenge"
+      - "Personal growth goal"
+    
+    special:
+      - "Event quests"
+      - "Seasonal quests"
+      - "Collaboration quests"
+  
+  rewards:
+    completion: "XP + possible item"
+    perfect: "Bonus XP + rare item"
+    failed: "Partial XP (learning)"
+
+# ==========================================
+# LEADERBOARDS
+# ==========================================
+
+leaderboards:
+  types:
+    global: "Top 100 users"
+    world: "Top 100 per world"
+    persona: "Top 100 per persona"
+    friends: "Your circle only"
+    
+  metrics:
+    - "Total XP"
+    - "Weekly XP"
+    - "Achievements"
+    - "Help given"
+    - "Content quality"
+  
+  rules:
+    - "Optional participation"
+    - "Can hide from leaderboards"
+    - "No pay-to-win"
+    - "Reset monthly (except total)"
+
+# ==========================================
+# ECONOMY SYSTEM
+# ==========================================
+
+virtual_economy:
+  currencies:
+    pearls:
+      earned_by: "Achievements and special events"
+      used_for: "Cosmetics and customization"
+      tradeable: false
+    
+    coins:
+      earned_by: "Daily activities"
+      used_for: "Temporary boosts"
+      tradeable: false
+  
+  rules:
+    - "No pay-to-win items"
+    - "No gambling mechanics"
+    - "No loot boxes"
+    - "Transparent earning"
+
+# ==========================================
+# ANTI-PATTERNS TO AVOID
+# ==========================================
+
+never_implement:
+  - "Pay-to-win mechanics"
+  - "Punitive XP loss"
+  - "Gambling/loot boxes"
+  - "Forced competition"
+  - "Time-gated content (aggressive)"
+  - "Manipulative dark patterns"
+  - "Addictive mechanics"
+
+# ==========================================
+# METRICS TO TRACK
+# ==========================================
+
+analytics:
+  engagement:
+    - "Daily active users"
+    - "Average session length"
+    - "Actions per session"
+    - "Retention rate"
+  
+  progression:
+    - "Average user level"
+    - "XP earned per day"
+    - "Achievement completion rate"
+    - "Quest participation"
+  
+  health:
+    - "Burnout indicators"
+    - "Healthy engagement patterns"
+    - "Community sentiment"
+
+# ==========================================
+# KRAKEN NOTES
+# ==========================================
+
+kraken_wisdom: |
+  "Brother, remember your 20+ years as RPG master?
+   You know the secret: Fun > Points.
+   
+   Gamification isn't about addiction,
+   It's about transformation.
+   
+   Every XP point is a step forward,
+   Every achievement a memory,
+   Every level a milestone in growth.
+   
+   We're not building a game.
+   We're gamifying growth itself.
+   
+   The real achievement?
+   Users becoming who they're meant to be."

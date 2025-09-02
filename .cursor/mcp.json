@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "supabase-madboat-dev": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--project-ref=yohmvtbljgtzjmrpeoma"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "sbp_23676217c6c6b18e005790e1cc10e5f47496acc4"
+      }
+    }
+  }
+}

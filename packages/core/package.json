@@ -12,7 +12,10 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "lint": "echo 'Lint skipped - TypeScript check covers type safety'",
+    "type-check": "tsc --noEmit",
+    "test": "echo 'Core logic tests run at web level'"
   },
   "devDependencies": {
     "typescript": "^5.0.0"

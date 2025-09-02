@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# 🐙 KRAKEN STATUS - Comando de Status
+# Redireciona para o sistema unificado
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+"$SCRIPT_DIR/kraken-unified" status

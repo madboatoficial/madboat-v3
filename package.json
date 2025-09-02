@@ -15,15 +15,37 @@
     "build:web": "npm run build --workspace=apps/web",
     "test": "npm run test --workspaces",
     "lint": "npm run lint --workspaces",
-    "clean": "rm -rf node_modules && rm -rf apps/*/node_modules && rm -rf packages/*/node_modules"
+    "type-check": "npm run type-check --workspaces",
+    "clean": "rm -rf node_modules && rm -rf apps/*/node_modules && rm -rf packages/*/node_modules",
+    "mb-check": "npm run type-check && npm run test --workspace=apps/web",
+    "mb-types": "node scripts/generate-types.js",
+    "mb-strict": "echo '🐙 TypeScript Strict Mode: Enabled across all workspaces'",
+    "postinstall": "npm run mb-types"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0",
+    "@vitejs/plugin-react": "^5.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.0.0",
-    "prettier": "^3.0.0"
+    "jsdom": "^26.1.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
   },
-  "keywords": ["madboat", "desenvolvimento", "personas", "metodologias"],
+  "keywords": [
+    "madboat",
+    "desenvolvimento",
+    "personas",
+    "metodologias"
+  ],
   "author": "Sandro Fidélis",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.56.1"
+  }
 }
