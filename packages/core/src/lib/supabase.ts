@@ -15,7 +15,10 @@ export const supabase = createClient(supabaseUrl, supabaseKey, {
   }
 })
 
-export type Database = {
+// Import the complete database types
+export type { Database } from '../types/database'
+
+export type LegacyDatabase = {
   public: {
     Tables: {
       profiles: {
