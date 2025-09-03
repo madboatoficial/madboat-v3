@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# 🐙 KRAKEN CONTEXT SAVER
+# Automatically saves and appends context to main file
+
+DATE=$(date +"%Y-%m-%d")
+TIME=$(date +"%H:%M:%S")
+CONTEXT_DIR="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Cursor/Projetos/MadBoat-v2/.kraken"
+MAIN_CONTEXT="$CONTEXT_DIR/context.yaml"
+BACKUP_DIR="$CONTEXT_DIR/backups"
+
+# Create backup first
+echo "🐙 Creating backup..."
+cp "$MAIN_CONTEXT" "$BACKUP_DIR/context_$(date +%Y%m%d_%H%M%S).yaml"
+
+# Function to add session
+add_session() {
+    cat >> "$MAIN_CONTEXT" << EOF
+
+# ==============================
+# SESSION $DATE $TIME
+# ==============================
+session_$(date +%Y%m%d_%H%M%S):
+  date: "$DATE"
+  time: "$TIME"
+  accomplishments:
+    - "Add your accomplishments here"
+  notes: "Session context saved by kraken-save"
+EOF
+    echo "✅ Context saved to main file!"
+}
+
+# If argument provided, append it
+if [ ! -z "$1" ]; then
+    echo "📝 Appending provided file..."
+    cat "$1" >> "$MAIN_CONTEXT"
+    echo "✅ File $1 appended to context.yaml"
+else
+    add_session
+fi
+
+echo "🐙 Context saved! Total size: $(wc -l < "$MAIN_CONTEXT") lines"
