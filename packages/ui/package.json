@@ -12,10 +12,11 @@
     "test": "echo 'UI tests run at web level'"
   },
   "dependencies": {
-    "react": "^19.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
-    "lucide-react": "^0.292.0"
+    "lucide-react": "^0.292.0",
+    "motion": "^12.23.12",
+    "react": "^19.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

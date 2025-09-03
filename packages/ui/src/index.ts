@@ -36,6 +36,12 @@ export { ExecutiveHUD } from './components/ExecutiveHUD'
 export { ExecutiveHUDOptimistic } from './components/ExecutiveHUDOptimistic'
 export { ExecutiveHUDOptimisticActions } from './components/ExecutiveHUDOptimisticActions'
 
+// Gamification System
+export { ChallengesPage } from './components/ChallengesPage'
+export { MissionsPage } from './components/MissionsPage'
+export { AchievementsPage } from './components/AchievementsPage'
+export { LegacyPage } from './components/LegacyPage'
+
 // React 19 Components
 export { ModernLoginFormActions } from './components/ModernLoginFormActions'
 export { HeroLoginPageActions } from './components/HeroLoginPageActions'

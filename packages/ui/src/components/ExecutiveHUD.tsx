@@ -66,17 +66,21 @@ interface ExecutiveHUDProps {
   onModuleSelect: (moduleId: string) => void
   onActionTrigger: (moduleId: string, action: string) => void
   onMilestoneView?: (milestone: string) => void
+  onNavigate?: (page: 'dashboard' | 'challenges' | 'missions' | 'achievements' | 'legacy') => void
 }
 
 export function ExecutiveHUD({
   userName,
   onModuleSelect,
   onActionTrigger,
-  onMilestoneView
+  onMilestoneView,
+  onNavigate
 }: ExecutiveHUDProps) {
   
   const [activeModule, setActiveModule] = useState<string>('alma')
   const [showBlockedMessage, setShowBlockedMessage] = useState<boolean>(false)
+  
+
   
 
   const modules: Module[] = [
@@ -144,7 +148,7 @@ export function ExecutiveHUD({
 
   return (
     <div className="h-screen bg-zinc-950 text-white flex flex-col overflow-hidden relative">
-      {/* Subtle background effect matching login page */}
+      {/* Subtle background effect matching original */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-800/5 rounded-full blur-3xl" />
       </div>
@@ -159,17 +163,57 @@ export function ExecutiveHUD({
         </div>
       </div>
 
-      {/* TOP-RIGHT CORNER: User & Quick Actions (Yellow Zone) */}
-      <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
-        <button className="p-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-lg hover:border-zinc-600 transition-colors">
-          <Bell size={16} className="text-zinc-400" />
-        </button>
-        <button className="p-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-lg hover:border-zinc-600 transition-colors">
-          <Settings size={16} className="text-zinc-400" />
-        </button>
-        <div className="bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-lg px-3 py-1.5">
-          <span className="text-xs text-zinc-400">{userName}</span>
+      {/* TOP-RIGHT CORNER: User Profile in Header */}
+      <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
+        {/* Gamification Navigation - Desafios, Missões, Conquistas, Legado */}
+        <div className="flex items-center gap-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-full px-4 py-2">
+          <button 
+            onClick={() => onNavigate?.('challenges')}
+            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
+          >
+            Desafios
+          </button>
+          <div className="w-px h-4 bg-zinc-800" />
+          <button 
+            onClick={() => onNavigate?.('missions')}
+            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
+          >
+            Missões
+          </button>
+          <div className="w-px h-4 bg-zinc-800" />
+          <button 
+            onClick={() => onNavigate?.('achievements')}
+            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
+          >
+            Conquistas
+          </button>
+          <div className="w-px h-4 bg-zinc-800" />
+          <button 
+            onClick={() => onNavigate?.('legacy')}
+            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
+          >
+            Legado
+          </button>
         </div>
+        
+        {/* User Profile Circle */}
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-10 rounded-full border border-zinc-700 bg-zinc-800 flex items-center justify-center relative overflow-hidden">
+            <span className="text-xs font-medium text-zinc-300">
+              {userName.charAt(0).toUpperCase()}
+            </span>
+            <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-green-400 rounded-full border border-zinc-950" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs text-zinc-300 font-light">{userName}</span>
+            <span className="text-[10px] text-zinc-500">Tripulante</span>
+          </div>
+        </div>
+        
+        {/* Quick Actions */}
+        <button className="p-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-lg hover:border-zinc-600 transition-colors">
+          <Settings size={14} className="text-zinc-400" />
+        </button>
       </div>
 
       {/* MADBOAT LOGO: Top Center Header */}
@@ -318,101 +362,53 @@ export function ExecutiveHUD({
         </div>
       </div>
 
-      {/* BOTTOM NAVIGATION: Tripulante Profile Menu (Expanded) */}
+      {/* BOTTOM BAR: Legacy Stats & Quick Info */}
       <div className="absolute bottom-0 left-0 right-0 border-t border-zinc-800/50 bg-zinc-950/95 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-center gap-8">
+        <div className="max-w-6xl mx-auto px-6 py-3">
+          <div className="flex items-center justify-between">
             
-            {/* Menu Items Left */}
-            <div className="flex items-center gap-6">
-              {/* Dashboard */}
-              <button className="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-zinc-900/50 transition-all duration-200">
-                <div className="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center">
-                  <Home size={18} className="text-zinc-500" />
-                </div>
-                <span className="text-xs text-zinc-500 font-light">Dashboard</span>
-              </button>
-
-              {/* Progresso */}
-              <button className="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-zinc-900/50 transition-all duration-200">
-                <div className="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center">
-                  <BarChart3 size={18} className="text-zinc-500" />
-                </div>
-                <span className="text-xs text-zinc-500 font-light">Progresso</span>
-              </button>
+            {/* Left: Session Info */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 text-xs text-zinc-500">
+                <Timer size={12} />
+                <span>Sessão: 24min</span>
+              </div>
+              <div className="w-px h-4 bg-zinc-800" />
+              <div className="text-xs text-zinc-500">
+                <span className="text-zinc-400">Módulo:</span> {active.title}
+              </div>
             </div>
 
-            {/* Profile Circle - Centro Expandido */}
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full border-2 border-zinc-700 bg-zinc-800 flex items-center justify-center mb-2 relative overflow-hidden">
-                {/* Placeholder for user photo - will be replaced with actual image */}
-                <div className="w-16 h-16 rounded-full bg-zinc-600 flex items-center justify-center">
-                  <span className="text-sm font-medium text-zinc-300">
-                    {userName.charAt(0).toUpperCase()}
-                  </span>
-                </div>
-                {/* Online indicator */}
-                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-zinc-950" />
-              </div>
-              <span className="text-sm text-zinc-400 font-light mb-2">{userName}</span>
-              
-              {/* Play Button - Audio História com texto */}
+            {/* Center: Legacy Quick Stats */}
+            <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
-                <button className="p-1.5 border border-green-400 rounded-lg hover:bg-green-400/10 transition-all duration-200 group">
-                  <Play size={12} className="text-green-400 group-hover:scale-110 transition-transform" />
-                </button>
-                <span className="text-xs text-zinc-500 font-light">Minha História</span>
+                <div className="w-2 h-2 bg-yellow-500 rounded-full" />
+                <span className="text-xs text-zinc-400 font-light">3 Desafios Ativos</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-purple-500 rounded-full" />
+                <span className="text-xs text-zinc-400 font-light">1 Missão em Progresso</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full" />
+                <span className="text-xs text-zinc-400 font-light">12 Conquistas</span>
               </div>
             </div>
 
-            {/* Menu Items Right */}
-            <div className="flex items-center gap-6">
-              {/* Calendario */}
-              <button className="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-zinc-900/50 transition-all duration-200">
-                <div className="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center">
-                  <Calendar size={18} className="text-zinc-500" />
-                </div>
-                <span className="text-xs text-zinc-500 font-light">Agenda</span>
-              </button>
-
-              {/* Comunidade */}
-              <button className="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-zinc-900/50 transition-all duration-200">
-                <div className="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center">
-                  <Users size={18} className="text-zinc-500" />
-                </div>
-                <span className="text-xs text-zinc-500 font-light">Comunidade</span>
-              </button>
-
-              {/* Conquistas */}
-              <button className="flex flex-col items-center gap-3 p-4 rounded-lg hover:bg-zinc-900/50 transition-all duration-200">
-                <div className="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center">
-                  <Award size={18} className="text-zinc-500" />
-                </div>
-                <span className="text-xs text-zinc-500 font-light">Conquistas</span>
-              </button>
+            {/* Right: XP & Level */}
+            <div className="flex items-center gap-4">
+              <div className="text-xs text-zinc-500">
+                <span className="text-zinc-400">Level 5</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-zinc-500">
+                <Award size={12} />
+                <span className="text-zinc-400">XP: 1,247</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CORNER DETAILS: Quick Stats (Yellow Zone) */}
-      <div className="absolute bottom-4 left-4 z-30">
-        <div className="bg-zinc-950/60 backdrop-blur-sm border border-zinc-800/50 rounded-lg p-2">
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
-            <Timer size={12} />
-            <span>Sessão: 24min</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-4 right-4 z-30">
-        <div className="bg-zinc-950/60 backdrop-blur-sm border border-zinc-800/50 rounded-lg p-2">
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
-            <Award size={12} />
-            <span>XP: 1,247</span>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

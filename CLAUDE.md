@@ -46,3 +46,29 @@ When working with Claude Code on MadBoat:
 - "Implement React 19 Actions in [component] following MadBoat patterns"
 - "Optimize this code for TypeScript strict mode in the MadBoat ecosystem"
 - "Create tests for [feature] compatible with our React 19 setup"
+
+## 🐙 KRAKEN CONTEXT PROTOCOL
+
+**CRITICAL RULE:** Always save context to `.kraken/context.yaml` (MAIN FILE)
+
+### When to Save Context:
+- After completing major features
+- When Captain requests
+- End of each session
+- Before context window overflow
+
+### How to Save:
+```bash
+# ALWAYS append to main file, never create separate files
+cat >> .kraken/context.yaml << 'EOF'
+session_YYYY_MM_DD_description:
+  accomplishments: [...]
+  decisions: [...]
+  next_steps: [...]
+EOF
+```
+
+### Never:
+- Create separate context files
+- Overwrite the main context.yaml
+- Forget to save after important work
