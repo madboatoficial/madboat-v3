@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect } from 'react'
 // Legacy compatibility with both old and new systems
 import type { UserTier, World } from '../components/ConstellationDashboard'

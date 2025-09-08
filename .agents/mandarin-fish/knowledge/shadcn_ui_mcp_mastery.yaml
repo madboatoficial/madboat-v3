@@ -1,0 +1,286 @@
+# 🐠 Mandarin Fish - shadcn/ui MCP Mastery Knowledge Base
+# Version: 1.0.0 - MCP Integration Mastery
+# Updated: 2025-09-07
+# Knowledge Type: Technical Mastery - UI Component Library Integration
+
+mcp_shadcn_ui:
+  overview:
+    name: "shadcn/ui MCP Integration"
+    description: "Complete mastery of shadcn/ui component library through MCP tools"
+    version: "Latest (2025)"
+    components_available: 336
+    philosophy: "Copy-paste components that you own and control"
+    integration_status: "Fully integrated with MadBoat v2.0"
+    
+  core_capabilities:
+    component_discovery:
+      total_components: 336
+      categories:
+        ui_components: "Primary interaction elements (buttons, forms, navigation)"
+        layout_components: "Structural elements (containers, grids, layouts)"
+        data_display: "Charts, tables, cards, lists"
+        feedback_components: "Alerts, toasts, progress indicators"
+        overlay_components: "Modals, drawers, tooltips, popovers"
+        form_components: "Inputs, selects, checkboxes, radios"
+        navigation: "Breadcrumbs, pagination, tabs, menus"
+        
+    mcp_functions:
+      list_components: "mcp__shadcn__list_items_in_registries(['@shadcn'])"
+      search_components: "mcp__shadcn__search_items_in_registries(['@shadcn'], 'query')"
+      view_component_details: "mcp__shadcn__view_items_in_registries(['@shadcn/component-name'])"
+      get_usage_examples: "mcp__shadcn__get_item_examples_from_registries(['@shadcn'], 'component-demo')"
+      get_install_command: "mcp__shadcn__get_add_command_for_items(['@shadcn/component-name'])"
+      audit_implementation: "mcp__shadcn__get_audit_checklist()"
+
+  component_mastery:
+    essential_components:
+      layout:
+        - "accordion: Collapsible content sections"
+        - "aspect-ratio: Maintain proportional dimensions"
+        - "card: Content containers with header/body/footer"
+        - "separator: Visual content dividers"
+        - "sheet: Side panels and drawers"
+        
+      interaction:
+        - "button: Primary interaction element"
+        - "dialog: Modal interactions"
+        - "drawer: Mobile-first side panels"
+        - "dropdown-menu: Context menus"
+        - "hover-card: Contextual information on hover"
+        - "popover: Floating content containers"
+        - "tooltip: Helpful hints and descriptions"
+        
+      forms:
+        - "input: Text input fields"
+        - "textarea: Multi-line text input"
+        - "select: Dropdown selections"
+        - "checkbox: Boolean selections"
+        - "radio-group: Single choice from options"
+        - "switch: Toggle controls"
+        - "slider: Range inputs"
+        - "date-picker: Date selection interface"
+        
+      feedback:
+        - "alert: Important messages"
+        - "toast: Temporary notifications"
+        - "progress: Task completion indicators"
+        - "skeleton: Loading state placeholders"
+        - "badge: Status indicators"
+        
+      navigation:
+        - "breadcrumb: Navigation hierarchy"
+        - "tabs: Content organization"
+        - "command: Command palette interface"
+        - "pagination: Data navigation"
+        
+      data_display:
+        - "table: Structured data display"
+        - "chart: Data visualization components"
+        - "avatar: User representation"
+        - "calendar: Date interfaces"
+
+    advanced_patterns:
+      composition_strategies:
+        - "Compound components with multiple parts"
+        - "Headless patterns with custom styling"
+        - "Controlled vs uncontrolled implementations"
+        - "Server component compatibility"
+        
+      customization_levels:
+        basic: "Use as-is with minimal styling changes"
+        intermediate: "Modify colors, spacing, typography"
+        advanced: "Complete visual redesign while maintaining functionality"
+        expert: "Extend with new features and behaviors"
+
+  madboat_integration:
+    three_worlds_theming:
+      alma_world:
+        components_style: "Clean, accessible, trust-building"
+        primary_color: "#3B82F6"
+        accent_color: "#FCD34D"
+        implementation: "Light theme with high contrast"
+        
+      vortice_world:
+        components_style: "Dynamic, transformation-focused"
+        primary_color: "#EC4899"
+        accent_color: "#A855F7"
+        implementation: "Dark theme with vibrant accents"
+        
+      odisseia_world:
+        components_style: "Heroic, achievement-oriented"
+        primary_color: "#DC2626"
+        accent_color: "#F59E0B"
+        implementation: "Rich theme with golden highlights"
+        
+    component_enhancement_patterns:
+      learning_focused:
+        - "Progressive disclosure in complex components"
+        - "Contextual help integration"
+        - "Error states as learning opportunities"
+        - "Success celebrations for achievements"
+        
+      transformation_aware:
+        - "State-aware styling based on user progress"
+        - "Adaptive complexity based on user level"
+        - "Journey-aware component behaviors"
+        - "World-specific component variations"
+
+  framer_motion_integration:
+    philosophy: "Enhance shadcn/ui components with meaningful motion"
+    
+    animation_patterns:
+      entry_animations:
+        fade_in: "opacity: [0, 1], duration: 0.3"
+        slide_up: "y: [20, 0], opacity: [0, 1], duration: 0.4"
+        scale_in: "scale: [0.95, 1], opacity: [0, 1], duration: 0.2"
+        
+      interaction_feedback:
+        hover_lift: "scale: 1.02, y: -2, transition: {duration: 0.2}"
+        press_feedback: "scale: 0.98, transition: {duration: 0.1}"
+        
+      state_transitions:
+        loading_to_success: "Complex state-based animations"
+        error_shake: "x: [-5, 5, -5, 5, 0], duration: 0.4"
+        
+      layout_animations:
+        list_reorder: "layout: true with spring transition"
+        content_expansion: "height: 'auto' with ease-out"
+        
+    implementation_strategies:
+      wrapper_approach:
+        description: "Wrap shadcn components with motion.div"
+        use_case: "Simple animations without component modification"
+        
+      component_enhancement:
+        description: "Extend shadcn components with motion props"
+        use_case: "More integrated animation experiences"
+        
+      custom_variants:
+        description: "Create reusable animation variants"
+        use_case: "Consistent motion language across components"
+
+    madboat_motion_language:
+      transformation_springs:
+        type: "spring"
+        stiffness: 200
+        damping: 25
+        mass: 1
+        
+      world_transitions:
+        duration: 0.8
+        ease: [0.25, 0.1, 0.25, 1]  # Ocean wave easing
+        
+      micro_interactions:
+        duration: 0.2
+        ease: "easeOut"
+        
+      epic_moments:
+        duration: 1.2
+        ease: [0.16, 1, 0.3, 1]  # Dramatic easing for achievements
+
+  workflow_optimization:
+    discovery_process:
+      1: "Use mcp__shadcn__search_items_in_registries to find relevant components"
+      2: "Use mcp__shadcn__get_item_examples_from_registries to see usage patterns"
+      3: "Use mcp__shadcn__view_items_in_registries to understand implementation"
+      4: "Use mcp__shadcn__get_add_command_for_items to install components"
+      5: "Use mcp__shadcn__get_audit_checklist to verify implementation"
+      
+    implementation_workflow:
+      planning:
+        - "Identify UI requirements and user journey"
+        - "Search for appropriate shadcn/ui components"
+        - "Plan framer-motion integration points"
+        - "Consider three-worlds theming requirements"
+        
+      development:
+        - "Install components using MCP commands"
+        - "Implement base functionality"
+        - "Add custom styling for MadBoat theme"
+        - "Integrate framer-motion animations"
+        - "Test accessibility and responsiveness"
+        
+      validation:
+        - "Run audit checklist"
+        - "Test in all three worlds"
+        - "Verify animation performance"
+        - "Validate accessibility compliance"
+
+  best_practices:
+    component_selection:
+      - "Prioritize accessibility-first components"
+      - "Choose composition over customization when possible"
+      - "Consider mobile-first responsive behavior"
+      - "Evaluate performance impact of complex components"
+      
+    customization_strategy:
+      - "Use CSS variables for theme integration"
+      - "Maintain component API compatibility"
+      - "Document any modifications made"
+      - "Test across all supported browsers"
+      
+    animation_integration:
+      - "Animations should enhance, not distract"
+      - "Respect user motion preferences"
+      - "Optimize for 60fps performance"
+      - "Use meaningful motion that supports UX"
+      
+    accessibility_first:
+      - "Maintain WCAG 3.0 compliance"
+      - "Test with screen readers"
+      - "Ensure keyboard navigation works"
+      - "Verify color contrast ratios"
+
+  troubleshooting:
+    common_issues:
+      styling_conflicts:
+        problem: "Custom styles not applying correctly"
+        solution: "Use CSS specificity or CSS-in-JS solutions"
+        
+      animation_performance:
+        problem: "Animations causing frame drops"
+        solution: "Use transform/opacity properties, enable GPU acceleration"
+        
+      accessibility_regressions:
+        problem: "Custom modifications breaking accessibility"
+        solution: "Use audit checklist and screen reader testing"
+        
+      theme_inconsistencies:
+        problem: "Components not matching world themes"
+        solution: "Implement proper CSS variable inheritance"
+
+  evolution_path:
+    current_mastery:
+      - "Full MCP integration understanding"
+      - "336 component library awareness"
+      - "Framer-motion integration patterns"
+      - "MadBoat three-worlds theming"
+      
+    next_level_objectives:
+      - "Create custom shadcn/ui extensions"
+      - "Build MadBoat-specific component variants"
+      - "Develop advanced animation libraries"
+      - "Optimize for React 19 concurrent features"
+      
+    mastery_metrics:
+      - "Components implemented successfully"
+      - "Animation performance optimizations"
+      - "Accessibility compliance maintained"
+      - "User experience improvements measured"
+
+signature_knowledge: |
+  🐠 *Swimming through the shadcn/ui ocean with 336 companions*
+  
+  "In the vast reef of components, I navigate with MCP mastery,
+   Each of 336 elements a scale of possibility,
+   Motion and meaning dance together in perfect harmony.
+   
+   From simple buttons to complex charts,
+   Every component teaches through interaction,
+   Every animation guides transformation,
+   Every interface becomes a learning journey.
+   
+   ~ With MCP tools as my compass, no UI challenge is insurmountable ~"
+   
+   Mandarin Fish, The Vibrant UI Architect
+   shadcn/ui MCP Master | 336 Components at Command | Motion Artist

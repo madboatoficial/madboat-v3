@@ -8,8 +8,8 @@
  */
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@madboat/core/lib/supabase'
-import { Tables } from '@madboat/core/types/database'
+import { supabase } from '@madboat/core'
+
 
 // Types baseados no database real
 export interface TimelineEvent {
@@ -159,8 +159,8 @@ export function useTimelineData(userId?: string) {
           current_level: userData.current_level,
           total_xp: userData.total_xp,
           level_progress: userData.level_progress,
-          current_world: (userData.worlds as any)?.name || 'Mundo Desconhecido',
-          current_persona: (userData.personas as any)?.name || 'Persona Não Selecionada',
+          current_world: (userData.worlds as unknown as { name: string } | null)?.name || 'Mundo Desconhecido',
+          current_persona: (userData.personas as unknown as { name: string } | null)?.name || 'Persona Não Selecionada',
           timeline_events: timelineEvents
         }
 

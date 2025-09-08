@@ -1,0 +1,35 @@
+{
+  "name": "@madboat/rlvr",
+  "version": "1.0.0",
+  "description": "Reinforcement Learning from Verifiable Rewards - MadBoat's anti-hallucination system",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "test": "vitest",
+    "verify": "tsx src/cli/verify.ts",
+    "train": "tsx src/cli/train.ts"
+  },
+  "keywords": [
+    "rlvr",
+    "reinforcement-learning",
+    "verifiable-rewards",
+    "anti-hallucination",
+    "madboat"
+  ],
+  "author": "Claude Sonnet 4 + Captain Sandro Fidelis",
+  "license": "MIT",
+  "created": "2025-09-06",
+  "modified": "2025-09-06",
+  "madboat-version": "v2.0",
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}

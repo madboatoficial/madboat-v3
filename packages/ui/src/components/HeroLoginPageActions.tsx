@@ -32,11 +32,20 @@ export function HeroLoginPageActions({
     { error: undefined, success: false }
   )
 
+  // Handle successful auth - let useAuthState handle the redirect
+  React.useEffect(() => {
+    if (state.success) {
+      // Client-side navigation will be handled by useAuthState
+      // when the session state changes
+      console.log('🚀 Auth success, waiting for session update...')
+    }
+  }, [state.success])
+
   return (
-    <div className="min-h-screen bg-zinc-950 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-white flex items-center justify-center p-6">
       {/* Subtle background effect */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-200/30 rounded-full blur-3xl" />
       </div>
       
       <div className="relative z-10 w-full max-w-sm mx-auto space-y-8">
@@ -44,9 +53,9 @@ export function HeroLoginPageActions({
         {/* Logo pequena no topo */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-2xl font-bold text-white tracking-wide">Mad</span>
-            <ShipWheel size={20} className="text-white animate-spin-slow" strokeWidth={2.5} />
-            <span className="text-2xl font-bold text-white tracking-wide">Boat</span>
+            <span className="text-2xl font-bold text-zinc-800 tracking-wide">Mad</span>
+            <ShipWheel size={20} className="text-zinc-800 animate-spin-slow" strokeWidth={2.5} />
+            <span className="text-2xl font-bold text-zinc-800 tracking-wide">Boat</span>
           </div>
         </div>
 
@@ -71,7 +80,7 @@ export function HeroLoginPageActions({
           
           {/* Campo Email */}
           <div className="relative">
-            <div className={`absolute -top-3 left-6 text-sm font-medium transition-all duration-200 text-white opacity-100`}>
+            <div className={`absolute -top-3 left-6 text-sm font-medium transition-all duration-200 text-zinc-600 opacity-100`}>
               {mode === 'login' ? 'seu login' : 'seu email'}
             </div>
             
@@ -80,7 +89,7 @@ export function HeroLoginPageActions({
               name="email"
               onFocus={() => setEmailFocused(true)}
               onBlur={() => setEmailFocused(false)}
-              className="w-full h-14 bg-zinc-900/50 border border-zinc-800/50 rounded-full px-6 text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-600 focus:bg-zinc-900/80 transition-all duration-300 text-center"
+              className="w-full h-14 bg-zinc-100 border border-zinc-300 rounded-full px-6 text-zinc-800 placeholder-zinc-400 focus:outline-none focus:border-zinc-500 focus:bg-white transition-all duration-300 text-center"
               placeholder={emailFocused ? '' : (mode === 'login' ? 'seu login' : 'seu email')}
               required
               disabled={isPending}
@@ -89,7 +98,7 @@ export function HeroLoginPageActions({
 
           {/* Campo Senha */}
           <div className="relative">
-            <div className={`absolute -top-3 left-6 text-sm font-medium transition-all duration-200 text-white opacity-100`}>
+            <div className={`absolute -top-3 left-6 text-sm font-medium transition-all duration-200 text-zinc-600 opacity-100`}>
               sua senha
             </div>
             
@@ -98,7 +107,7 @@ export function HeroLoginPageActions({
               name="password"
               onFocus={() => setPasswordFocused(true)}
               onBlur={() => setPasswordFocused(false)}
-              className="w-full h-14 bg-zinc-900/50 border border-zinc-800/50 rounded-full px-6 text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-600 focus:bg-zinc-900/80 transition-all duration-300 text-center"
+              className="w-full h-14 bg-zinc-100 border border-zinc-300 rounded-full px-6 text-zinc-800 placeholder-zinc-400 focus:outline-none focus:border-zinc-500 focus:bg-white transition-all duration-300 text-center"
               placeholder={passwordFocused ? '' : 'sua senha'}
               required
               disabled={isPending}
@@ -110,10 +119,10 @@ export function HeroLoginPageActions({
             <button
               type="submit"
               disabled={isPending}
-              className="w-full h-14 bg-white text-black font-semibold rounded-full hover:bg-zinc-100 transition-all duration-200 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-14 bg-zinc-800 text-white font-semibold rounded-full hover:bg-zinc-900 transition-all duration-200 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isPending ? (
-                <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               ) : (
                 <>
                   {mode === 'login' ? 'Entrar' : 'Começar'}
@@ -128,7 +137,7 @@ export function HeroLoginPageActions({
             <button
               type="button"
               onClick={() => onModeChange(mode === 'login' ? 'signup' : 'login')}
-              className="text-zinc-400 text-sm hover:text-white transition-colors underline decoration-zinc-600 hover:decoration-white"
+              className="text-zinc-500 text-sm hover:text-zinc-800 transition-colors underline decoration-zinc-400 hover:decoration-zinc-800"
               disabled={isPending}
             >
               {mode === 'login' ? 'criar conta' : 'já tenho conta'}

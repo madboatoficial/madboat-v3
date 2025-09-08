@@ -2,28 +2,227 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 🌊 MadBoat Theme System - Light & Dark Mode */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* Light Mode - Executive Premium Theme */
+  --background: 0 0% 100%;                    /* Pure white backgrounds */
+  --foreground: 222 84% 4.9%;                /* Rich charcoal text - AA+ compliant */
+  
+  --card: 0 0% 100%;                          /* Clean white cards */
+  --card-foreground: 222 84% 4.9%;           /* High contrast text */
+  
+  --popover: 0 0% 100%;                       /* White popover backgrounds */
+  --popover-foreground: 222 84% 4.9%;        /* Dark text for readability */
+  
+  --primary: 217 91% 60%;                     /* MadBoat Ocean Blue - Primary actions */
+  --primary-foreground: 210 40% 98%;         /* Light text on blue - AAA compliant */
+  
+  --secondary: 210 40% 98%;                   /* Subtle light backgrounds */
+  --secondary-foreground: 222 84% 4.9%;      /* Dark text for contrast */
+  
+  --muted: 210 40% 94%;                       /* Light gray for disabled states */
+  --muted-foreground: 215 13% 34%;           /* Medium gray text - AA compliant */
+  
+  --accent: 47 100% 63%;                      /* MadBoat Gold - Accent actions */
+  --accent-foreground: 26 83% 14%;           /* Dark brown on gold - AAA compliant */
+  
+  --destructive: 0 84% 60%;                   /* Clear red for warnings */
+  --destructive-foreground: 210 40% 98%;     /* Light text on red */
+  
+  --border: 214 32% 91%;                      /* Light borders */
+  --input: 214 32% 91%;                       /* Input field borders */
+  --ring: 217 91% 60%;                        /* Focus ring - matches primary */
+  
+  /* Light Mode Semantic Variables */
+  --trust-signal: 142 76% 36%;               /* Professional green for trust */
+  --conversion-cta: 217 91% 60%;             /* Ocean blue for primary CTAs */
+  --premium-accent: 47 100% 63%;             /* Gold for premium features */
+  --executive-text: 215 25% 27%;             /* Professional dark gray */
+  --success-feedback: 142 76% 36%;           /* Success green */
+  --warning-feedback: 38 92% 50%;            /* Warning orange */
+  --error-feedback: 0 84% 60%;               /* Error red */
+  
+  /* Light Mode Background Systems */
+  --hero-gradient: linear-gradient(135deg, hsl(217 91% 95%) 0%, hsl(217 91% 85%) 50%, hsl(217 91% 75%) 100%);
+  --card-gradient: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+  --surface-elevation-1: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --surface-elevation-2: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --surface-elevation-3: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* Legacy RGB Variables for Compatibility */
+  --foreground-rgb: 12, 10, 9;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 248, 250, 252;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Dark Mode - Premium Nautical Theme */
+.dark {
+  --background: 222 84% 4.9%;                 /* Deep sea background */
+  --foreground: 210 40% 98%;                  /* Light text - high contrast */
+  
+  --card: 222 84% 4.9%;                       /* Card backgrounds match main */
+  --card-foreground: 210 40% 98%;             /* Light text on cards */
+  
+  --popover: 222 84% 4.9%;                    /* Popover backgrounds */
+  --popover-foreground: 210 40% 98%;          /* Light popover text */
+  
+  --primary: 217 91% 60%;                     /* MadBoat Blue - consistent across themes */
+  --primary-foreground: 222 84% 4.9%;        /* Dark text on blue buttons */
+  
+  --secondary: 217 32% 17%;                   /* Subtle dark backgrounds */
+  --secondary-foreground: 210 40% 98%;       /* Light text on secondary */
+  
+  --muted: 217 32% 17%;                       /* Muted dark backgrounds */
+  --muted-foreground: 215 20% 65%;           /* Medium light text */
+  
+  --accent: 47 100% 63%;                      /* Gold accent - consistent */
+  --accent-foreground: 26 83% 14%;           /* Dark text on gold */
+  
+  --destructive: 0 62% 30%;                   /* Darker red for dark theme */
+  --destructive-foreground: 210 40% 98%;     /* Light text on red */
+  
+  --border: 217 32% 17%;                      /* Dark borders */
+  --input: 217 32% 17%;                       /* Input field borders */
+  --ring: 217 91% 60%;                        /* Blue focus ring */
+  
+  /* Dark Mode Semantic Variables */
+  --trust-signal: 142 76% 45%;               /* Brighter green for visibility */
+  --conversion-cta: 217 91% 60%;             /* Consistent CTA color */
+  --premium-accent: 47 100% 63%;             /* Bright gold stands out */
+  --executive-text: 210 40% 90%;             /* Professional light text */
+  --success-feedback: 142 76% 45%;           /* Success green */
+  --warning-feedback: 38 92% 60%;            /* Warning orange */
+  --error-feedback: 0 84% 70%;               /* Brighter error red */
+  
+  /* Dark Mode Background Systems */
+  --hero-gradient: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217 32% 17%) 50%, hsl(215 20% 25%) 100%);
+  --card-gradient: linear-gradient(145deg, hsl(222 84% 4.9%) 0%, hsl(217 32% 17%) 100%);
+  --surface-elevation-1: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --surface-elevation-2: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --surface-elevation-3: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  
+  /* Legacy RGB Variables for Dark Mode */
+  --foreground-rgb: 248, 250, 252;
+  --background-start-rgb: 12, 10, 9;
+  --background-end-rgb: 30, 41, 59;
+}
+
+/* 🎨 Base Layer - Theme-aware body styling */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Executive typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground font-display;
+  }
+  
+  /* Professional focus indicators */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* 🧩 Component Layer - Instructional design utilities */
+@layer components {
+  /* Executive CTA Buttons */
+  .btn-executive-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80;
+    @apply px-8 py-4 rounded-xl font-display font-semibold text-body-lg;
+    @apply shadow-light-md hover:shadow-light-lg dark:shadow-dark-md dark:hover:shadow-dark-lg;
+    @apply transition-all duration-300 ease-out;
+    @apply focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+  
+  .btn-executive-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    @apply border border-border hover:border-border/80;
+    @apply px-8 py-4 rounded-xl font-display font-semibold text-body-lg;
+    @apply shadow-light-sm hover:shadow-light-md dark:shadow-dark-sm dark:hover:shadow-dark-md;
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .btn-conversion-cta {
+    @apply bg-brand-ocean-500 text-white hover:bg-brand-ocean-600 active:bg-brand-ocean-700;
+    @apply px-10 py-5 rounded-2xl font-display font-bold text-h3;
+    @apply shadow-glow hover:shadow-light-xl dark:hover:shadow-dark-xl;
+    @apply transition-all duration-300 ease-out transform hover:scale-105;
+    @apply animate-gentle-pulse;
+  }
+  
+  /* Premium Card Variants */
+  .card-executive {
+    @apply bg-card text-card-foreground border border-border rounded-2xl;
+    @apply shadow-light-md dark:shadow-dark-md;
+    @apply p-8;
+  }
+  
+  .card-premium {
+    @apply bg-gradient-to-br from-white to-brand-ocean-50 dark:from-brand-deep-900 dark:to-brand-deep-800;
+    @apply border border-brand-ocean-200 dark:border-brand-deep-700;
+    @apply rounded-3xl shadow-light-lg dark:shadow-dark-lg;
+    @apply p-10;
+  }
+  
+  /* Trust Signal Badges */
+  .trust-signal {
+    @apply inline-flex items-center gap-2 px-4 py-2;
+    @apply bg-emerald-50 dark:bg-emerald-900/20;
+    @apply text-emerald-700 dark:text-emerald-300;
+    @apply rounded-full border border-emerald-200 dark:border-emerald-800;
+    @apply font-medium text-body-sm;
+  }
+  
+  /* Form Inputs with Instructional Design */
+  .input-executive {
+    @apply w-full px-4 py-3 rounded-xl border border-input;
+    @apply bg-background text-foreground placeholder:text-muted-foreground;
+    @apply focus:ring-2 focus:ring-ring focus:border-transparent;
+    @apply transition-all duration-200 ease-out;
+    @apply font-body text-body;
+  }
+  
+  /* Hero Section Backgrounds */
+  .hero-light {
+    @apply bg-gradient-to-br from-brand-ocean-50 via-white to-brand-gold-50;
+  }
+  
+  .hero-dark {
+    @apply bg-gradient-to-br from-brand-deep-950 via-brand-deep-900 to-brand-deep-800;
+  }
+  
+  /* Executive Grid Pattern Background */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  
+  .dark .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  }
+
+  /* Papyrus Background with Dots Pattern */
+  .bg-papyrus-dots {
+    background-color: #f5f0e8;
+    background-image: 
+      radial-gradient(circle at 12px 12px, rgba(139, 111, 78, 0.15) 1px, transparent 1px),
+      radial-gradient(circle at 6px 6px, rgba(139, 111, 78, 0.08) 0.5px, transparent 0.5px);
+    background-size: 24px 24px, 12px 12px;
+  }
 }
 
 /* Animações personalizadas para design instrutivo */

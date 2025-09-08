@@ -8,6 +8,18 @@
 - `mb-build`: Build all workspaces with strict type checking
 - `mb-types`: Generate and sync Supabase types across packages
 
+### RLVR Agent Commands (NEW!)
+- `kraken`: Launch Kraken TypeScript specialist with RLVR auto-activation
+- `.agents/bin/agent poseidon`: Launch Poseidon database specialist
+- `.agents/bin/agent mandarin-fish`: Launch Mandarin Fish UI specialist  
+- `.agents/bin/agent uncle-mcduck`: Launch Uncle McDuck math specialist
+- `.agents/bin/agent ulisses`: Launch Ulisses chronicle/NLP specialist
+- `.agents/bin/agent thaumoctopus`: Launch Thaumoctopus Git master
+- `.agents/bin/agent ostra`: Launch Ostra agent creator (creates new agents with RLVR)
+- `.agents/bin/agent uni`: Launch UNI meta-orchestrator for system coherence
+- `.agents/bin/agent status`: Check RLVR framework status
+- `.agents/bin/agent test`: Test RLVR framework functionality
+
 ### Architecture Commands  
 - `mb-check`: Full system health check (types, tests, lint, build)
 - `mb-personas`: Switch between development personas (Kraken, Navigator, etc.)

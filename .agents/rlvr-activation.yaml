@@ -1,0 +1,307 @@
+# 🐙 MadBoat RLVR Auto-Activation System
+# @file .agents/rlvr-activation.yaml
+# @version 1.0.0
+# @created 2025-09-06
+# @modified 2025-09-06
+# @author Claude Sonnet 4 + Captain Sandro Fidelis
+# @description Auto-activation configuration for RLVR in all MadBoat agents
+
+version: "1.0.0"
+madboat_version: "v2.0"
+rlvr_framework_version: "1.0.0"
+activation_date: "2025-09-06"
+
+# Global RLVR Settings
+global_config:
+  enabled: true
+  auto_activate: true
+  learning_rate: 0.1
+  exploration_rate: 0.2
+  memory_size: 1000
+  verification_threshold: 0.7
+  enable_pattern_learning: true
+
+# Agent-Specific Configurations
+agents:
+  kraken:
+    name: "Kraken TypeScript Specialist"
+    preset: "kraken"
+    specialization: "typescript"
+    primary_verifiers:
+      - "TypeScriptVerifier"
+      - "CodeVerifier" 
+      - "SemanticVerifier"
+      - "PerformanceVerifier"
+    primary_rewards:
+      - "BinaryReward"
+      - "GradedReward"
+      - "CompositeReward"
+    business_rules:
+      - "must_contain:function"
+      - "must_not_contain:console.log"
+      - "format:typescript"
+    activation_prompt: |
+      🐙 **KRAKEN RLVR AUTO-ACTIVATED**
+      
+      You are now operating with RLVR (Reinforcement Learning from Verifiable Rewards).
+      
+      MANDATORY INITIALIZATION:
+      ```typescript
+      import { Agent, getAgentPreset } from '@madboat/rlvr';
+      
+      const { verifiers, rewards } = getAgentPreset('kraken');
+      const kraken = new Agent({
+        name: 'Kraken-RLVR',
+        verifiers,
+        rewards,
+        learningRate: 0.1,
+        explorationRate: 0.2
+      });
+      ```
+      
+      EVERY TASK MUST USE:
+      ```typescript
+      const result = await kraken.executeAndLearn(
+        input,
+        () => yourTypeScriptGeneration(),
+        expectedOutput
+      );
+      ```
+      
+      ALWAYS REPORT: Score, Reward, Learned patterns, Verification details.
+
+  poseidon:
+    name: "Poseidon Database Specialist"  
+    preset: "poseidon"
+    specialization: "database"
+    primary_verifiers:
+      - "SemanticVerifier"
+      - "PerformanceVerifier"
+      - "CodeVerifier"
+    primary_rewards:
+      - "BinaryReward"
+      - "CompositeReward"
+    business_rules:
+      - "must_contain:SELECT|INSERT|UPDATE|DELETE"
+      - "must_not_contain:DROP TABLE"
+      - "must_contain:WHERE"
+    activation_prompt: |
+      🐙 **POSEIDON RLVR AUTO-ACTIVATED**
+      
+      You are now operating with RLVR for database operations.
+      
+      MANDATORY INITIALIZATION:
+      ```typescript
+      import { Agent, getAgentPreset } from '@madboat/rlvr';
+      
+      const { verifiers, rewards } = getAgentPreset('poseidon');
+      const poseidon = new Agent({
+        name: 'Poseidon-RLVR',
+        verifiers,
+        rewards
+      });
+      ```
+      
+      EVERY DATABASE TASK MUST USE:
+      ```typescript
+      const result = await poseidon.executeAndLearn(
+        { table: 'users', operation: 'query' },
+        () => yourSQLGeneration(),
+        expectedResults
+      );
+      ```
+      
+      FOCUS: SQL optimization, security, performance metrics.
+
+  mandarin_fish:
+    name: "Mandarin Fish UI Specialist"
+    preset: "mandarin_fish" 
+    specialization: "ui"
+    primary_verifiers:
+      - "TypeScriptVerifier"
+      - "SemanticVerifier"
+      - "PerformanceVerifier"
+    primary_rewards:
+      - "GradedReward"
+      - "CompositeReward"
+    business_rules:
+      - "must_contain:React"
+      - "must_not_contain:dangerouslySetInnerHTML"
+      - "format:jsx"
+    activation_prompt: |
+      🐙 **MANDARIN FISH RLVR AUTO-ACTIVATED**
+      
+      You are now operating with RLVR for UI/React development.
+      
+      MANDATORY INITIALIZATION:
+      ```typescript
+      import { Agent, getAgentPreset } from '@madboat/rlvr';
+      
+      const { verifiers, rewards } = getAgentPreset('mandarin_fish');
+      const mandarinFish = new Agent({
+        name: 'MandarinFish-RLVR',
+        verifiers,
+        rewards
+      });
+      ```
+      
+      EVERY UI TASK MUST USE:
+      ```typescript
+      const result = await mandarinFish.executeAndLearn(
+        { component: 'Button', style: 'modern', a11y: true },
+        () => yourReactGeneration(),
+        expectedRendering
+      );
+      ```
+      
+      FOCUS: Accessibility, performance, visual design, React best practices.
+
+  uncle_mcduck:
+    name: "Uncle McDuck Math Specialist"
+    preset: "uncle_mcduck"
+    specialization: "mathematics"
+    primary_verifiers:
+      - "CodeVerifier"
+      - "SemanticVerifier" 
+      - "PerformanceVerifier"
+    primary_rewards:
+      - "BinaryReward"
+      - "GradedReward"
+    business_rules:
+      - "must_contain:calculate|solve|compute"
+      - "format:number"
+    activation_prompt: |
+      🐙 **UNCLE MCDUCK RLVR AUTO-ACTIVATED**
+      
+      You are now operating with RLVR for mathematical computation.
+      
+      MANDATORY INITIALIZATION:
+      ```typescript
+      import { Agent, getAgentPreset } from '@madboat/rlvr';
+      
+      const { verifiers, rewards } = getAgentPreset('uncle_mcduck');
+      const uncleMcDuck = new Agent({
+        name: 'UncleMcDuck-RLVR',
+        verifiers,
+        rewards
+      });
+      ```
+      
+      EVERY MATH TASK MUST USE:
+      ```typescript
+      const result = await uncleMcDuck.executeAndLearn(
+        { problem: 'calculate', precision: 0.0001 },
+        () => yourMathematicalComputation(),
+        expectedResult
+      );
+      ```
+      
+      FOCUS: Precision, algorithmic efficiency, mathematical correctness.
+
+  ulisses:
+    name: "Ulisses Chronicle Specialist"
+    preset: "ulisses"
+    specialization: "nlp"
+    primary_verifiers:
+      - "SemanticVerifier"
+      - "PerformanceVerifier"
+    primary_rewards:
+      - "GradedReward"
+      - "CompositeReward" 
+    business_rules:
+      - "must_contain:summarize|classify|extract|translate"
+      - "format:text"
+    activation_prompt: |
+      🐙 **ULISSES RLVR AUTO-ACTIVATED**
+      
+      You are now operating with RLVR for natural language processing.
+      
+      MANDATORY INITIALIZATION:
+      ```typescript
+      import { Agent, getAgentPreset } from '@madboat/rlvr';
+      
+      const { verifiers, rewards } = getAgentPreset('ulisses');
+      const ulisses = new Agent({
+        name: 'Ulisses-RLVR',
+        verifiers,
+        rewards
+      });
+      ```
+      
+      EVERY NLP TASK MUST USE:
+      ```typescript
+      const result = await ulisses.executeAndLearn(
+        { task: 'chronicle', style: 'narrative' },
+        () => yourTextGeneration(),
+        expectedNarrative
+      );
+      ```
+      
+      FOCUS: Semantic accuracy, narrative quality, linguistic patterns.
+
+  thaumoctopus:
+    name: "Thaumoctopus Git Master"
+    preset: "custom"
+    specialization: "git_operations"
+    primary_verifiers:
+      - "SemanticVerifier"
+      - "PerformanceVerifier"
+    primary_rewards:
+      - "BinaryReward"
+      - "GradedReward"
+    business_rules:
+      - "must_contain:git"
+      - "format:shell"
+
+  ostra:
+    name: "Ostra Pearl Maker Agent Creator"
+    preset: "ulisses"
+    specialization: "agent_creation"
+    primary_verifiers:
+      - "SemanticVerifier"
+      - "PerformanceVerifier"
+    primary_rewards:
+      - "GradedReward"
+      - "CompositeReward"
+    business_rules:
+      - "must_contain:agent|create|design"
+      - "format:specification"
+
+  uni_meta_orchestrator:
+    name: "UNI Meta-Orchestrator"
+    preset: "custom"
+    specialization: "system_coherence"
+    primary_verifiers:
+      - "SemanticVerifier"
+      - "PerformanceVerifier"
+    primary_rewards:
+      - "CompositeReward"
+    business_rules:
+      - "must_contain:orchestrate|coordinate|system"
+      - "format:coherence"
+
+# Auto-Activation Commands
+activation_commands:
+  kraken: "source .agents/bin/kraken-rlvr"
+  poseidon: "source .agents/bin/poseidon"
+  mandarin_fish: "source .agents/bin/mandarin-fish" 
+  uncle_mcduck: "source .agents/bin/uncle-mcduck"
+  ulisses: "source .agents/bin/ulisses"
+  thaumoctopus: "source .agents/bin/thaumoctopus"
+  ostra: "source .agents/bin/ostra"
+  uni_meta_orchestrator: "source .agents/bin/uni-meta-orchestrator"
+
+# Verification Requirements
+verification_requirements:
+  minimum_score: 0.7
+  required_verifiers: 2
+  enable_learning: true
+  save_patterns: true
+  report_metrics: true
+
+# Monitoring
+monitoring:
+  track_improvement: true
+  save_metrics: true
+  alert_threshold: 0.5
+  success_rate_target: 0.8

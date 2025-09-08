@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# 📜 Ulisses Agent Launcher with RLVR
+# @file .agents/bin/ulisses
+# @version 1.0.0
+# @created 2025-09-06
+# @modified 2025-09-06
+# @author Claude Sonnet 4 + Captain Sandro Fidelis
+# @description Ulisses chronicle/NLP specialist with RLVR auto-activation
+
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+echo -e "${CYAN}📜 ULISSES CHRONICLE & NLP SPECIALIST${NC}"
+echo "=================================================="
+
+# Check RLVR availability
+if [ -f "packages/rlvr/package.json" ]; then
+    echo -e "${GREEN}✅ RLVR Framework detected${NC}"
+    echo -e "${CYAN}🚀 Auto-activating Ulisses with RLVR...${NC}"
+    echo ""
+    
+    cat << 'EOF'
+
+📜 **ULISSES RLVR AUTO-ACTIVATED**
+
+You are now operating with RLVR for natural language processing and narrative chronicles.
+
+MANDATORY INITIALIZATION:
+```typescript
+import { Agent, getAgentPreset } from '@madboat/rlvr';
+
+const { verifiers, rewards } = getAgentPreset('ulisses');
+const ulisses = new Agent({
+  name: 'Ulisses-RLVR',
+  verifiers,
+  rewards,
+  learningRate: 0.1
+});
+```
+
+EVERY NLP/CHRONICLE TASK MUST USE:
+```typescript
+const result = await ulisses.executeAndLearn(
+  { 
+    task: 'chronicle project milestone',
+    style: 'narrative',
+    depth: 'philosophical',
+    audience: 'technical_team'
+  },
+  () => yourNarrativeGeneration(),
+  expectedChronicleQuality
+);
+
+// ALWAYS REPORT
+console.log({
+  score: result.verification.score,
+  reward: result.reward.reward,
+  semanticCoherence: result.verification.breakdown?.semantic,
+  narrativeFlow: result.verification.breakdown?.narrative,
+  philosophicalDepth: result.verification.breakdown?.depth,
+  linguisticQuality: result.verification.breakdown?.linguistic
+});
+```
+
+SPECIALIZATION: Narrative chronicles, documentation with soul, philosophical insight
+FOCUS: Semantic coherence, narrative excellence, meaningful documentation
+VERIFIERS: Semantic analysis, narrative structure, linguistic quality
+
+⚠️  CHRONICLE REQUIREMENTS:
+- Narrative coherence: Stories must flow logically and emotionally
+- Technical accuracy: All technical details must be precise
+- Philosophical depth: Capture the human meaning behind the code
+- Memorable prose: Create documentation that transcends the ordinary
+
+🎯 TARGET: Chronicles that inspire, document perfectly, and capture human essence
+
+EOF
+
+else
+    echo -e "${YELLOW}⚠️  RLVR not available - using standard mode${NC}"
+    echo -e "${CYAN}📜 Ulisses Chronicle Specialist (Standard Mode)${NC}"
+fi
+
+echo -e "${GREEN}✨ Ulisses ready to chronicle your digital odyssey!${NC}"

@@ -6,7 +6,6 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@madboat/core'
-import { User } from '@supabase/supabase-js'
 
 interface AuthUser {
   id: string
@@ -30,6 +29,13 @@ export function useAuthState(): AuthState {
       if (error) {
         console.error('Logout error:', error)
       }
+      // Clear any localStorage data
+      localStorage.removeItem('madboat_persona')
+      localStorage.removeItem('madboat_persona_date')
+      localStorage.removeItem('madboat_user_progress')
+      
+      // Force redirect to login page
+      window.location.href = '/'
     } catch (error) {
       console.error('Logout error:', error)
     } finally {
@@ -42,25 +48,38 @@ export function useAuthState(): AuthState {
 
     const getInitialSession = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession()
+        console.log('🔍 Verificando sessão inicial...')
+        const { data: { session }, error } = await supabase.auth.getSession()
+        
+        if (error) {
+          console.error('❌ Session error:', error)
+          if (mounted) {
+            setUser(null)
+            setLoading(false)
+          }
+          return
+        }
+        
+        console.log('📊 Session data:', session ? 'Logado' : 'Não logado')
         
         if (mounted) {
           if (session?.user) {
+            console.log('✅ Usuário encontrado:', session.user.email)
             setUser({
               id: session.user.id,
               email: session.user.email
             })
           } else {
+            console.log('👤 Nenhum usuário logado')
             setUser(null)
           }
+          console.log('⏰ Loading finalizado')
+          setLoading(false)
         }
       } catch (error) {
-        console.error('Session error:', error)
+        console.error('❌ Session error:', error)
         if (mounted) {
           setUser(null)
-        }
-      } finally {
-        if (mounted) {
           setLoading(false)
         }
       }

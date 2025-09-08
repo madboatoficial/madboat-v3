@@ -7,7 +7,9 @@
     ".": "./dist/index.js",
     "./personas": "./dist/personas/index.js",
     "./worlds": "./dist/worlds/index.js",
-    "./gamification": "./dist/gamification/index.js"
+    "./gamification": "./dist/gamification/index.js",
+    "./lib/supabase": "./dist/lib/supabase.js",
+    "./types/database": "./dist/types/database.js"
   },
   "scripts": {
     "build": "tsc",
@@ -21,6 +23,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "zod": "^3.22.0"
+    "zod": "^3.22.0",
+    "@supabase/supabase-js": "^2.56.1"
   }
 }

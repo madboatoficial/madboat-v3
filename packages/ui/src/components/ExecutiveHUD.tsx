@@ -46,7 +46,7 @@ interface Module {
   subtitle: string
   status: MethodStatus
   progress: number
-  icon: React.ReactNode
+  icon: React.ComponentType<{ size?: number; className?: string }>
   phases?: Phase[]
   nextAction: string
   priority: 'critical' | 'high' | 'medium' | 'low'
@@ -67,6 +67,7 @@ interface ExecutiveHUDProps {
   onActionTrigger: (moduleId: string, action: string) => void
   onMilestoneView?: (milestone: string) => void
   onNavigate?: (page: 'dashboard' | 'challenges' | 'missions' | 'achievements' | 'legacy') => void
+  onPersonaClick?: () => void
 }
 
 export function ExecutiveHUD({
@@ -74,7 +75,8 @@ export function ExecutiveHUD({
   onModuleSelect,
   onActionTrigger,
   onMilestoneView,
-  onNavigate
+  onNavigate,
+  onPersonaClick
 }: ExecutiveHUDProps) {
   
   const [activeModule, setActiveModule] = useState<string>('alma')
@@ -90,7 +92,7 @@ export function ExecutiveHUD({
       subtitle: 'Fundação Estratégica para o Mercado Digital',
       status: 'completed',
       progress: 100,
-      icon: <Search size={20} />,
+      icon: Search,
       nextAction: 'Revisar',
       priority: 'medium'
     },
@@ -100,7 +102,7 @@ export function ExecutiveHUD({
       subtitle: 'Transformação',
       status: 'active',
       progress: 50,
-      icon: <Compass size={20} />,
+      icon: Compass,
       nextAction: 'Continuar',
       priority: 'critical',
       phases: [
@@ -116,7 +118,7 @@ export function ExecutiveHUD({
       subtitle: 'Audiência',
       status: 'locked',
       progress: 0,
-      icon: <Zap size={20} />,
+      icon: Zap,
       nextAction: 'Iniciar',
       priority: 'high'
     },
@@ -126,7 +128,7 @@ export function ExecutiveHUD({
       subtitle: 'Maestria IA',
       status: 'locked',
       progress: 0,
-      icon: <Crown size={20} />,
+      icon: Crown,
       nextAction: 'Iniciar',
       priority: 'low'
     }
@@ -136,94 +138,37 @@ export function ExecutiveHUD({
   const getStatusIcon = (status: MethodStatus) => {
     switch (status) {
       case 'completed':
-        return <CheckCircle size={16} className="text-white" />
+        return CheckCircle
       case 'active':
-        return <Circle size={16} className="text-white fill-current" />
+        return Circle
       case 'locked':
-        return <Lock size={16} className="text-zinc-600" />
+        return Lock
     }
+  }
+
+  const StatusIcon = ({ status }: { status: MethodStatus }) => {
+    const IconComponent = getStatusIcon(status)
+    
+    const className = status === 'completed' ? 'text-white' :
+                     status === 'active' ? 'text-white fill-current' :
+                     'text-zinc-600'
+    
+    return <IconComponent size={16} className={className} />
   }
 
   const active = modules.find(m => m.id === activeModule)!
 
   return (
-    <div className="h-screen bg-zinc-950 text-white flex flex-col overflow-hidden relative">
+    <div className="h-screen bg-white text-zinc-800 flex flex-col overflow-hidden relative">
       {/* Subtle background effect matching original */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-800/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-200/20 rounded-full blur-3xl" />
       </div>
       
       {/* === RED ZONE: Critical Information Only === */}
       
-      {/* TOP-LEFT CORNER: System Status (Yellow Zone → Safe) */}
-      <div className="absolute top-4 left-4 z-50">
-        <div className="flex items-center gap-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-lg px-3 py-1.5">
-          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-          <span className="text-xs text-zinc-400 font-mono">MADBOAT</span>
-        </div>
-      </div>
 
-      {/* TOP-RIGHT CORNER: User Profile in Header */}
-      <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
-        {/* Gamification Navigation - Desafios, Missões, Conquistas, Legado */}
-        <div className="flex items-center gap-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-full px-4 py-2">
-          <button 
-            onClick={() => onNavigate?.('challenges')}
-            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
-          >
-            Desafios
-          </button>
-          <div className="w-px h-4 bg-zinc-800" />
-          <button 
-            onClick={() => onNavigate?.('missions')}
-            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
-          >
-            Missões
-          </button>
-          <div className="w-px h-4 bg-zinc-800" />
-          <button 
-            onClick={() => onNavigate?.('achievements')}
-            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
-          >
-            Conquistas
-          </button>
-          <div className="w-px h-4 bg-zinc-800" />
-          <button 
-            onClick={() => onNavigate?.('legacy')}
-            className="px-3 py-1 text-xs text-zinc-400 hover:text-white transition-colors font-light tracking-wide"
-          >
-            Legado
-          </button>
-        </div>
-        
-        {/* User Profile Circle */}
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full border border-zinc-700 bg-zinc-800 flex items-center justify-center relative overflow-hidden">
-            <span className="text-xs font-medium text-zinc-300">
-              {userName.charAt(0).toUpperCase()}
-            </span>
-            <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-green-400 rounded-full border border-zinc-950" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xs text-zinc-300 font-light">{userName}</span>
-            <span className="text-[10px] text-zinc-500">Tripulante</span>
-          </div>
-        </div>
-        
-        {/* Quick Actions */}
-        <button className="p-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-lg hover:border-zinc-600 transition-colors">
-          <Settings size={14} className="text-zinc-400" />
-        </button>
-      </div>
 
-      {/* MADBOAT LOGO: Top Center Header */}
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-40">
-        <div className="flex items-center gap-2 bg-zinc-950/80 backdrop-blur-sm border border-zinc-800/50 rounded-lg px-4 py-2">
-          <span className="text-xl font-bold text-white tracking-wide">Mad</span>
-          <ShipWheel size={18} className="text-white animate-spin-slow" strokeWidth={2.5} />
-          <span className="text-xl font-bold text-white tracking-wide">Boat</span>
-        </div>
-      </div>
 
       {/* === GREEN ZONE: Main Content Area === */}
       <div className="flex-1 flex items-center justify-center px-4 pt-24 pb-32 relative">
@@ -263,11 +208,17 @@ export function ExecutiveHUD({
           {/* CENTRAL FOCUS: Active Module - Fixed Circular Area */}
           <div className="relative flex justify-center">
             {/* Circular Container - Fixed Size for All Modules */}
-            <div className="w-96 h-96 border-2 border-dashed border-zinc-800 rounded-full p-8 flex flex-col items-center justify-center">
+            <div className={`w-96 h-96 border border-solid rounded-full p-8 flex flex-col items-center justify-center ${
+              activeModule === 'personas' ? 'border-purple-600' :
+              activeModule === 'alma' ? 'border-cyan-500' :
+              activeModule === 'vortice' ? 'border-purple-600' :
+              activeModule === 'odisseia' ? 'border-red-500' :
+              'border-zinc-800'
+            }`}>
               <div className="text-center">
                 <div className="inline-flex items-center justify-center w-16 h-16 border border-zinc-700 rounded-full mb-4 relative">
                   <div className="scale-110">
-                    {active.icon}
+                    <active.icon size={20} />
                   </div>
                   {active.status === 'active' && (
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full flex items-center justify-center">
@@ -276,7 +227,7 @@ export function ExecutiveHUD({
                   )}
                 </div>
                 
-                <h1 className="text-2xl font-light mb-2 text-white tracking-wide">{active.title}</h1>
+                <h1 className="text-2xl font-light mb-2 text-zinc-800 tracking-wide">{active.title}</h1>
                 <p className="text-sm text-zinc-500 mb-6 font-light">{active.subtitle}</p>
                 
                 {/* Progress Visualization - Compact Circular */}
@@ -291,7 +242,7 @@ export function ExecutiveHUD({
                             'border-zinc-700 bg-zinc-900/20'
                           }`}>
                             <div className="scale-75">
-                              {getStatusIcon(phase.status)}
+                              <StatusIcon status={phase.status} />
                             </div>
                           </div>
                           {index < active.phases!.length - 1 && (
@@ -332,7 +283,12 @@ export function ExecutiveHUD({
                       setShowBlockedMessage(true)
                       setTimeout(() => setShowBlockedMessage(false), 3000)
                     } else {
-                      onActionTrigger(active.id, active.status === 'active' ? 'continue' : 'start')
+                      // If it's the persona module, use onPersonaClick
+                      if (active.id === 'personas' && onPersonaClick) {
+                        onPersonaClick()
+                      } else {
+                        onActionTrigger(active.id, active.status === 'active' ? 'continue' : 'start')
+                      }
                     }
                   }}
                   className={`border py-2 px-8 rounded-full transition-all duration-300 font-light tracking-wide flex items-center gap-2 mx-auto text-sm ${
@@ -412,3 +368,4 @@ export function ExecutiveHUD({
     </div>
   )
 }
+

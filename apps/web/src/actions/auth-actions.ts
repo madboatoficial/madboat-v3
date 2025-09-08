@@ -4,13 +4,8 @@
  * Server Actions para autenticação integrada com Supabase
  */
 
-import { createClient } from '@supabase/supabase-js'
-import { redirect } from 'next/navigation'
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { supabase } from '@madboat/core'
+import { revalidatePath } from 'next/cache'
 
 interface AuthState {
   error?: string
@@ -88,8 +83,9 @@ export async function loginAction(prevState: AuthState, formData: FormData): Pro
       return { error: 'Erro no login. Tente novamente.', field: 'general' }
     }
 
-    // 🎯 Success - React 19 will handle redirect
-    redirect('/dashboard')
+    // 🎯 Success - Revalidate and let client handle redirect
+    revalidatePath('/')
+    return { success: true }
     
   } catch (error) {
     console.error('Login error:', error)
@@ -149,8 +145,9 @@ export async function signupAction(prevState: AuthState, formData: FormData): Pr
       }
     }
 
-    // Auto-login success
-    redirect('/dashboard')
+    // Auto-login success - Revalidate and let client handle redirect
+    revalidatePath('/')
+    return { success: true }
     
   } catch (error) {
     console.error('Signup error:', error)

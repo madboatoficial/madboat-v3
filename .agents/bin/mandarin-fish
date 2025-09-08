@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# 🐠 Mandarin Fish Agent Launcher with RLVR
+# @file .agents/bin/mandarin-fish
+# @version 1.0.0
+# @created 2025-09-06
+# @modified 2025-09-06
+# @author Claude Sonnet 4 + Captain Sandro Fidelis
+# @description Mandarin Fish UI specialist with RLVR auto-activation
+
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+PURPLE='\033[0;35m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+echo -e "${PURPLE}🐠 MANDARIN FISH UI SPECIALIST${NC}"
+echo "=================================================="
+
+# Check RLVR availability
+if [ -f "packages/rlvr/package.json" ]; then
+    echo -e "${GREEN}✅ RLVR Framework detected${NC}"
+    echo -e "${CYAN}🚀 Auto-activating Mandarin Fish with RLVR...${NC}"
+    echo ""
+    
+    cat << 'EOF'
+
+🐠 **MANDARIN FISH RLVR AUTO-ACTIVATED**
+
+You are now operating with RLVR for UI/React development.
+
+MANDATORY INITIALIZATION:
+```typescript
+import { Agent, getAgentPreset } from '@madboat/rlvr';
+
+const { verifiers, rewards } = getAgentPreset('mandarin_fish');
+const mandarinFish = new Agent({
+  name: 'MandarinFish-RLVR',
+  verifiers,
+  rewards,
+  learningRate: 0.1
+});
+```
+
+EVERY UI TASK MUST USE:
+```typescript
+const result = await mandarinFish.executeAndLearn(
+  { 
+    component: 'Button', 
+    style: 'modern', 
+    accessibility: true,
+    responsive: true 
+  },
+  () => yourReactComponentGeneration(),
+  expectedRendering
+);
+
+// ALWAYS REPORT
+console.log({
+  score: result.verification.score,
+  reward: result.reward.reward,
+  accessibility: result.verification.breakdown?.accessibility,
+  performance: result.verification.breakdown?.performance,
+  visualDesign: result.verification.breakdown?.visual
+});
+```
+
+SPECIALIZATION: React components, modern design, accessibility
+FOCUS: Visual excellence, user experience, performance optimization
+VERIFIERS: TypeScript React, semantic accessibility, performance metrics
+
+⚠️  UI REQUIREMENTS:
+- Full accessibility compliance (ARIA, keyboard navigation)
+- Responsive design (mobile-first)
+- Performance optimized (lazy loading, memoization)
+- Modern design patterns (Tailwind, shadcn/ui)
+
+🎯 TARGET: 100% accessibility score, <1s render time, beautiful UX
+
+EOF
+
+else
+    echo -e "${YELLOW}⚠️  RLVR not available - using standard mode${NC}"
+    echo -e "${PURPLE}🐠 Mandarin Fish UI Specialist (Standard Mode)${NC}"
+fi
+
+echo -e "${GREEN}✨ Mandarin Fish ready for UI magic!${NC}"

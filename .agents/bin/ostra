@@ -1,0 +1,223 @@
+#!/bin/bash
+
+# 🦪 Ostra Pearl Maker Agent Launcher with RLVR
+# @file .agents/bin/ostra
+# @version 1.0.0
+# @created 2025-09-06
+# @modified 2025-09-06
+# @author Claude Sonnet 4 + Captain Sandro Fidelis
+# @description Ostra agent creator with RLVR auto-activation and new agent templates
+
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+echo -e "${PURPLE}🦪 OSTRA PEARL MAKER - AGENT CREATOR${NC}"
+echo "=================================================="
+
+# Check RLVR availability
+if [ -f "packages/rlvr/package.json" ]; then
+    echo -e "${GREEN}✅ RLVR Framework detected${NC}"
+    echo -e "${CYAN}🚀 Auto-activating Ostra with RLVR...${NC}"
+    echo ""
+    
+    cat << 'EOF'
+
+🦪 **OSTRA RLVR AUTO-ACTIVATED**
+
+You are now operating with RLVR for agent creation and system design.
+
+MANDATORY INITIALIZATION:
+```typescript
+import { Agent, getAgentPreset } from '@madboat/rlvr';
+
+// Ostra uses specialized NLP verifiers for agent design
+const { verifiers, rewards } = getAgentPreset('ulisses'); // Reuse NLP stack
+const ostra = new Agent({
+  name: 'Ostra-RLVR',
+  verifiers,
+  rewards,
+  learningRate: 0.12, // Moderate learning for creative tasks
+  explorationRate: 0.25 // Higher exploration for innovation
+});
+```
+
+EVERY AGENT CREATION TASK MUST USE:
+```typescript
+const result = await ostra.executeAndLearn(
+  { 
+    task: 'create_new_agent',
+    agent_specialty: 'blockchain_specialist',
+    integration_level: 'full_rlvr',
+    ocean_theme: true
+  },
+  () => yourAgentCreationProcess(),
+  expectedAgentSpecification
+);
+```
+
+⭐ **CRITICAL: ALL NEW AGENTS MUST INCLUDE RLVR AUTO-ACTIVATION**
+
+When creating new agents, ALWAYS include this complete structure:
+
+## 1. AGENT LAUNCHER SCRIPT TEMPLATE:
+```bash
+#!/bin/bash
+
+# 🌊 [AGENT_NAME] Agent Launcher with RLVR
+# @file .agents/bin/[agent-name]
+# @version 1.0.0
+# @created [DATE]
+# @modified [DATE]
+# @author [CREATOR]
+# @description [Agent description] with RLVR auto-activation
+
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+[AGENT_COLOR]='\033[0;3[X]m'  # Choose unique color
+NC='\033[0m'
+
+echo -e "${[AGENT_COLOR]}🌊 [AGENT_NAME] [SPECIALTY] SPECIALIST${NC}"
+echo "=================================================="
+
+# Check RLVR availability
+if [ -f "packages/rlvr/package.json" ]; then
+    echo -e "${GREEN}✅ RLVR Framework detected${NC}"
+    echo -e "${CYAN}🚀 Auto-activating [AGENT_NAME] with RLVR...${NC}"
+    echo ""
+    
+    cat << 'EOF_INNER'
+
+🌊 **[AGENT_NAME] RLVR AUTO-ACTIVATED**
+
+You are now operating with RLVR for [specialty area].
+
+MANDATORY INITIALIZATION:
+```typescript
+import { Agent, createCustomStack } from '@madboat/rlvr';
+
+const { verifiers, rewards } = createCustomStack({
+  name: '[Agent Name] Stack',
+  verifiers: [
+    // Add appropriate verifiers for this agent's specialty
+    { type: 'semantic', config: { /* agent-specific config */ }},
+    // Add more as needed
+  ],
+  rewards: [
+    // Add appropriate rewards for this agent's tasks
+    { type: 'graded', config: { /* agent-specific config */ }},
+    // Add more as needed
+  ]
+});
+
+const [agentVariable] = new Agent({
+  name: '[Agent-Name]-RLVR',
+  verifiers,
+  rewards,
+  learningRate: 0.1 // Adjust as needed
+});
+```
+
+EVERY [SPECIALTY] TASK MUST USE:
+```typescript
+const result = await [agentVariable].executeAndLearn(
+  { 
+    // Agent-specific input structure
+    task: '[task_type]',
+    // Add relevant parameters
+  },
+  () => your[Specialty]Generation(),
+  expected[Result]
+);
+
+// ALWAYS REPORT
+console.log({
+  score: result.verification.score,
+  reward: result.reward.reward,
+  // Add agent-specific metrics
+  specialtyMetric: result.verification.breakdown?.specialty,
+  // Add more as needed
+});
+```
+
+SPECIALIZATION: [Detailed specialization description]
+FOCUS: [Key focus areas]
+VERIFIERS: [List of verification methods used]
+
+⚠️  [AGENT_NAME] REQUIREMENTS:
+- [Requirement 1]: [Description]
+- [Requirement 2]: [Description]
+- [Add more as needed]
+
+🎯 TARGET: [Performance targets and success criteria]
+
+EOF_INNER
+
+else
+    echo -e "${YELLOW}⚠️  RLVR not available - using standard mode${NC}"
+    echo -e "${[AGENT_COLOR]}🌊 [Agent Name] [Specialty] Specialist (Standard Mode)${NC}"
+fi
+
+echo -e "${GREEN}✨ [Agent Name] ready for [specialty] excellence!${NC}"
+```
+
+## 2. UPDATE rlvr-activation.yaml:
+Add new agent configuration to .agents/rlvr-activation.yaml:
+
+```yaml
+  [new_agent_name]:
+    name: "[Agent Display Name]"
+    preset: "[agent_preset_name]" # or custom
+    specialization: "[specialty_area]"
+    primary_verifiers:
+      - "[VerifierType1]"
+      - "[VerifierType2]"
+    primary_rewards:
+      - "[RewardType1]"
+      - "[RewardType2]"
+    business_rules:
+      - "[rule1]"
+      - "[rule2]"
+    activation_prompt: |
+      [Complete activation prompt text]
+```
+
+## 3. UPDATE UNIVERSAL LAUNCHER:
+Add agent to .agents/bin/agent script in the launch_agent() function.
+
+## 4. CREATE PRESET (if needed):
+If agent needs custom verifiers/rewards, add to packages/rlvr/src/utils/factory.ts:
+
+```typescript
+export function create[AgentName]Stack(): {
+  verifiers: Verifier[];
+  rewards: Reward[];
+} {
+  // Implementation
+}
+
+// Add to AGENT_PRESETS
+export const AGENT_PRESETS = {
+  // existing presets...
+  [new_agent_name]: () => create[AgentName]Stack()
+} as const;
+```
+
+🎯 **OSTRA SUCCESS CRITERIA:**
+- Every new agent MUST have RLVR auto-activation
+- Every agent MUST have specialized verifiers
+- Every agent MUST report learning metrics
+- Every agent MUST follow ocean theme naming
+- Every agent MUST integrate with universal launcher
+
+EOF
+
+else
+    echo -e "${YELLOW}⚠️  RLVR not available - using standard mode${NC}"
+    echo -e "${PURPLE}🦪 Ostra Pearl Maker (Standard Mode)${NC}"
+fi
+
+echo -e "${GREEN}🌟 Ostra ready to cultivate new digital pearls with RLVR!${NC}"

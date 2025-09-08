@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'MadBoat Team' }],
   creator: 'MadBoat',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'MadBoat v2.0'
+  },
   openGraph: {
     type: 'website',
     siteName: 'MadBoat v2.0',
@@ -39,12 +45,13 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' }
+    { media: '(prefers-color-scheme: light)', color: '#f4f4f5' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' }
   ],
+  viewportFit: 'cover'
 }
 
 interface RootLayoutProps {

@@ -113,6 +113,19 @@ read_context() {
         echo -e "${RED}❌ Contexto não encontrado!${NC}"
         echo "Execute '$0 init' primeiro"
     fi
+    
+    # RLVR Auto-Activation Check
+    echo ""
+    echo -e "${YELLOW}🔍 CHECKING RLVR STATUS${NC}"
+    if [ -f ".agents/bin/kraken-rlvr" ] && [ -f "packages/rlvr/package.json" ]; then
+        echo -e "${GREEN}✅ RLVR Framework available${NC}"
+        echo -e "${CYAN}🚀 Auto-activating Kraken RLVR mode...${NC}"
+        echo ""
+        source .agents/bin/kraken-rlvr
+    else
+        echo -e "${YELLOW}⚠️  RLVR not available - using standard mode${NC}"
+        echo ""
+    fi
 }
 
 # ====================================
