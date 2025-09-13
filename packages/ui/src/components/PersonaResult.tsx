@@ -29,7 +29,7 @@ import {
   CheckCircle
 } from 'lucide-react'
 
-import { PersonaClassificationResult, PersonaType } from '@/types/persona'
+import { PersonaClassificationResult, PersonaType } from '../types/persona'
 import { getPersonaTheme, getPersonaSymbol, getPersonaGradient } from '../config/persona-themes'
 import { AchievementNotification, Achievement } from './AchievementNotification'
 

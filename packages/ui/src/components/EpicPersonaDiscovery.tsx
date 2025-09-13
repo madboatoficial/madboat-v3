@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, memo, useCallback, useDeferredValue, useTransition, startTransition } from 'react'
+import React, { useState, useEffect, useRef, memo, useCallback, useDeferredValue, useTransition, startTransition, createElement } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // Type definitions (now local to UI package)
@@ -56,17 +56,20 @@ export interface PersonaClassificationResult {
   transformationPotential: string
 }
 
+// Props interface for better typing
+interface UncontrolledTextareaProps {
+  placeholder?: string
+  textareaRef: React.RefObject<HTMLTextAreaElement | null>
+  onTextChange: (value: string) => void
+  onButtonStateChange: (enabled: boolean) => void
+}
+
 // Textarea usando estratégia uncontrolled + ref (ZERO re-renders)
-const UncontrolledTextarea = memo(({ 
+const UncontrolledTextarea = memo<UncontrolledTextareaProps>(({ 
   placeholder, 
   textareaRef,
   onTextChange,
   onButtonStateChange
-}: {
-  placeholder?: string
-  textareaRef: React.RefObject<HTMLTextAreaElement>
-  onTextChange: (value: string) => void
-  onButtonStateChange: (enabled: boolean) => void
 }) => {
   const isHydratedRef = useRef(false)
   const callbacksRef = useRef({ onTextChange, onButtonStateChange })
@@ -75,7 +78,7 @@ const UncontrolledTextarea = memo(({
   callbacksRef.current = { onTextChange, onButtonStateChange }
   
   // Função debounced estável - criada uma única vez
-  const debouncedAnalysisRef = useRef<(value: string) => void>()
+  const debouncedAnalysisRef = useRef<(value: string) => void>(null)
   
   if (!debouncedAnalysisRef.current) {
     debouncedAnalysisRef.current = debounce((value: string) => {
@@ -135,7 +138,11 @@ function debounce<T extends (...args: any[]) => any>(
 }
 
 // Componente isolado para análise - usa deferred value
-const LiveAnalysisDisplay = memo(({ analysis }: { analysis: any }) => {
+interface LiveAnalysisDisplayProps {
+  analysis: any
+}
+
+const LiveAnalysisDisplay = memo<LiveAnalysisDisplayProps>(({ analysis }) => {
   if (!analysis) return null
   
   return (
@@ -154,19 +161,22 @@ const LiveAnalysisDisplay = memo(({ analysis }: { analysis: any }) => {
   )
 })
 
+// Interface for StableTextarea props
+interface StableTextareaProps {
+  placeholder?: string
+  textareaRef: React.RefObject<HTMLTextAreaElement | null>
+  onTextChange: (value: string) => void
+  onButtonStateChange: (enabled: boolean) => void
+  questionId: number
+}
+
 // Textarea estável que mantém valor durante hydration
-const StableTextarea = memo(({ 
+const StableTextarea = memo<StableTextareaProps>(({ 
   placeholder, 
   textareaRef,
   onTextChange,
   onButtonStateChange,
   questionId
-}: {
-  placeholder?: string
-  textareaRef: React.RefObject<HTMLTextAreaElement>
-  onTextChange: (value: string) => void
-  onButtonStateChange: (enabled: boolean) => void
-  questionId: number
 }) => {
   const isHydratedRef = useRef(false)
   const callbacksRef = useRef({ onTextChange, onButtonStateChange })
@@ -184,7 +194,7 @@ const StableTextarea = memo(({
   }, [questionId, textareaRef])
   
   // Função debounced estável - criada uma única vez
-  const debouncedAnalysisRef = useRef<(value: string) => void>()
+  const debouncedAnalysisRef = useRef<(value: string) => void>(null)
   
   if (!debouncedAnalysisRef.current) {
     debouncedAnalysisRef.current = debounce((value: string) => {
@@ -233,7 +243,18 @@ const StableTextarea = memo(({
 }, () => true) // Nunca re-renderiza
 
 // Componente isolado para questão - SEM ANIMAÇÕES para evitar hydration
-const QuestionComponent = memo(({ 
+interface QuestionComponentProps {
+  question: PersonaQuestion
+  liveAnalysis: any
+  onNext: () => void
+  textareaRef: React.RefObject<HTMLTextAreaElement | null>
+  onTextChange: (value: string) => void
+  onButtonStateChange: (enabled: boolean) => void
+  buttonEnabled: boolean
+  isClientReady: boolean
+}
+
+const QuestionComponent = memo<QuestionComponentProps>(({ 
   question, 
   liveAnalysis, 
   onNext,
@@ -242,15 +263,6 @@ const QuestionComponent = memo(({
   onButtonStateChange,
   buttonEnabled,
   isClientReady
-}: {
-  question: PersonaQuestion
-  liveAnalysis: any
-  onNext: () => void
-  textareaRef: React.RefObject<HTMLTextAreaElement>
-  onTextChange: (value: string) => void
-  onButtonStateChange: (enabled: boolean) => void
-  buttonEnabled: boolean
-  isClientReady: boolean
 }) => {
   // Defer análise para não bloquear digitação
   const deferredAnalysis = useDeferredValue(liveAnalysis)
@@ -294,16 +306,18 @@ const QuestionComponent = memo(({
 
       {question.isOpenEnded ? (
         <div className="space-y-4">
-          <StableTextarea
-            placeholder={question.placeholder}
-            textareaRef={textareaRef}
-            onTextChange={stableOnTextChange}
-            onButtonStateChange={stableOnButtonStateChange}
-            questionId={question.id}
-          />
+{createElement(StableTextarea as React.ComponentType<StableTextareaProps>, {
+            placeholder: question.placeholder,
+            textareaRef: textareaRef,
+            onTextChange: stableOnTextChange,
+            onButtonStateChange: stableOnButtonStateChange,
+            questionId: question.id
+          })}
           
           {/* Live Analysis - usa deferred value */}
-          <LiveAnalysisDisplay analysis={deferredAnalysis} />
+{createElement(LiveAnalysisDisplay as React.ComponentType<LiveAnalysisDisplayProps>, {
+            analysis: deferredAnalysis
+          })}
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4">
@@ -668,16 +682,16 @@ export function EpicPersonaDiscovery({
           </div>
 
           {/* Question Component */}
-          <QuestionComponent
-            question={question}
-            liveAnalysis={liveAnalysis}
-            onNext={handleNext}
-            textareaRef={textareaRef}
-            onTextChange={handleTextChange}
-            onButtonStateChange={setButtonEnabled}
-            buttonEnabled={buttonEnabled}
-            isClientReady={isClientReady}
-          />
+{createElement(QuestionComponent as React.ComponentType<QuestionComponentProps>, {
+            question: question,
+            liveAnalysis: liveAnalysis,
+            onNext: handleNext,
+            textareaRef: textareaRef,
+            onTextChange: handleTextChange,
+            onButtonStateChange: setButtonEnabled,
+            buttonEnabled: buttonEnabled,
+            isClientReady: isClientReady
+          })}
         </div>
       </div>
     )

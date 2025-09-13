@@ -19,8 +19,12 @@ interface AuthState {
 }
 
 export function useAuthState(): AuthState {
-  const [user, setUser] = useState<AuthUser | null>(null)
-  const [loading, setLoading] = useState(true)
+  // Mock user for direct access without authentication
+  const [user, setUser] = useState<AuthUser | null>({
+    id: 'mock-user-id',
+    email: 'navigator@madboat.com'
+  })
+  const [loading, setLoading] = useState(false)
 
   const signOut = useCallback(async () => {
     try {
@@ -43,89 +47,10 @@ export function useAuthState(): AuthState {
     }
   }, [])
 
+  // Simplified effect - no auth checking needed for direct access
   useEffect(() => {
-    let mounted = true
-
-    const getInitialSession = async () => {
-      try {
-        console.log('🔍 Verificando sessão inicial...')
-        const { data: { session }, error } = await supabase.auth.getSession()
-        
-        if (error) {
-          console.error('❌ Session error:', error)
-          if (mounted) {
-            setUser(null)
-            setLoading(false)
-          }
-          return
-        }
-        
-        console.log('📊 Session data:', session ? 'Logado' : 'Não logado')
-        
-        if (mounted) {
-          if (session?.user) {
-            console.log('✅ Usuário encontrado:', session.user.email)
-            setUser({
-              id: session.user.id,
-              email: session.user.email
-            })
-          } else {
-            console.log('👤 Nenhum usuário logado')
-            setUser(null)
-          }
-          console.log('⏰ Loading finalizado')
-          setLoading(false)
-        }
-      } catch (error) {
-        console.error('❌ Session error:', error)
-        if (mounted) {
-          setUser(null)
-          setLoading(false)
-        }
-      }
-    }
-
-    getInitialSession()
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        if (!mounted) return
-
-        switch (event) {
-          case 'SIGNED_IN':
-            if (session?.user) {
-              setUser({
-                id: session.user.id,
-                email: session.user.email
-              })
-            }
-            setLoading(false)
-            break
-            
-          case 'SIGNED_OUT':
-            setUser(null)
-            setLoading(false)
-            break
-            
-          case 'TOKEN_REFRESHED':
-            if (session?.user) {
-              setUser({
-                id: session.user.id,
-                email: session.user.email
-              })
-            }
-            break
-            
-          default:
-            setLoading(false)
-        }
-      }
-    )
-
-    return () => {
-      mounted = false
-      subscription.unsubscribe()
-    }
+    // Mock authentication - always authenticated
+    console.log('🚀 Direct access enabled - bypassing authentication')
   }, [])
 
   return { user, loading, signOut }

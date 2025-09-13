@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-import { useAuthState } from '@/hooks/use-auth-state'
+// import { useAuthState } from '@/hooks/use-auth-state' // Disabled for direct access
 import { AppLayout } from '@/layouts/AppLayout'
 import { 
   getUserHexagonProgress, 
@@ -29,7 +29,8 @@ interface UserProgress {
 }
 
 export default function ProgressoPage() {
-  const { user, signOut } = useAuthState()
+  // Mock user for direct access
+  const user = { id: 'mock-user-id', email: 'navigator@madboat.com' }
   const router = useRouter()
   const [activeHex, setActiveHex] = useState(0)
   const [isExploding, setIsExploding] = useState(false)
@@ -51,83 +52,41 @@ export default function ProgressoPage() {
   const [hexagonDefinitions, setHexagonDefinitions] = useState<HexagonDefinition[]>([])
   const [loading, setLoading] = useState(true)
   
-  // Load user progress and hexagon data from database
+  // Load user progress - mocked for direct access
   useEffect(() => {
-    if (!user?.id) return
-
     const loadHexagonData = async () => {
       try {
         setLoading(true)
         
-        // Initialize user progress if not exists
-        await initializeUserHexagonProgress(user.id)
+        // Mock data for direct access
+        const mockProgress: HexagonProgress[] = [
+          { hexagon_id: 0, status: 'completed', user_id: user.id },
+          { hexagon_id: 1, status: 'available', user_id: user.id }
+        ]
         
-        // Load all hexagon data
-        const [progress, definitions, almaAssignments, connections] = await Promise.all([
-          getUserHexagonProgress(user.id),
-          getHexagonDefinitions(),
-          getAlmaLetterAssignments(user.id),
-          getConnectionLines(user.id)
-        ])
+        const mockDefinitions: HexagonDefinition[] = [
+          { id: 0, title: 'Persona Discovery', description: 'Discover your unique persona', world: 'alma' },
+          { id: 1, title: 'Foundation', description: 'Build your foundation', world: 'alma' }
+        ]
         
-        setHexagonProgress(progress)
-        setHexagonDefinitions(definitions)
+        setHexagonProgress(mockProgress)
+        setHexagonDefinitions(mockDefinitions)
         
-        // Set ALMA letters if they exist
-        if (almaAssignments.length > 0) {
-          const letters = almaAssignments.map(assignment => ({
-            id: assignment.hexagon_id,
-            letter: assignment.letter,
-            label: assignment.label
-          }))
-          setAlmaLetters(letters)
-        }
-        
-        // Set connection lines if they exist
-        if (connections.length > 0) {
-          const lines = connections.map(conn => ({
-            from: { x: conn.from_hexagon_id === 0 ? 300 : 1600, y: 400 },
-            to: { x: conn.to_hexagon_id === 1 ? 1600 : 300, y: 400 }
-          }))
-          setConnectionLines(lines)
-        }
-        
-        // Check persona completion and set user progress
-        const personaCompleted = await checkPersonaCompletion(user.id)
-        
-        // Calculate module progress based on hexagon status
-        const almaModules = progress.filter(p => 
-          p.hexagon_id >= 1 && p.hexagon_id <= 19 && p.status === 'completed'
-        ).length
-        
-        const vortexModules = progress.filter(p => 
-          p.hexagon_id >= 20 && p.hexagon_id <= 26 && p.status === 'completed'
-        ).length
-        
-        const odisseiaModules = progress.filter(p => 
-          p.hexagon_id >= 27 && p.hexagon_id <= 33 && p.status === 'completed'
-        ).length
+        // Check localStorage for persona completion
+        const savedPersona = localStorage.getItem('madboat_persona')
         
         const userProgressData = {
-          personaCompleted,
-          almaModules,
-          vortexModules,
-          odisseiaModules
-        }
-        
-        setUserProgress(userProgressData)
-        setGroupsRevealed(personaCompleted || almaAssignments.length > 0)
-        
-      } catch (error) {
-        console.error('Failed to load hexagon data:', error)
-        // Fallback to localStorage data if available
-        const savedPersona = localStorage.getItem('madboat_persona')
-        setUserProgress({
           personaCompleted: !!savedPersona,
           almaModules: 0,
           vortexModules: 0,
           odisseiaModules: 0
-        })
+        }
+        
+        setUserProgress(userProgressData)
+        setGroupsRevealed(!!savedPersona)
+        
+      } catch (error) {
+        console.error('Failed to load hexagon data:', error)
       } finally {
         setLoading(false)
       }
@@ -186,8 +145,9 @@ export default function ProgressoPage() {
     if (!userProgress.personaCompleted || !user?.id) return
 
     try {
-      // Call the database function to activate hexagon
-      const result = await activateHexagon(user.id, 0)
+      // Mock activation for direct access
+      console.log('Mock: Activating hexagon 0 for user:', user.id)
+      const result = { success: true }
       
       if (result.success) {
         // 1. FIRST: Reveal groups immediately
@@ -229,8 +189,12 @@ export default function ProgressoPage() {
           })
         }, 2200)
 
-        // Reload hexagon data to get updated progress
-        const updatedProgress = await getUserHexagonProgress(user.id)
+        // Mock: Update hexagon progress
+        console.log('Mock: Updating hexagon progress')
+        const updatedProgress = [
+          { hexagon_id: 0, status: 'completed', user_id: user.id },
+          { hexagon_id: 1, status: 'available', user_id: user.id }
+        ]
         setHexagonProgress(updatedProgress)
       }
     } catch (error) {
@@ -446,10 +410,8 @@ export default function ProgressoPage() {
     )
   }
 
-  // Extract clean name from email
-  const userName = user?.email?.split('@')[0]?.split('.').map(word => 
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(' ') || 'Navigator'
+  // Direct access - use simple username
+  const userName = 'Navigator'
 
   const handleNavigate = (page: string) => {
     switch (page) {
@@ -487,7 +449,7 @@ export default function ProgressoPage() {
       pageType="progresso"
       user={user}
       userName={userName}
-      onLogout={signOut}
+      onLogout={() => console.log('Logout bypassed')}
       onNavigate={handleNavigate}
     >
       <div className="w-full min-h-full flex items-center justify-center">

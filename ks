@@ -1,1 +1,0 @@
-.kraken/bin/ks

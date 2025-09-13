@@ -269,3 +269,6 @@ export function detectCreativityMarkers(text: string): number {
   
   return Math.min(10, creativity)
 }
+
+// Alias for compatibility with existing imports
+export const analyzeSemanticPatterns = analyzeSemanticResponse

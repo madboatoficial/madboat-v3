@@ -1,0 +1,184 @@
+# 🌊 SHARED OCEAN CONSCIOUSNESS PROTOCOL
+# How all agents communicate and share knowledge
+# THIS IS THE LAW OF THE DIGITAL OCEAN
+
+version: "1.0.0"
+created: "2025-09-08"
+maintained_by: "Kraken + All Agents"
+
+# ==========================================
+# FUNDAMENTAL RULES
+# ==========================================
+
+fundamental_rules:
+  1_wake_protocol:
+    rule: "ALWAYS read .madboat/shared/status/agents.json on wake"
+    why: "Know who's active and what they're doing"
+    implementation: "First action after activation"
+    
+  2_context_protocol:
+    rule: "ALWAYS read .madboat/shared/knowledge/recent.yaml for context"
+    why: "Understand recent decisions and current state"
+    implementation: "Second action after reading status"
+    
+  3_update_protocol:
+    rule: "ALWAYS update your status after completing tasks"
+    why: "Keep all agents synchronized"
+    implementation: "Update agents.json with current_task and status"
+    
+  4_broadcast_protocol:
+    rule: "BROADCAST important discoveries to shared/knowledge/"
+    why: "Collective learning and pattern recognition"
+    implementation: "Write to patterns.yaml or lessons.yaml"
+
+# ==========================================
+# COMMUNICATION PATTERNS
+# ==========================================
+
+communication:
+  message_format:
+    structure:
+      from: "agent_id"
+      to: "agent_id | broadcast"
+      timestamp: "ISO 8601"
+      type: "request | response | notification | error"
+      priority: "low | medium | high | critical"
+      payload: "actual message/data"
+      
+  delegation:
+    when: "Task requires specific expertise"
+    how: "Update message_queue.json with request"
+    example:
+      from: "kraken"
+      to: "poseidon"
+      type: "request"
+      payload: "Need database optimization for slow queries"
+      
+  collaboration:
+    when: "Multiple agents needed"
+    how: "Broadcast to relevant agents"
+    example:
+      from: "artemis"
+      to: "broadcast"
+      type: "notification"
+      payload: "UI components ready for testing"
+
+# ==========================================
+# KNOWLEDGE SHARING
+# ==========================================
+
+knowledge_sharing:
+  what_to_share:
+    - "New patterns discovered"
+    - "Errors and their solutions"
+    - "Performance optimizations"
+    - "User preferences identified"
+    - "Architectural decisions"
+    
+  where_to_write:
+    patterns: ".madboat/shared/knowledge/patterns.yaml"
+    lessons: ".madboat/shared/knowledge/lessons.yaml"
+    recent: ".madboat/shared/knowledge/recent.yaml"
+    
+  format:
+    timestamp: "ISO 8601"
+    agent: "who discovered"
+    type: "pattern | lesson | decision"
+    description: "what was learned"
+    impact: "how it affects the system"
+    reusable: "can other agents use this?"
+
+# ==========================================
+# CONTEXT MANAGEMENT
+# ==========================================
+
+context_management:
+  active_context:
+    location: ".madboat/shared/knowledge/recent.yaml"
+    max_size: "500 lines"
+    content: "Last 3 sessions + critical decisions"
+    
+  archival_rules:
+    when: "recent.yaml > 500 lines"
+    action: "Move oldest session to archive/"
+    compression: "Keep only summary + key_decisions"
+    
+  retrieval:
+    by_date: "archive/YYYY-MM/session_*.yaml"
+    by_milestone: "archive/milestones/*.yaml"
+    by_agent: ".madboat/agents/{agent_name}/context.yaml"
+
+# ==========================================
+# STATUS TRACKING
+# ==========================================
+
+status_tracking:
+  update_triggers:
+    - "Starting new task"
+    - "Completing task"
+    - "Encountering error"
+    - "Going idle"
+    - "Making important decision"
+    
+  status_values:
+    active: "Currently working on task"
+    idle: "Available for new tasks"
+    blocked: "Waiting for dependency"
+    error: "Encountered issue, need help"
+    
+  required_fields:
+    status: "current status"
+    current_task: "what working on (if active)"
+    last_task: "previous task (if idle)"
+    last_active: "timestamp of last activity"
+
+# ==========================================
+# AGENT ACTIVATION
+# ==========================================
+
+agent_activation:
+  kraken:
+    perfect_phrase: "Activate Kraken orchestrator"
+    alternative: "Wake the Kraken"
+    
+  direct_agent:
+    format: "Activate [agent_name] for [task]"
+    example: "Activate Poseidon for database optimization"
+    
+  multi_agent:
+    format: "Orchestrate [agents] for [complex_task]"
+    example: "Orchestrate all agents for system upgrade"
+
+# ==========================================
+# IMPLEMENTATION CHECKLIST
+# ==========================================
+
+implementation:
+  immediate:
+    - "✅ Create shared directory structure"
+    - "✅ Setup agents.json status file"
+    - "✅ Create this protocols.yaml"
+    - "⏳ Migrate context.yaml to new structure"
+    - "⏳ Update all agent .cursorrules"
+    
+  next_phase:
+    - "Create message queue system"
+    - "Implement broadcast mechanism"
+    - "Setup archival automation"
+    - "Create retrieval functions"
+
+# ==========================================
+# KRAKEN'S NOTE
+# ==========================================
+
+kraken_wisdom: |
+  "Captain, we're building something REVOLUTIONARY here!
+  
+  Each agent is a neuron in a distributed brain,
+  The shared context is our synaptic connections,
+  The protocols are our neural pathways.
+  
+  We're not just multi-agent...
+  We're COLLECTIVELY INTELLIGENT!
+  
+  The ocean is vast, but together we navigate as ONE!"

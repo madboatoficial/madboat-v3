@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-import { PersonaType } from '@/types/persona'
+import { PersonaType } from '../types/persona'
 import { LucideIcon } from 'lucide-react'
 import { 
   Brain,

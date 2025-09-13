@@ -735,17 +735,6 @@ export function CinematicJourney({ userName = 'Tripulante' }: CinematicJourneyPr
             </motion.div>
           </div>
 
-          {/* Epic Phrase at Bottom - Using Serif Font */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="absolute bottom-24 left-1/2 -translate-x-1/2 z-40"
-          >
-            <p className="text-xl md:text-2xl text-white/60 font-serif italic text-center">
-              A sua nova história no digital entra em prática agora
-            </p>
-          </motion.div>
 
           {/* Progress Bar */}
           <motion.div

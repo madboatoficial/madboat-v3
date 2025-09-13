@@ -5,32 +5,14 @@
 
 "use client"
 
-import { useAuthState } from '@/hooks/use-auth-state'
 import { useRouter } from 'next/navigation'
 import { LegacyPage } from '@madboat/ui'
 import { AppLayout } from '@/layouts/AppLayout'
 
 export default function TimelinePage() {
-  const { user, loading, signOut } = useAuthState()
   const router = useRouter()
-
-  if (loading) {
-    return (
-      <div className="w-full h-screen bg-black flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 border-2 border-white/20 border-t-white rounded-full mx-auto mb-4 animate-spin" />
-          <p className="text-white/60 text-sm">Carregando timeline...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (!user) {
-    router.push('/')
-    return null
-  }
-
-  const userName = user.email?.split('@')[0] || 'Navigator'
+  const userName = 'Navigator'
+  const user = { id: 'mock-user-id', email: 'navigator@madboat.com' }
 
   const handleNavigate = (page: string) => {
     switch (page) {
@@ -65,7 +47,7 @@ export default function TimelinePage() {
       pageType="timeline"
       user={user}
       userName={userName}
-      onLogout={signOut}
+      onLogout={() => console.log('Logout bypassed')}
       onNavigate={handleNavigate}
     >
       <LegacyPage

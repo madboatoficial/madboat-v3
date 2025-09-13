@@ -33,12 +33,12 @@ import {
   QuestionResponse,
   PersonaClassificationResult,
   TypingMetrics
-} from '@/types/persona'
+} from '../types/persona'
 
-import { PERSONA_QUESTIONS } from '@/lib/persona/questions'
-import { analyzeSemanticResponse } from '@/lib/persona/semantic-analysis'
-import { classifyPersonaAdvanced } from '@/lib/persona/classification-engine'
-import { TypingMetricsTracker } from '@/lib/persona/typing-metrics'
+import { PERSONA_QUESTIONS } from '../lib/persona/questions'
+import { analyzeSemanticResponse } from '../lib/persona/semantic-analysis'
+import { classifyPersonaAdvanced } from '../lib/persona/classification-engine'
+import { TypingMetricsTracker } from '../lib/persona/typing-metrics'
 
 interface PersonaIdentificationProps {
   userName?: string

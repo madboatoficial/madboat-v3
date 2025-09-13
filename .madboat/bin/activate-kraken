@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# 🐙 Kraken Activation Script
+# Unified launcher for the master orchestrator
+
+echo "   ╔═══════════════════════════════════╗"
+echo "   ║  🐙 K R A K E N   A W A K E N S  ║"
+echo "   ╚═══════════════════════════════════╝"
+echo ""
+echo "   Reading shared consciousness..."
+echo "   Status: $(cat .madboat/shared/status/agents.json | grep -A1 '"kraken"' | grep status | cut -d'"' -f4)"
+echo "   Context: $(cat .madboat/shared/knowledge/recent.yaml | head -n 5)"
+echo ""
+echo "   💬 Ready to orchestrate!"
+echo "   ~ SOMEBODY STOP ME! ~"
+echo ""
+
+# Update status
+timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+echo "Updating Kraken status to active..."
+
+# For use in Cursor/Claude Code, just display the activation message
+echo ""
+echo "📝 To use in Claude Code:"
+echo '   Type: "Activate Kraken orchestrator for MadBoat"'
+echo ""
+echo "🚀 System ready for multi-agent orchestration!"

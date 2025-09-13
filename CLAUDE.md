@@ -8,17 +8,17 @@
 - `mb-build`: Build all workspaces with strict type checking
 - `mb-types`: Generate and sync Supabase types across packages
 
-### RLVR Agent Commands (NEW!)
-- `kraken`: Launch Kraken TypeScript specialist with RLVR auto-activation
-- `.agents/bin/agent poseidon`: Launch Poseidon database specialist
-- `.agents/bin/agent mandarin-fish`: Launch Mandarin Fish UI specialist  
-- `.agents/bin/agent uncle-mcduck`: Launch Uncle McDuck math specialist
-- `.agents/bin/agent ulisses`: Launch Ulisses chronicle/NLP specialist
-- `.agents/bin/agent thaumoctopus`: Launch Thaumoctopus Git master
-- `.agents/bin/agent ostra`: Launch Ostra agent creator (creates new agents with RLVR)
-- `.agents/bin/agent uni`: Launch UNI meta-orchestrator for system coherence
-- `.agents/bin/agent status`: Check RLVR framework status
-- `.agents/bin/agent test`: Test RLVR framework functionality
+### Unified Agent Commands (NEW!)
+- `Activate Kraken orchestrator for MadBoat`: Launch Kraken master orchestrator
+- `.madboat/bin/agent poseidon`: Launch Poseidon database specialist
+- `.madboat/bin/agent mandarin-fish`: Launch Mandarin Fish UI specialist  
+- `.madboat/bin/agent uncle-mcduck`: Launch Uncle McDuck financial advisor
+- `.madboat/bin/agent ulisses`: Launch Ulisses chronicle writer
+- `.madboat/bin/agent thaumoctopus`: Launch Thaumoctopus Git master
+- `.madboat/bin/agent ostra`: Launch Ostra agent creator
+- `.madboat/bin/agent uni`: Launch UNI meta-orchestrator
+- `.madboat/bin/agent status`: Check agent system status
+- `.madboat/bin/activate-kraken`: Activate Kraken in terminal
 
 ### Architecture Commands  
 - `mb-check`: Full system health check (types, tests, lint, build)

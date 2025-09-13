@@ -596,7 +596,17 @@ export function EvolutionMapHorizontal({
       description: getTierDescription(tier),
       state: getTierState(tier),
       treasures: tiers[tier].sort((a, b) => (a.lane || 0) - (b.lane || 0))
-    }))  
+    }))
+
+  // Calculate positions for connections
+  const positions = calculatePositions(HORIZONTAL_MILESTONES)
+
+  // Calculate current tier based on progress
+  const activeTiers = Object.keys(tiers).map(Number).filter(tier => {
+    const tierMilestones = tiers[tier]
+    return tierMilestones && tierMilestones.some(m => ['claimed', 'available', 'unlocked'].includes(m.state))
+  })
+  const currentTier = activeTiers.length > 0 ? Math.max(...activeTiers) : 0
     
   function getTierDescription(tier: number): string {
     switch(tier) {

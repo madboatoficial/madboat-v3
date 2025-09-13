@@ -115,8 +115,6 @@ export function SkillArchipelagosFix({
         <div className="absolute inset-0 p-8">
           <div className="relative w-full h-full min-h-[600px]">
             
-            {console.log('Rendering skills:', SKILLS_DATA)}
-            
             {SKILLS_DATA.map((skill) => {
               const colorClasses = getColorClasses(skill.color, skill.state)
               const Icon = skill.icon
@@ -124,8 +122,6 @@ export function SkillArchipelagosFix({
               
               return (
                 <div key={skill.id}>
-                  {/* Debug log */}
-                  {console.log(`Rendering skill ${skill.id} at position:`, skill.position)}
                   
                   {/* Skill Bubble - Fixed positioning */}
                   <motion.div

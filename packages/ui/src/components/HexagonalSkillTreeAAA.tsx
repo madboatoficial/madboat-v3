@@ -260,17 +260,17 @@ const HexagonNodeAAA: React.FC<{
         <motion.div
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(circle, ${state.glowColor}, transparent)`,
+            background: `radial-gradient(circle, ${'glowColor' in state ? state.glowColor : 'transparent'}, transparent)`,
             filter: 'blur(20px)',
             transform: 'scale(1.5)',
           }}
-          animate={state.pulse ? {
+          animate={'pulse' in state && state.pulse ? {
             opacity: [0.4, 0.8, 0.4],
             scale: [1.3, 1.6, 1.3]
           } : {}}
           transition={{
             duration: 2,
-            repeat: state.pulse ? Infinity : 0,
+            repeat: 'pulse' in state && state.pulse ? Infinity : 0,
             ease: "easeInOut"
           }}
         />

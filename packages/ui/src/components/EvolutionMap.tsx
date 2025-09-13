@@ -309,8 +309,16 @@ const stateConfig = {
     text: 'text-green-200',
     glow: 'shadow-green-500/20',
     opacity: 'opacity-100'
+  },
+  coming_soon: {
+    bg: 'bg-purple-950/20',
+    border: 'border-purple-600/30',
+    icon: 'text-purple-400',
+    text: 'text-purple-300',
+    glow: 'shadow-purple-500/10',
+    opacity: 'opacity-50'
   }
-}
+} as const
 
 const typeConfig = {
   core: { size: 'w-20 h-20', iconSize: 'w-10 h-10' },
