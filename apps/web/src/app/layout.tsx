@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { PageTransition } from './components/PageTransition'
-// import { GlobalErrorBoundary } from '@madboat/ui/error'
-// import { MonitoringProvider } from './monitoring'
+import { GlobalErrorBoundary } from '@madboat/ui/error'
 
 export const metadata: Metadata = {
   title: {
@@ -65,12 +64,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className="antialiased bg-white text-black min-h-screen font-sans">
-        <div id="app-root" className="relative">
-          <PageTransition>
-            {children}
-          </PageTransition>
-        </div>
-        <div id="modal-root" />
+        <GlobalErrorBoundary>
+          <div id="app-root" className="relative">
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </div>
+          <div id="modal-root" />
+        </GlobalErrorBoundary>
       </body>
     </html>
   )
