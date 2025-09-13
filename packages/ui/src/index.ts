@@ -20,16 +20,14 @@ export { EvolutionMapHorizontal } from './components/EvolutionMapHorizontal'
 export { PersonaIdentification } from './components/PersonaIdentification'
 export { PersonaResult } from './components/PersonaResult'
 
-// Animation System
-export { OceanWaves } from './animations/OceanWaves'
+// Animation System (TODO: Create when needed)
+// export { OceanWaves } from './animations/OceanWaves'
 
-// Error Boundaries (Production-Ready)
-export { ErrorBoundary, GlobalErrorBoundary } from './error'
+// Error Boundaries (TODO: Create when needed for Next.js 15)
+// export { ErrorBoundary, GlobalErrorBoundary } from './error'
 
-// Hooks
-export { usePersonaHook } from './hooks/usePersonaHook'
-export { useTypingMetrics } from './hooks/useTypingMetrics'
-export { useMagneticMouse } from './hooks/useMagneticMouse'
+// Hooks (Only existing ones)
+export { useConstellationDashboard, dashboardUtils } from './hooks/useConstellationDashboard'
 
 // Core Types (only existing ones)
 export type {

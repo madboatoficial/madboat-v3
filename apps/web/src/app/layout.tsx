@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { PageTransition } from './components/PageTransition'
-import { GlobalErrorBoundary } from '@madboat/ui/error'
+// TODO: Fix GlobalErrorBoundary for Next.js 15 Server Components
+// import { GlobalErrorBoundary } from '@madboat/ui'
 
 export const metadata: Metadata = {
   title: {
@@ -64,14 +65,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className="antialiased bg-white text-black min-h-screen font-sans">
-        <GlobalErrorBoundary>
-          <div id="app-root" className="relative">
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </div>
-          <div id="modal-root" />
-        </GlobalErrorBoundary>
+        <div id="app-root" className="relative">
+          <PageTransition>
+            {children}
+          </PageTransition>
+        </div>
+        <div id="modal-root" />
       </body>
     </html>
   )

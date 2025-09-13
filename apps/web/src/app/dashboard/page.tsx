@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Check, Square } from 'lucide-react'
+import { ChevronDown, Check, Square, LogOut } from 'lucide-react'
+import { ProtectedRoute } from '../../components/ProtectedRoute'
+import { useAuth } from '@madboat/auth'
 
 interface SubCard {
   id: string
@@ -91,11 +93,20 @@ const cards: Card[] = [
 ]
 
 export default function DashboardPage() {
+  const { signOut, user } = useAuth()
   const [expandedCards, setExpandedCards] = useState<string[]>([])
   const [expandedSubCards, setExpandedSubCards] = useState<string[]>([])
 
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
+
   const toggleCard = (cardId: string) => {
-    setExpandedCards(prev => 
+    setExpandedCards(prev =>
       prev.includes(cardId)
         ? prev.filter(id => id !== cardId)
         : [...prev, cardId]
@@ -103,7 +114,7 @@ export default function DashboardPage() {
   }
 
   const toggleSubCard = (subCardId: string) => {
-    setExpandedSubCards(prev => 
+    setExpandedSubCards(prev =>
       prev.includes(subCardId)
         ? prev.filter(id => id !== subCardId)
         : [...prev, subCardId]
@@ -114,6 +125,7 @@ export default function DashboardPage() {
   const isSubExpanded = (subCardId: string) => expandedSubCards.includes(subCardId)
 
   return (
+    <ProtectedRoute>
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Ocean Wave Background Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -181,29 +193,54 @@ export default function DashboardPage() {
         {/* Left Panel - Cards */}
         <div className="w-96 px-6 py-12">
           {/* Header */}
-          <div className="mb-8 text-center">
+          <div className="mb-8">
             {/* Font Import */}
             <style jsx>{`
               @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
             `}</style>
-            
-            {/* Logo */}
-            <motion.h1 
-              layoutId="madboat-logo"
-              className="text-2xl font-medium tracking-[0.08em] text-black"
-              style={{ fontFamily: '"Plus Jakarta Sans", sans-serif' }}
-              animate={{
-                opacity: [0.85, 1, 0.85],
-                scale: [0.98, 1, 0.98]
-              }}
-              transition={{
-                opacity: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-                layout: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
-              }}
-            >
-              madboat
-            </motion.h1>
+
+            {/* Header Content */}
+            <div className="flex items-center justify-between mb-2">
+              {/* Logo */}
+              <motion.h1
+                layoutId="madboat-logo"
+                className="text-2xl font-medium tracking-[0.08em] text-black"
+                style={{ fontFamily: '"Plus Jakarta Sans", sans-serif' }}
+                animate={{
+                  opacity: [0.85, 1, 0.85],
+                  scale: [0.98, 1, 0.98]
+                }}
+                transition={{
+                  opacity: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                  scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                  layout: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
+                }}
+              >
+                madboat
+              </motion.h1>
+
+              {/* User Info & Logout */}
+              <div className="flex items-center space-x-3">
+                <div className="text-right">
+                  <p className="text-xs font-light text-black/60 tracking-wide">
+                    {user?.email}
+                  </p>
+                </div>
+                <motion.button
+                  onClick={handleSignOut}
+                  className="group relative p-2 border border-black/20 hover:border-black/40
+                           transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <LogOut size={14} strokeWidth={1.5} className="text-black/60 group-hover:text-black/80" />
+                  <motion.div
+                    className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100
+                             transition-opacity duration-300"
+                  />
+                </motion.button>
+              </div>
+            </div>
           </div>
 
           {/* Cards Container */}
@@ -456,5 +493,6 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+    </ProtectedRoute>
   )
 }

@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Eye, EyeOff, ArrowRight } from 'lucide-react'
+import { useAuth } from '@madboat/auth'
+import { useRouter } from 'next/navigation'
 
 // Componente para linha ondulante sutil no background
 function SubtleLineWave({ 
@@ -58,8 +60,11 @@ export default function HomePage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const [focusedField, setFocusedField] = useState<'email' | 'password' | null>(null)
+
+  // Real authentication
+  const { signIn, loading, error, user } = useAuth()
+  const router = useRouter()
   
   // Progressive reveal states
   const [showPasswordField, setShowPasswordField] = useState(false)
@@ -92,14 +97,23 @@ export default function HomePage() {
     }
   }, [password, showPasswordField])
 
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard')
+    }
+  }, [user, router])
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    
-    setTimeout(() => {
-      setIsLoading(false)
-      window.location.href = '/dashboard'
-    }, 1500)
+
+    try {
+      await signIn(email, password)
+      // Router will redirect on success via useEffect above
+    } catch (err) {
+      console.error('Login failed:', err)
+      // Error is handled by useAuth hook
+    }
   }
 
   return (
@@ -476,7 +490,7 @@ export default function HomePage() {
                     
                     <motion.button
                       type="submit"
-                      disabled={isLoading}
+                      disabled={loading}
                       className="bg-transparent border-0 relative z-20
                                text-black/60 hover:text-black transition-colors duration-500
                                disabled:opacity-50 group flex items-center justify-center"
@@ -484,7 +498,7 @@ export default function HomePage() {
                       whileTap={{ scale: 0.98 }}
                     >
                       <AnimatePresence mode="wait">
-                        {isLoading ? (
+                        {loading ? (
                           <motion.div
                             key="loading"
                             initial={{ opacity: 0 }}
@@ -521,6 +535,24 @@ export default function HomePage() {
           </motion.form>
         </div>
       </div>
+
+      {/* Error Display */}
+      <AnimatePresence>
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed top-8 left-1/2 -translate-x-1/2 z-50"
+          >
+            <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-2 shadow-lg">
+              <p className="text-red-600 text-sm font-medium">
+                {error.message || 'Authentication failed. Please try again.'}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Minimal Copyright */}
       <motion.div
