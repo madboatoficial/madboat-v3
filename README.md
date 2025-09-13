@@ -1,20 +1,28 @@
-# 🌊 MadBoat v2.0 - Universo dos 3 Mundos
+# 🌊 MadBoat v3 - Digital Ocean Transformation Platform
 
-## Estrutura Monorepo
+## 🚢 Project Overview
+
+MadBoat v3 is a comprehensive digital transformation platform featuring an AI-powered multi-agent system for personal and professional growth. Built with cutting-edge technology and an ocean-themed metaphor throughout.
+
+## 🏗️ Architecture
 
 ```
-madboat-ecosystem/
+madboat-v3/
 ├── apps/
-│   ├── web/          # Next.js 15 - Web Application
-│   └── mobile/       # Expo - Mobile Application (futuro)
+│   └── web/                  # Next.js 15 - Main web application
 ├── packages/
-│   ├── core/         # Business Logic compartilhada
-│   ├── ui/           # Componentes UI compartilhados
-│   └── api/          # API clients (Supabase, etc.)
-└── supabase/         # Database e backend
+│   ├── core/                 # Shared business logic
+│   ├── ui/                   # Shared UI components
+│   ├── api/                  # API clients (Supabase integration)
+│   ├── persona/              # Persona identification system
+│   └── rlvr/                 # RLVR framework
+├── db/                       # Database schemas and migrations
+├── .madboat/                 # Project management and ship logs
+├── .claude/                  # Claude Code agent configurations
+└── .cursorrules/            # Agent behavioral rules
 ```
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 # Install dependencies
@@ -25,24 +33,69 @@ npm run dev
 
 # Build for production
 npm run build
+
+# Run tests
+npm run test
+
+# Type checking
+npm run type-check
 ```
 
-## Architecture Benefits
+## 🐙 Agent System
 
-- ✅ **70% código compartilhado** entre web e mobile
-- ✅ **Type safety** cross-platform
-- ✅ **Single source of truth** para business logic
-- ✅ **Desarrollo paralelo** web/mobile
-- ✅ **Deploy independente** por aplicação
+MadBoat features an advanced multi-agent AI system:
 
-## Tech Stack
+- **Kraken** - Master orchestrator
+- **Poseidon** - Database specialist
+- **Mandarin Fish** - UI/UX expert
+- **Ulisses** - Chronicle writer
+- **Thaumoctopus** - Git master
+- **Ostra** - Agent creator
+- **Uncle McDuck** - Financial advisor
+- **UNI** - Meta-orchestrator
+
+Activate with: `release the kraken`
+
+## 🛠️ Tech Stack
 
 - **Framework**: Next.js 15 + React 19
-- **TypeScript**: Full type safety
-- **Styling**: Tailwind CSS
-- **Database**: Supabase
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS + Framer Motion
+- **Database**: Supabase (PostgreSQL)
+- **Auth**: Supabase Auth
 - **Package Manager**: npm workspaces
-- **Mobile**: Expo (React Native)
+- **Version Control**: Git with systematic branching
+
+## 📊 Project Status
+
+- **Sprint**: Day 3 of 30 (MVP)
+- **Current Phase**: Foundation & Organization
+- **Target Launch**: 30 days from start
+
+## 🌟 Key Features
+
+- Advanced persona identification system
+- ALMA methodology implementation
+- Credit-based AI generation system
+- Real-time chat with 3 channels
+- Horizontal timeline navigation
+- Digital diary (Diário de Bordo)
+- Admin dashboard for agent monitoring
+
+## 📝 Development Guidelines
+
+1. **Code Style**: Maintain TypeScript strict mode
+2. **Components**: Follow React 19 best practices
+3. **Testing**: Business logic focus (React 19 limitations)
+4. **Documentation**: Update ship logs daily
+5. **Version Control**: Commit with meaningful messages
+
+## 🔗 Resources
+
+- [Ship Logs](.madboat/ship-log/)
+- [Agent Documentation](.claude/agents/)
+- [Database Documentation](db/documentation/)
+- [Claude Code Config](CLAUDE.md)
 
 ## Development
 

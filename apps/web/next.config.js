@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     // esmExternals disabled - can cause webpack issues with React 19
     // esmExternals: true,
+    // turbo: {}, // Uncomment to enable Turbopack (faster dev builds)
   },
   transpilePackages: ['@madboat/core', '@madboat/ui', '@madboat/api'],
   // output: 'standalone', // Temporarily disabled to fix build

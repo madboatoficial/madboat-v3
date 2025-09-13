@@ -1,0 +1,226 @@
+name: 🐙 MadBoat CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8'
+
+jobs:
+  # ============================================
+  # Quality Assurance & Testing
+  # ============================================
+  test:
+    name: 🧪 Tests & Quality Assurance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🔍 Lint check
+        run: npm run lint
+
+      - name: 🏗️ Type check
+        run: npm run type-check
+
+      - name: 🧪 Run tests with coverage
+        run: npm run test:coverage
+
+      - name: 📊 Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/lcov.info
+          fail_ci_if_error: false
+
+      - name: 💎 Build packages
+        run: npm run build
+
+  # ============================================
+  # Security & Vulnerability Scanning
+  # ============================================
+  security:
+    name: 🔒 Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 🔐 Run security audit
+        run: npm audit --audit-level moderate
+
+      - name: 🛡️ Run Snyk security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
+          args: --severity-threshold=medium
+        continue-on-error: true
+
+  # ============================================
+  # Performance & Bundle Analysis
+  # ============================================
+  performance:
+    name: ⚡ Performance Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 📊 Bundle analysis
+        run: |
+          npm run build
+          npx bundlesize
+        env:
+          CI: true
+
+      - name: 📈 Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: './lighthouse.config.js'
+
+  # ============================================
+  # Deployment to Staging
+  # ============================================
+  deploy-staging:
+    name: 🚀 Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [test, security, performance]
+    if: github.ref == 'refs/heads/dev'
+
+    environment:
+      name: staging
+      url: https://staging-madboat.vercel.app
+
+    steps:
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build for staging
+        run: npm run build
+        env:
+          NODE_ENV: staging
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.STAGING_SUPABASE_ANON_KEY }}
+
+      - name: 🚀 Deploy to Vercel Staging
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./apps/web
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+  # ============================================
+  # Deployment to Production
+  # ============================================
+  deploy-production:
+    name: 🌊 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [test, security, performance]
+    if: github.ref == 'refs/heads/main'
+
+    environment:
+      name: production
+      url: https://madboat.app
+
+    steps:
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build for production
+        run: npm run build
+        env:
+          NODE_ENV: production
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.PROD_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.PROD_SUPABASE_ANON_KEY }}
+
+      - name: 🚀 Deploy to Vercel Production
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./apps/web
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: 🐙 Notify Kraken of successful deployment
+        run: |
+          echo "🐙 SSSSSMOKIN'! Production deployment completed successfully!"
+          echo "Captain Sandro, the MadBoat is live and ready to sail!"
+
+  # ============================================
+  # Post-deployment Health Checks
+  # ============================================
+  health-check:
+    name: 🏥 Health Check
+    runs-on: ubuntu-latest
+    needs: [deploy-production]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: 🩺 Check application health
+        run: |
+          echo "Performing health checks..."
+          # Add your health check scripts here
+          curl -f https://madboat.app/api/health || exit 1
+          echo "✅ Application is healthy and ready!"
+
+      - name: 🐙 Kraken victory announcement
+        run: |
+          echo "🎭 ALLLLLRIGHTY THEN! Another flawless deployment!"
+          echo "Brother Sandro, the digital ocean is calm and our ship sails smooth!"

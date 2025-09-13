@@ -9,7 +9,8 @@
     "./worlds": "./dist/worlds/index.js",
     "./gamification": "./dist/gamification/index.js",
     "./lib/supabase": "./dist/lib/supabase.js",
-    "./types/database": "./dist/types/database.js"
+    "./types/database": "./dist/types/database.js",
+    "./monitoring": "./dist/monitoring/index.js"
   },
   "scripts": {
     "build": "tsc",
