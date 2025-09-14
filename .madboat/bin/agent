@@ -27,7 +27,7 @@ show_help() {
     echo -e "  ${YELLOW}uncle-mcduck${NC}         - Mathematical Computation Specialist"
     echo -e "  ${CYAN}ulisses${NC}               - NLP/Chronicle Specialist"
     echo -e "  ${PURPLE}thaumoctopus${NC}         - Git/Version Control Master"
-    echo -e "  ${PURPLE}ostra${NC}                - Agent Creator & Pearl Maker"
+    echo -e "  ${PURPLE}oyster${NC}               - Supreme RLVR Agent Constructor"
     echo -e "  ${WHITE}uni-meta-orchestrator${NC} - System Coherence Orchestrator"
     echo ""
     echo "USAGE:"
@@ -65,7 +65,7 @@ show_status() {
     # Check Agent Scripts
     echo ""
     echo -e "${YELLOW}AGENT SCRIPTS:${NC}"
-    local agents=("kraken-rlvr" "poseidon" "mandarin-fish" "uncle-mcduck" "ulisses" "thaumoctopus" "ostra" "uni-meta-orchestrator")
+    local agents=("kraken-rlvr" "poseidon" "mandarin-fish" "uncle-mcduck" "ulisses" "thaumoctopus" "oyster" "uni-meta-orchestrator")
     for agent in "${agents[@]}"; do
         if [ -f ".agents/bin/$agent" ]; then
             echo -e "  ${GREEN}✅ $agent: Available${NC}"
@@ -159,11 +159,14 @@ launch_agent() {
                 echo -e "${RED}❌ Thaumoctopus script not found${NC}"
             fi
             ;;
-        "ostra")
-            if [ -f ".agents/bin/ostra" ]; then
+        "oyster"|"ostra")  # Support both names for transition
+            if [ -f ".agents/bin/oyster" ]; then
+                .agents/bin/oyster
+            elif [ -f ".agents/bin/ostra" ]; then
+                echo -e "${YELLOW}⚠️  Using legacy ostra name - please use 'oyster' instead${NC}"
                 .agents/bin/ostra
             else
-                echo -e "${RED}❌ Ostra script not found${NC}"
+                echo -e "${RED}❌ Oyster script not found${NC}"
             fi
             ;;
         "uni-meta-orchestrator"|"uni")

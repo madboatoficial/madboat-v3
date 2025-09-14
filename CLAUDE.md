@@ -15,7 +15,7 @@
 - `.madboat/bin/agent uncle-mcduck`: Launch Uncle McDuck financial advisor
 - `.madboat/bin/agent ulisses`: Launch Ulisses chronicle writer
 - `.madboat/bin/agent thaumoctopus`: Launch Thaumoctopus Git master
-- `.madboat/bin/agent ostra`: Launch Ostra agent creator
+- `.madboat/bin/agent oyster`: Launch Oyster supreme RLVR agent constructor
 - `.madboat/bin/agent uni`: Launch UNI meta-orchestrator
 - `.madboat/bin/agent status`: Check agent system status
 - `.madboat/bin/activate-kraken`: Activate Kraken in terminal
