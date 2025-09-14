@@ -36,6 +36,19 @@
     "postinstall": "npm run mb-types"
   },
   "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@storybook/addon-a11y": "^8.0.0",
+    "@storybook/addon-docs": "^8.0.0",
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-interactions": "^8.0.0",
+    "@storybook/addon-links": "^8.0.0",
+    "@storybook/addon-onboarding": "^8.0.0",
+    "@storybook/addon-styling-webpack": "^1.0.0",
+    "@storybook/addon-viewport": "^8.0.0",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/nextjs": "^8.0.0",
+    "@storybook/react": "^8.0.0",
+    "@storybook/test": "^8.0.0",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -44,29 +57,16 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^5.0.2",
     "@vitest/ui": "^3.2.4",
+    "css-loader": "^7.1.2",
     "eslint": "^8.0.0",
     "js-yaml": "^4.1.0",
     "jsdom": "^26.1.0",
     "prettier": "^3.0.0",
     "shadcn": "^3.2.1",
-    "typescript": "^5.0.0",
-    "vitest": "^3.2.4",
-    "@playwright/test": "^1.46.1",
-    "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-interactions": "^8.0.0",
-    "@storybook/addon-links": "^8.0.0",
-    "@storybook/addon-onboarding": "^8.0.0",
-    "@storybook/addon-a11y": "^8.0.0",
-    "@storybook/addon-viewport": "^8.0.0",
-    "@storybook/addon-docs": "^8.0.0",
-    "@storybook/addon-styling-webpack": "^1.0.0",
-    "@storybook/blocks": "^8.0.0",
-    "@storybook/nextjs": "^8.0.0",
-    "@storybook/react": "^8.0.0",
-    "@storybook/test": "^8.0.0",
     "storybook": "^8.0.0",
     "style-loader": "^4.0.0",
-    "css-loader": "^7.1.2"
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
   },
   "keywords": [
     "madboat",
@@ -77,6 +77,7 @@
   "author": "Sandro Fidélis",
   "license": "MIT",
   "dependencies": {
+    "@stripe/stripe-js": "^7.9.0",
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.56.1",
@@ -84,6 +85,7 @@
     "@visx/hierarchy": "^3.12.0",
     "@visx/shape": "^3.12.0",
     "framer-motion": "^12.23.12",
+    "stripe": "^18.5.0",
     "zustand": "^5.0.8"
   }
 }
