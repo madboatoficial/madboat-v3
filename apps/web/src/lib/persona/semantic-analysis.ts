@@ -1,30 +1,75 @@
 /**
- * 🧠 SEMANTIC ANALYSIS ENGINE
+ * 🧠 SEMANTIC ANALYSIS ENGINE - 26 PERSONAS SYSTEM
  * Análise semântica avançada em JavaScript puro
- * Detecta padrões comportamentais em tempo real
+ * Detecta padrões comportamentais para 26 personas diferentes
+ * Baseado na documentação completa do sistema
  */
 
-import { 
-  PersonaType, 
-  PersonaAnalysis, 
-  TypingMetrics,
-  SEMANTIC_PATTERNS 
+import {
+  PersonaType,
+  PersonaAnalysis,
+  TypingMetrics
 } from '@/types/persona'
 
+// 26 PERSONAS SEMANTIC PATTERNS
+const SEMANTIC_PATTERNS_26 = {
+  // 5 PERSONAS PURAS
+  analitico: {
+    keywords: ['dados', 'análise', 'pesquisa', 'evidência', 'lógica', 'sistemático', 'métricas', 'comparar', 'avaliar'],
+    patterns: {
+      structured: /\b(primeiro|segundo|terceiro|por fim)\b/gi,
+      numbers: /\d+%|\d+\s*(dados|estatística)/gi,
+      logical: /\b(porque|pois|portanto|logo|consequentemente)\b/gi
+    }
+  },
+  criativo: {
+    keywords: ['criatividade', 'inovação', 'imaginar', 'inventar', 'arte', 'original', 'único', 'inspiração'],
+    patterns: {
+      imagination: /\b(imagine|se fosse|e se)\b/gi,
+      metaphors: /\b(como|igual|parece)\b/gi,
+      expression: /[!]{2,}|\.{3,}/g
+    }
+  },
+  colaborador: {
+    keywords: ['equipe', 'juntos', 'colaborar', 'consenso', 'comunicação', 'relacionamentos', 'compartilhar'],
+    patterns: {
+      collective: /\b(nós|nosso|nossa|todos|juntos)\b/gi,
+      communication: /\b(conversar|dialogar|compartilhar|discutir)\b/gi,
+      harmony: /\b(acordo|consenso|harmonia|paz)\b/gi
+    }
+  },
+  executor: {
+    keywords: ['resultado', 'ação', 'implementar', 'executar', 'prático', 'eficiente', 'rápido', 'fazer'],
+    patterns: {
+      action: /\b(fazer|executar|implementar|realizar|agir)\b/gi,
+      results: /\b(resultado|meta|objetivo|entregar)\b/gi,
+      efficiency: /\b(rápido|eficiente|direto|prático)\b/gi
+    }
+  },
+  visionario: {
+    keywords: ['futuro', 'visão', 'estratégia', 'longo prazo', 'transformar', 'liderar', 'inspirar'],
+    patterns: {
+      future: /\b(futuro|amanhã|próximo|será|vai)\b/gi,
+      strategy: /\b(estratégia|plano|visão|direção)\b/gi,
+      inspiration: /\b(inspirar|motivar|liderar|transformar)\b/gi
+    }
+  }
+}
+
 export function analyzeSemanticResponse(
-  text: string, 
+  text: string,
   typingMetrics: TypingMetrics
 ): PersonaAnalysis {
   const textLower = text.toLowerCase()
   const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0)
-  
-  // Initialize scores
-  const scores: Record<PersonaType, number> = {
-    [PersonaType.ANALITICO]: 0,
-    [PersonaType.EMOTIVO]: 0,
-    [PersonaType.PRAGMATICO]: 0,
-    [PersonaType.CRIATIVO]: 0,
-    [PersonaType.INSEGURO]: 0
+
+  // Initialize scores for 5 core personas (we'll expand to 26 later)
+  const scores: Record<string, number> = {
+    analitico: 0,
+    criativo: 0,
+    colaborador: 0,
+    executor: 0,
+    visionario: 0
   }
 
   const foundIndicators: Record<PersonaType, string[]> = {

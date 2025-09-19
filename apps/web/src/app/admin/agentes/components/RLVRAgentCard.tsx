@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useRLVRAgent } from '@madboat/rlvr/integration/useRLVRAgent'
+// Temporarily disabled due to compilation issues
+// import { useRLVRAgent } from '@madboat/rlvr/integration/useRLVRAgent'
 import { supabase } from '@madboat/auth'
 
 interface Agent {
@@ -40,24 +41,18 @@ const moodIcons = {
 }
 
 export function RLVRAgentCard({ agent }: RLVRAgentCardProps) {
-  const { metrics, loading, trackAction } = useRLVRAgent(agent.id, {
-    supabase,
-    autoRefresh: true,
-    refreshInterval: 10000,
-  })
+  // Temporarily disabled due to compilation issues
+  // const { metrics, loading, trackAction } = useRLVRAgent(agent.id, {
+  //   supabase,
+  //   autoRefresh: true,
+  //   refreshInterval: 10000,
+  // })
+  const metrics = null
+  const loading = false
+  const trackAction = async () => {}
 
   const simulateAction = async () => {
-    await trackAction({
-      task: `${agent.name} test action`,
-      input: { test: true },
-      output: { result: 'success' },
-      success: true,
-      metrics: {
-        executionTime: Math.random() * 1000,
-        memoryUsage: Math.random() * 100,
-        complexityScore: Math.random()
-      }
-    })
+    await trackAction()
   }
 
   return (
@@ -90,78 +85,9 @@ export function RLVRAgentCard({ agent }: RLVRAgentCardProps) {
         </div>
       </div>
 
-      {/* RLVR Metrics */}
-      {metrics && !loading && (
+      {/* RLVR Metrics - Disabled while metrics is null */}
+      {false && (
         <div className="space-y-4">
-          {/* Performance Stats */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white rounded-lg p-3">
-              <div className="text-xs text-gray-500 uppercase tracking-wide">Success Rate</div>
-              <div className="text-2xl font-bold text-green-600">
-                {(metrics.successRate * 100).toFixed(1)}%
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-3">
-              <div className="text-xs text-gray-500 uppercase tracking-wide">Avg Score</div>
-              <div className="text-2xl font-bold text-blue-600">
-                {metrics.averageScore.toFixed(2)}
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-3">
-              <div className="text-xs text-gray-500 uppercase tracking-wide">Total Actions</div>
-              <div className="text-2xl font-bold text-purple-600">
-                {metrics.totalActions}
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-3">
-              <div className="text-xs text-gray-500 uppercase tracking-wide">Patterns</div>
-              <div className="text-2xl font-bold text-orange-600">
-                {metrics.learnedPatterns.length}
-              </div>
-            </div>
-          </div>
-
-          {/* Performance Trend */}
-          {metrics.recentPerformance.length > 0 && (
-            <div className="bg-white rounded-lg p-3">
-              <div className="text-xs text-gray-500 uppercase tracking-wide mb-2">
-                Recent Performance
-              </div>
-              <div className="flex items-end gap-1 h-8">
-                {metrics.recentPerformance.slice(-10).map((score, index) => (
-                  <div
-                    key={index}
-                    className="bg-blue-500 rounded-t"
-                    style={{
-                      height: `${score * 100}%`,
-                      width: '8px',
-                      minHeight: '2px'
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Learned Patterns */}
-          {metrics.learnedPatterns.length > 0 && (
-            <div className="bg-white rounded-lg p-3">
-              <div className="text-xs text-gray-500 uppercase tracking-wide mb-2">
-                Latest Patterns
-              </div>
-              <div className="space-y-1">
-                {metrics.learnedPatterns.slice(0, 3).map((pattern, index) => (
-                  <div key={index} className="text-xs bg-gray-100 rounded px-2 py-1">
-                    {pattern}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Test Action Button */}
           <button
             onClick={simulateAction}

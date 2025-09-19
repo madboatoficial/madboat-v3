@@ -41,3 +41,7 @@ export * from './utils/storage';
 
 // Examples
 export * from './examples/basic-usage';
+
+// Integration
+export * from './integration/useRLVRAgent';
+export * from './integration/MadBoatIntegration';

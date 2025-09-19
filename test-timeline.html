@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Timeline Event</title>
+</head>
+<body>
+    <h1>Teste de Evento na Timeline</h1>
+    <button onclick="addPersonaEvent()">Simular Conclusão de Persona</button>
+    <button onclick="clearEvents()">Limpar Eventos</button>
+    <br><br>
+    <div id="status"></div>
+
+    <script>
+        function addPersonaEvent() {
+            const timelineEvent = {
+                id: `persona-${Date.now()}`,
+                title: 'Persona Única Identificada',
+                description: 'Você descobriu sua persona única: Arquiteto Digital',
+                event_type: 'milestone',
+                event_date: new Date().toISOString(),
+                icon_name: 'user',
+                color_primary: '#000000',
+                category: 'journey',
+                impact_score: 10,
+                sort_order: 1,
+                is_featured: true
+            };
+
+            // Get existing events
+            const existingEvents = JSON.parse(localStorage.getItem('madboat_timeline_events') || '[]');
+
+            // Add new event
+            const updatedEvents = [timelineEvent, ...existingEvents];
+
+            // Save to localStorage
+            localStorage.setItem('madboat_timeline_events', JSON.stringify(updatedEvents));
+
+            document.getElementById('status').innerHTML =
+                `<p style="color: green;">✅ Evento adicionado! Agora vá para o Dashboard para ver na timeline.</p>
+                 <p>Data: ${new Date().toLocaleDateString('pt-BR')}</p>`;
+        }
+
+        function clearEvents() {
+            localStorage.removeItem('madboat_timeline_events');
+            document.getElementById('status').innerHTML =
+                '<p style="color: orange;">🗑️ Eventos limpos! Timeline voltará ao estado inicial.</p>';
+        }
+    </script>
+</body>
+</html>

@@ -6,8 +6,8 @@ import { PageTransition } from './components/PageTransition'
 
 export const metadata: Metadata = {
   title: {
-    default: 'MadBoat v2.0 - Universo dos 3 Mundos',
-    template: '%s | MadBoat v2.0'
+    default: 'MadBoat',
+    template: '%s | MadBoat'
   },
   description: 'Plataforma de desenvolvimento pessoal e profissional com Sistema Timeline e 26 Personas Executivas',
   keywords: ['desenvolvimento pessoal', 'personas executivas', 'timeline', 'gamificação', 'profissional'],
@@ -18,18 +18,18 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'MadBoat v2.0'
+    title: 'MadBoat'
   },
   openGraph: {
     type: 'website',
-    siteName: 'MadBoat v2.0',
-    title: 'MadBoat v2.0 - Universo dos 3 Mundos',
+    siteName: 'MadBoat',
+    title: 'MadBoat',
     description: 'Plataforma revolucionária para desenvolvimento pessoal e profissional',
     images: ['/og-image.png']
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MadBoat v2.0 - Universo dos 3 Mundos',
+    title: 'MadBoat',
     description: 'Plataforma revolucionária para desenvolvimento pessoal e profissional'
   },
   robots: {
@@ -66,9 +66,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="pt-BR" suppressHydrationWarning>
       <body className="antialiased bg-white text-black min-h-screen font-sans">
         <div id="app-root" className="relative">
-          <PageTransition>
-            {children}
-          </PageTransition>
+          {children}
         </div>
         <div id="modal-root" />
       </body>
